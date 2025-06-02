@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsivel.css">
+    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/responsivel.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
                     <li><a href="#comandos"><i class="fas fa-terminal"></i> Comandos</a></li>
                     <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                     <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
-                    <li><a href="#sair"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    <li><a href="../logoff.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 </ul>
             </nav>
             <div class="background"></div>
@@ -145,6 +145,6 @@
             </div>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="src/script/script.js"></script>
 </body>
 </html>
