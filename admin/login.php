@@ -25,17 +25,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style/login.css">
     <title>Bytecrud</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <?php if (isset($erro)): ?>
-        <p style="color:red"><?= $erro ?></p>
-    <?php endif; ?>
-    <form method="post">
-        <input type="text" name="usuario" placeholder="Usuário" required><br><br>
-        <input type="password" name="senha" placeholder="Senha" required><br><br>
-        <button type="submit">Entrar</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="card-login">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="card-body">
+                        <?php if (isset($erro)): ?>
+                        <p style="color:red"><?= $erro ?></p>
+                        <?php endif; ?>
+                        <form method="post">
+                            <input type="text" name="usuario" placeholder="Usuário" required><br><br>
+                            <input type="password" name="senha" placeholder="Senha" required><br><br>
+                            <button type="submit" class="btn btn-lg ">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

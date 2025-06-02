@@ -1,3 +1,12 @@
+<?php 
+    require_once '../includes/auth.php';
+    require_once '../config/conexao.php';
+
+    $conexao =(new Conexao())->conectar();
+
+    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,6 +62,36 @@
                     <p><strong>Servidores:</strong> <span id="servers">2</span></p>
                 </div>
             </div>
+
+            <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-terminal"></i>
+                    <h2>Comandos Personalizados</h2>
+                </div>
+                <div class="card-body">
+                        <?php if ($dados): ?>
+                            <?php foreach ($dados as $cmd): ?>
+                                <tr>
+                                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                                    <td>
+                                        <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
+                                        <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+                        <?php endif; ?>
+                </div>
+                
+                <p><a href="create.php">+ Novo Comando</a> | <a href="login.php">Sair</a></p>
+
+                
+            </div>
+
             <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-users"></i>

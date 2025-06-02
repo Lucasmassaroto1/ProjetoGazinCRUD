@@ -3,7 +3,7 @@
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY categoria ASC, comando ASC"); /* "SELECT * FROM conteudo ORDER BY data_criacao DESC" */
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -19,6 +19,7 @@
     <!-- ========== FAVICON ========== -->
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILOS & LOADING ========== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
     <script src="src/script/loading.js"></script>
@@ -45,8 +46,7 @@
                 <li><a href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
                 <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
                 <!-- <li><a href="#comando"><i class="fa-solid fa-gears"></i><span>Comandos</span></a></li> -->
-                <li><a href="../admin/dashboard.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
-                <!-- <li><a href="../logoff.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li> -->
+                <li><a href="../admin/login.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
                 <!-- <li><a href="https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-plus"></i><span>Invite</span></a></li>
                 <li><a href="https://discord.gg/Bs9pMBnDX3" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i><span>Comunidade</span></a></li> -->
                 <li><button id="toggleTheme"><i class="fa-solid fa-moon"></i></button></li>
@@ -98,32 +98,21 @@
                 </div>
             </div>
             <div class="card-status">
-                <?php if (count($dados) > 0): ?>
-                <?php foreach ($dados as $item): ?>
-                    <div class="card-status">
-                        <div class="card-header">
-                            <i class="fas fa-users"></i>
-                            <h2><?= htmlspecialchars($item['titulo']) ?></h2>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Descrição:</strong> <?= nl2br(htmlspecialchars($item['descricao'])) ?></p>
-                            <p><strong>Data de criação:</strong> <?= date('d/m/Y H:i', strtotime($item['data_criacao'])) ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Nenhuma informação cadastrada ainda.</p>
-                <?php endif; ?>
-            </div>
-            <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-terminal"></i>
-                    <h2>Comandos</h2>
+                    <h2>Comandos Personalizados</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Total:</strong> <span id="total-commands">25</span></p>
-                    <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
-                    <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
+                    <?php if ($dados): ?>
+                        <?php foreach ($dados as $cmd): ?>
+                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+                        <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -1,0 +1,43 @@
+/* ========== CORES DO SITE ========== */
+:root{
+    --primary-color: #c003e6;
+    --secondary-color: #76028d;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --card-background: #3d3d3d;
+    --color-painel: #1a1a1a;
+    --prefix-color: #000000;
+}
+/* ========== RESET & BASE ========== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+}
+body{
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: "Exo 2", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ========== CARD LOGIN ========== */
+.card-login{
+    padding: 30px 0 0 0;
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--primary-color);
+}
+input{
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+.card-header,.card-body{
+    background: var(--color-painel);
+}

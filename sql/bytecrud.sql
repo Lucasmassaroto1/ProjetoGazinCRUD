@@ -20,9 +20,21 @@ CREATE TABLE usuarios(
 );
 INSERT INTO usuarios (usuario, senha)
 VALUES ('admin', SHA2('admin123', 256));
-CREATE TABLE conteudo(
+
+/* CREATE TABLE conteudo(
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); */
+
+DROP TABLE IF EXISTS conteudo;
+
+CREATE TABLE conteudo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    comando VARCHAR(100) NOT NULL,
+    descricao TEXT NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    exemplo VARCHAR(255),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
