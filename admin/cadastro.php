@@ -1,0 +1,63 @@
+<?php
+require_once '../config/conexao.php';
+$conexao = (new Conexao())->conectar();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    if (!empty($usuario) && !empty($senha)) {
+        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario]);
+
+        if ($stmt->fetch()) {
+            $erro = "Usuário já existe!";
+        } else {
+            $senhaCriptografada = hash('sha256', $senha);
+            $sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute([$usuario, $senhaCriptografada]);
+            header('Location: login.php');
+            exit;
+        }
+    } else {
+        $erro = "Preencha todos os campos.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style/login.css">
+    <title>Bytecrud - Novo usuario</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card-login">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mt-5">Cadastro de Usuário</h2>
+                    </div>
+                    <div class="card-body">
+                        <?php if (isset($erro)): ?>
+                            <p style="color: red;"><?= $erro ?></p>
+                        <?php endif; ?>
+                        <form method="post">
+                            <input type="text" name="usuario" placeholder="Usuário" required class="form-control mt-3">
+                            <input type="password" name="senha" placeholder="Senha" required class="form-control mt-3">
+                            <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+                            <a href="login.php" class="btn btn-link mt-3">Já tem conta? Fazer login</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

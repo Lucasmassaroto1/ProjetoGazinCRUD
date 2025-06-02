@@ -69,29 +69,22 @@
                     <h2>Comandos Personalizados</h2>
                 </div>
                 <div class="card-body">
-                        <?php if ($dados): ?>
-                            <?php foreach ($dados as $cmd): ?>
-                                <tr>
-                                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                                    <td>
-                                        <p class="atalho">
-                                            <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
-                                            <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                                        </p>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
-                        <?php endif; ?>
+                    <?php if ($dados): ?>
+                        <?php foreach ($dados as $cmd): ?>
+                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                            <p class="atalho">
+                                <a href="create.php">+ Novo Comando</a> |
+                                <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
+                                <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                            </p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+                    <?php endif; ?>
                 </div>
-                
-                <p  class='atalho'><a href="create.php">+ Novo Comando</a> | <a href="login.php">Sair</a></p>
-
-                
             </div>
 
             <div class="card-status">
