@@ -324,6 +324,12 @@ body{
     width: 22%;
     outline: none;
 }
+
+.atalho a{
+    color: var(--primary-color);
+    text-decoration: none;
+    
+}
 /* ========== ANIMAÇÕES ========== */
 
 /* ========== KEYFRAMES ANIMAÇÕES ========== */

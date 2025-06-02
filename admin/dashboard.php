@@ -15,7 +15,7 @@
     <meta name="description" content="Um simples DashBoard para configurar o ByteCode">
     <meta name="author" content="Lucas Massaroto">
     <!-- ======== FAVICON ======== -->
-    <link rel="shortcut icon" href="../principal/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ======== FONT & ICONS ======== -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
         </button>
             <nav class="menu-lateral">
                 <div class="foto-menu">
-                    <img src="../public/assets/img/ByteCode.svg" loading="lazy" alt="Foto de perfil do ByteCode">
+                    <img src="../public/img/ByteCode.svg" loading="lazy" alt="Foto de perfil do ByteCode">
                     <h1>ByteCode <span>um simples bot CLT.</span></h1>
                 </div>
                 <ul>
@@ -77,8 +77,10 @@
                                     <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
                                     <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                                     <td>
-                                        <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
-                                        <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                        <p class="atalho">
+                                            <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
+                                            <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                        </p>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -87,7 +89,7 @@
                         <?php endif; ?>
                 </div>
                 
-                <p><a href="create.php">+ Novo Comando</a> | <a href="login.php">Sair</a></p>
+                <p  class='atalho'><a href="create.php">+ Novo Comando</a> | <a href="login.php">Sair</a></p>
 
                 
             </div>
