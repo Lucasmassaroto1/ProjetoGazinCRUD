@@ -84,7 +84,6 @@
             </div>
         </section>
         <section class="comando slide-right" id="comando">
-            <h1>Últimas Novidades</h1>
             <div class="grid-cards">
             <div class="card-status">
                 <div class="card-header">
@@ -117,85 +116,6 @@
             </div>
         </div>
 
-            <!-- <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">Slash Commands</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>/ajuda</li>
-                        <li>/sobre</li>
-                        <li>/invite</li>
-                        <li>/falar</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article>
-            <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">Comunicação</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>!translate</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article>
-            <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">Diversão</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>!ppt</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article> 
-            <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">Música</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>!play</li>
-                        <li>!pause</li>
-                        <li>!skip</li>
-                        <li>!leave</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article>
-            <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">Moderação</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>!clear</li>
-                        <li>!setwelcome</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article>
-            <article class="card glow-effect">
-                <div class="card-image">
-                    <img src="assets/img/ByteCode.svg" loading="lazy" alt="ByteCodeLogo" />
-                </div>
-                <div class="category">HybridCommands</div>
-                <div class="heading">
-                    <ul class="list-commands">
-                        <li>/prefix ou !prefix</li>
-                    </ul>
-                </div>
-                <div class="author">By <span class="name">Lucas Massaroto.</span></div>
-            </article> -->
         </section>
         <section class="fade" id="criador">
             <div class="criador-container">
