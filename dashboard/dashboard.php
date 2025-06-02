@@ -6,13 +6,13 @@
     <meta name="description" content="Um simples DashBoard para configurar o ByteCode">
     <meta name="author" content="Lucas Massaroto">
     <!-- ======== FAVICON ======== -->
-    <link rel="shortcut icon" href="../public/assets/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../principal/img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ======== FONT & ICONS ======== -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="assets/style/style.css">
-    <link rel="stylesheet" href="assets/style/responsivel.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsivel.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
                     <h1>ByteCode <span>um simples bot CLT.</span></h1>
                 </div>
                 <ul>
-                    <li><a href="../public/index.php"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="../principal/home.php"><i class="fas fa-home"></i> Início</a></li>
                     <li><a href="#comandos"><i class="fas fa-terminal"></i> Comandos</a></li>
                     <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                     <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
@@ -145,6 +145,6 @@
             </div>
         </div>
     </main>
-    <script src="assets/script/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

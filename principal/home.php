@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- ========== FAVICON ========== -->
-    <link rel="shortcut icon" href="assets/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILOS & LOADING ========== -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsivel.css">
-    <script src="assets/script/loading.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsivel.css">
+    <script src="loading.js"></script>
     <title>ByteCode CRUD</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
                 <li><a href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
                 <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
                 <!-- <li><a href="#comando"><i class="fa-solid fa-gears"></i><span>Comandos</span></a></li> -->
-                <li><a href="../admin/dashboard.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
+                <li><a href="../dashboard/dashboard.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
                 <!-- <li><a href="https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-plus"></i><span>Invite</span></a></li>
                 <li><a href="https://discord.gg/Bs9pMBnDX3" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i><span>Comunidade</span></a></li> -->
                 <li><button id="toggleTheme"><i class="fa-solid fa-moon"></i></button></li>
@@ -51,7 +51,7 @@
         <section class="inicio fade" id="inicio">
             <div class="flex">
                 <div class="img-inicio">
-                    <img class="bytefoto" src="assets/img/ByteCode.svg" alt="ByteCodeLogo">
+                    <img class="bytefoto" src="img/ByteCode.svg" alt="ByteCodeLogo">
                 </div>
                 <div class="txt-inicio">
                     <h1>ByteCode, <span>um simples bot CLT.</span></h1>
@@ -222,6 +222,6 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
-    <script src="assets/script/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
