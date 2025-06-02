@@ -13,3 +13,9 @@ create table usuario(
     email varchar(100) unique,
     senha varchar(255)
 );
+CREATE TABLE conteudo(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -26,7 +26,7 @@
                     <h1>ByteCode <span>um simples bot CLT.</span></h1>
                 </div>
                 <ul>
-                    <li><a href="../principal/home.php"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="../public/home.php"><i class="fas fa-home"></i> Início</a></li>
                     <li><a href="#comandos"><i class="fas fa-terminal"></i> Comandos</a></li>
                     <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                     <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>

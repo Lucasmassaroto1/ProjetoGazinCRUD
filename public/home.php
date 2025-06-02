@@ -1,4 +1,6 @@
-
+<?php 
+    include'../config/conexao.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,7 +41,7 @@
                 <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
                 <!-- <li><a href="#comando"><i class="fa-solid fa-gears"></i><span>Comandos</span></a></li> -->
                 <li><a href="../dashboard/dashboard.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
-                <li><a href="../logoff.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                <!-- <li><a href="../logoff.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li> -->
                 <!-- <li><a href="https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-plus"></i><span>Invite</span></a></li>
                 <li><a href="https://discord.gg/Bs9pMBnDX3" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i><span>Comunidade</span></a></li> -->
                 <li><button id="toggleTheme"><i class="fa-solid fa-moon"></i></button></li>
@@ -77,7 +79,7 @@
             </div>
         </section>
         <section class="comando slide-right" id="comando">
-            <!-- <div class="grid-cards">
+            <div class="grid-cards">
             <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-robot"></i>
@@ -111,7 +113,7 @@
                     <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
                 </div>
             </div>
-        </div> -->
+        </div>
 
             <!-- <article class="card glow-effect">
                 <div class="card-image">
