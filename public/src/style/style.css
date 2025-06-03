@@ -7,8 +7,6 @@
     --color-card-bg: #2c2c2c;
     --color-scrollbar: rgba(161, 161, 161, 0.3);
     --color-painel: #1a1a1a;
-}
-:root{
     --success-color: #00ff88;
     --danger-color: #ff5555;
 }
