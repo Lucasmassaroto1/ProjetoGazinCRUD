@@ -31,7 +31,7 @@
         $stmt = $conexao->prepare($sql);
         $stmt->execute([$novoComando, $descricao, $categoria, $exemplo, $id]);
 
-        header('Location: dashboard.php');
+        header('Location: pages/comandos.php');
         exit;
     }
 ?>

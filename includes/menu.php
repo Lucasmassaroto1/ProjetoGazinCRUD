@@ -12,7 +12,7 @@
                 <li><a href="pages/comandos.php"><i class="fas fa-terminal"></i> Comandos</a></li>
                 <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                 <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
-                <li><a href="login.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                <li><a href="../admin/login.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
             </ul>
         </nav>
     <div class="background"></div>

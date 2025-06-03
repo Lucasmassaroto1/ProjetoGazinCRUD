@@ -85,37 +85,70 @@
         </section>
         <section class="comando slide-right" id="comando">
             <div class="grid-cards">
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-robot"></i>
-                    <h2>Status do Bot</h2>
+                <div class="card-status">
+                    <div class="card-header">
+                        <i class="fas fa-robot"></i>
+                        <h2>Status do Bot</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Status:</strong> <span class="status online">Online</span></p>
+                        <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
+                        <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                    <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
-                    <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                <div class="card-status">
+                    <div class="card-header">
+                        <i class="fas fa-terminal"></i>
+                        <h2>Comandos Personalizados</h2>
+                    </div>
+                    <div class="card-body">
+                        <?php if ($dados): ?>
+                            <?php foreach ($dados as $cmd): ?>
+                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="grid-cards">
+                    <div class="card-status">
+                        <div class="card-header">
+                            <i class="fas fa-robot"></i>
+                            <h2>Prefixo</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
+                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline">-</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <?php if ($dados): ?>
-            <?php foreach ($dados as $cmd): ?>
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Comandos Personalizados</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+        
+        <div class="card-status activity-log">
+            <div class="card-header">
+                <i class="fas fa-terminal"></i>
+                <h2> Detalhes Comandos Personalizados</h2>
+            </div>
+            <div class="card-body">
+                <div class="activity-list">
+                    <?php if ($dados): ?>
+                        <?php foreach ($dados as $cmd): ?>
+                    <div class="activity-item">
+                        <div class="activity-content">
+                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                                <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                                <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                    <?php endif; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
-            <?php endif; ?>
         </div>
-
         </section>
         <section class="fade" id="criador">
             <div class="criador-container">

@@ -128,10 +128,6 @@ body{
     margin: 0;
     color: var(--text-color);
 }
-.activity-content small{
-    color: var(--primary-color);
-    font-size: 0.875rem;
-}
 
 .input-prefix{
     background-color: var(--card-background);
@@ -144,10 +140,20 @@ body{
 }
 
 .atalho a{
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
-    
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px;
 }
+.atalho a i{
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
 /* ========== ANIMAÇÕES ========== */
 
 /* ========== KEYFRAMES ANIMAÇÕES ========== */

@@ -14,7 +14,7 @@
         $stmt = $conexao->prepare($sql);
         $stmt->execute([$comando, $descricao, $categoria, $exemplo]);
 
-        header('Location: dashboard.php');
+        header('Location: pages/comandos.php');
     exit;
 }
 ?>

@@ -55,22 +55,28 @@
                     <?php if ($dados): ?>
                         <?php foreach ($dados as $cmd): ?>
                             <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                            <!-- <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
                             <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                            <p class="atalho">
-                                <a href="create.php">+ Novo Comando</a> |
-                                <a href="edit.php?id=<?= $cmd['id'] ?>">Editar</a> |
-                                <a href="delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                            </p>
+                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p> -->
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
                     <?php endif; ?>
                 </div>
             </div>
-
+                    
             <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-robot"></i>
+                    <h2>Prefixo Personalizado</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
+                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline">-</span></p>
+                </div>
+            </div>
+
+            <!-- <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-users"></i>
                     <h2>Usuários</h2>
@@ -80,7 +86,10 @@
                     <p><strong>Ativos:</strong> <span id="active-users">45</span></p>
                     <p><strong>Novos hoje:</strong> <span id="new-users">12</span></p>
                 </div>
-            </div>
+            </div> -->
+        </div>
+        
+        <!-- <div class="grid-cards">
             <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-terminal"></i>
@@ -90,20 +99,6 @@
                     <p><strong>Total:</strong> <span id="total-commands">25</span></p>
                     <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
                     <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="grid-cards">
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-robot"></i>
-                    <h2>Prefixo</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline">-</span></p>
-                    <p><input type="text" name="" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
                 </div>
             </div>
             <div class="card-status">
@@ -128,36 +123,29 @@
                     <p><strong>Em Breve:</strong> <span id="popular-command">/Sem informações</span></p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="card-status activity-log">
             <div class="card-header">
-                <i class="fas fa-history"></i>
-                <h2>Atividades Recentes</h2>
+                <i class="fas fa-terminal"></i>
+                <h2> Detalhes Comandos Personalizados</h2>
             </div>
             <div class="card-body">
                 <div class="activity-list">
+                    <?php if ($dados): ?>
+                        <?php foreach ($dados as $cmd): ?>
                     <div class="activity-item">
-                        <i class="fas fa-user-plus"></i>
                         <div class="activity-content">
-                            <p>Novo usuário registrado</p>
-                            <small>Há 5 minutos</small>
+                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                                <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                                <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="activity-item">
-                        <i class="fas fa-terminal"></i>
-                        <div class="activity-content">
-                            <p>Comando /help executado</p>
-                            <small>Há 10 minutos</small>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <i class="fas fa-server"></i>
-                        <div class="activity-content">
-                            <p>Novo servidor adicionado</p>
-                            <small>Há 30 minutos</small>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
