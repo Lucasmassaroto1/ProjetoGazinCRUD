@@ -1,9 +1,0 @@
-/* ========== RESPONSIVO ========== */
-@media screen and (max-width: 48rem){ /*768px*/
-    .menu-lateral{
-        width: 13.75rem; /*220px*/
-    }
-    .toggle.ativo{
-        left: 15rem; /*140px*/
-    }
-}
