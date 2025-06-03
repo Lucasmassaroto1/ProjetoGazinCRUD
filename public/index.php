@@ -96,24 +96,24 @@
                     <p><strong>Servidores:</strong> <span id="servers">2</span></p>
                 </div>
             </div>
+            <?php if ($dados): ?>
+            <?php foreach ($dados as $cmd): ?>
             <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-terminal"></i>
                     <h2>Comandos Personalizados</h2>
                 </div>
                 <div class="card-body">
-                    <?php if ($dados): ?>
-                        <?php foreach ($dados as $cmd): ?>
-                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                        <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
-                        <?php endif; ?>
+                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                 </div>
             </div>
+            <?php endforeach; ?>
+            <?php else: ?>
+                <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+            <?php endif; ?>
         </div>
 
         </section>
