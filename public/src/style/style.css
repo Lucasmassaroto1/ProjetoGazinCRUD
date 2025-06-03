@@ -39,16 +39,14 @@ body::-webkit-scrollbar-thumb{
     background: var(--color-secondary);
     border-radius: 10px;
 }
-/* main{
-    padding: 60px 20px;
-} */
+
 h1, h2{
     font-weight: 700;
 }
 h2.titulo{
-    font-size: 2.25rem; /* 36px */
+    font-size: 2.25rem; 
     text-align: center;
-    margin-bottom: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem;
 }
 h2.titulo span{
     color: var(--color-primary);
@@ -58,7 +56,7 @@ h2.titulo span{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2.5rem; /* 40px */
+    gap: 2.5rem;
 }
 section{
     width: 100%;
@@ -72,8 +70,8 @@ section{
 .btn-global{
     display: flex;
     flex-wrap: wrap;
-    gap: 0.625rem; /* 10px */
-    margin-top: 1.25rem; /* 20px */
+    gap: 0.625rem;
+    margin-top: 1.25rem;
     justify-content: center;
 }
 .btn-global button{
@@ -86,15 +84,15 @@ section{
     cursor: pointer;
     transition: .5s;
     font-weight: 400;
-    font-size: 1.0625rem; /* 17px */
+    font-size: 1.0625rem;
     border: 1px solid;
     z-index: 1;
 }
 .btn-global button::before, .btn-global button::after{
     content: '';
     display: block;
-    width: 3.125rem; /* 50px */
-    height: 3.125rem; /* 50px */
+    width: 3.125rem;
+    height: 3.125rem;
     transform: translate(-50%, -50%);
     position: absolute;
     border-radius: 50%;
@@ -111,8 +109,8 @@ section{
     top: calc(100% + 1rem);
 }
 .btn-global button:hover::before, .btn-global button:hover::after{
-    width: 25.625rem; /* 410px */
-    height: 25.625rem; /* 410px */
+    width: 25.625rem;
+    height: 25.625rem;
 }
 .btn-global button:hover{
     color: var(--color-bg);
@@ -127,8 +125,8 @@ section{
 .individual{
     display: flex;
     flex-wrap: wrap;
-    gap: 0.625rem; /* 10px */
-    margin-top: 0.625rem; /* 10px */
+    gap: 0.625rem;
+    margin-top: 0.625rem;
 }
 .individual button{
     color: var(--color-primary);
@@ -140,15 +138,15 @@ section{
     cursor: pointer;
     transition: .5s;
     font-weight: 400;
-    font-size: 1.0625rem; /* 17px */
+    font-size: 1.0625rem;
     border: 1px solid;
     z-index: 1;
 }
 .individual button::before, .individual button::after{
     content: '';
     display: block;
-    width: 3.125rem; /* 50px */
-    height: 3.125rem; /* 50px */
+    width: 3.125rem;
+    height: 3.125rem;
     transform: translate(-50%, -50%);
     position: absolute;
     border-radius: 50%;
@@ -165,8 +163,8 @@ section{
     top: calc(100% + 1rem);
 }
 .individual button:hover::before, .individual button:hover::after{
-    width: 25.625rem; /* 410px */
-    height: 25.625rem; /* 410px */
+    width: 25.625rem;
+    height: 25.625rem;
 }
 .individual button:hover{
     color: var(--color-bg);
