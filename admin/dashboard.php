@@ -100,51 +100,15 @@
             <!-- <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-users"></i>
-                    <h2>Usuários</h2>
+                    <h2>Servidores</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Total:</strong> <span id="total-users">150</span></p>
-                    <p><strong>Ativos:</strong> <span id="active-users">45</span></p>
-                    <p><strong>Novos hoje:</strong> <span id="new-users">12</span></p>
+                    <p><strong>Total:</strong> <span id="total-users">2</span></p>
+                    <p><strong>Ativos:</strong> <span id="active-users">170</span></p>
+                    <p><strong>Novos hoje:</strong> <span id="new-users"> </span></p>
                 </div>
             </div> -->
         </div>
-        
-        <!-- <div class="grid-cards">
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Comandos</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Total:</strong> <span id="total-commands">25</span></p>
-                    <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
-                    <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
-                </div>
-            </div>
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-users"></i>
-                    <h2>Em Breve</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Em Breve:</strong> <span id="total-users">Sem informações</span></p>
-                    <p><strong>Em Breve:</strong> <span id="active-users">Sem informações</span></p>
-                    <p><strong>Em Breve:</strong> <span id="new-users">Sem informações</span></p>
-                </div>
-            </div>
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Em Breve</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Em Breve:</strong> <span id="total-commands">Sem informações</span></p>
-                    <p><strong>Em Breve:</strong> <span id="commands-today">Sem informações</span></p>
-                    <p><strong>Em Breve:</strong> <span id="popular-command">/Sem informações</span></p>
-                </div>
-            </div>
-        </div> -->
 
         <div class="card-status activity-log">
             <div class="card-header">
