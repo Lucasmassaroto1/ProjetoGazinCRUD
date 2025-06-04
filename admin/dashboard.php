@@ -6,6 +6,9 @@
 
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
+    $prefixo_atual = $stmt->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -72,7 +75,7 @@
                 </div>
                 <div class="card-body">
                     <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline">-</span></p>
+                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                 </div>
             </div>
 

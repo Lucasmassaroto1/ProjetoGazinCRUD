@@ -21,7 +21,7 @@ CREATE TABLE conteudo(
 
 CREATE TABLE prefixos(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    guild_id VARCHAR(30) NOT NULL UNIQUE,
-    prefixo_customizado VARCHAR(5),
+    guild_id VARCHAR(20) NOT NULL UNIQUE,
+    prefixo_customizado VARCHAR(5) DEFAULT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

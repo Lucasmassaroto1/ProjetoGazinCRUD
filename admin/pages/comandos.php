@@ -6,6 +6,9 @@
 
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
+    $prefixo_atual = $stmt->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -85,9 +88,12 @@
                         <h2>Prefixo</h2>
                     </div>
                     <div class="card-body">
-                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline">-</span></p>
-                        <p><input type="text" name="" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
+                        <form action="../valida_prefix.php" method="post">
+                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
+                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                            <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
+                            <button type="submit" class="btn btn-primary">Salvar Prefixo</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -146,5 +152,32 @@
         </div>
     </main>
     <script src="../../public/src/script/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () =>{
+            const form = document.querySelector("form");
+            const input = document.querySelector(".input-prefix");
+            const prefixOriginal = document.getElementById("original-prefix");
+            const prefixCustomizado = document.getElementById("custom-prefix");
+
+            form.addEventListener("submit", (event) =>{
+                event.preventDefault();
+                const novoPrefixo = input.value.trim();
+
+                if(novoPrefixo !== ""){
+                    prefixCustomizado.textContent = novoPrefixo;
+
+                    prefixOriginal.classList.remove("online");
+                    prefixOriginal.classList.add("offline");
+
+                    prefixCustomizado.classList.remove("offline");
+                    prefixCustomizado.classList.add("online");
+
+                }else{
+                    event.preventDefault();
+                    prefixCustomizado.textContent = "-";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
