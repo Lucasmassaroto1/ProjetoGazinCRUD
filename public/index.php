@@ -45,10 +45,7 @@
             <ul>
                 <li><a href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
                 <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
-                <!-- <li><a href="#comando"><i class="fa-solid fa-gears"></i><span>Comandos</span></a></li> -->
                 <li><a href="../admin/login.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
-                <!-- <li><a href="https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-plus"></i><span>Invite</span></a></li>
-                <li><a href="https://discord.gg/Bs9pMBnDX3" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i><span>Comunidade</span></a></li> -->
                 <li><button id="toggleTheme"><i class="fa-solid fa-moon"></i></button></li>
             </ul>
         </nav>
@@ -83,7 +80,9 @@
                 </div>
             </div>
         </section>
-        <section class="comando slide-right" id="comando">
+
+        <!-- <section class="comando slide-right" id="comando"> -->
+        <div class="container-card">
             <div class="grid-cards">
                 <div class="card-status">
                     <div class="card-header">
@@ -107,7 +106,7 @@
                                 <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                            <p>Nenhum comando personalizado cadastrado.</p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -144,12 +143,15 @@
                         </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                        <p>Nenhum comando personalizado cadastrado.</p>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
-        </section>
+        
+        </div>
+        <!-- </section> -->
+
         <section class="fade" id="criador">
             <div class="criador-container">
                 <h2 class="titulo">Criador</h2>
