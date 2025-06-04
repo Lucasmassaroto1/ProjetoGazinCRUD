@@ -135,7 +135,7 @@ body{
     border-radius: 6px;
     padding: 0.5rem;
     color: var(--text-color);
-    width: 22%;
+    width: 100%;
     outline: none;
 }
 

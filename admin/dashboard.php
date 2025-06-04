@@ -43,9 +43,15 @@
                     <h2>Status do Bot</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                    <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
-                    <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <p><strong>Status:</strong> <span class="status online">Online</span></p>
+                                <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
+                                <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -55,16 +61,22 @@
                     <h2>Comandos Personalizados</h2>
                 </div>
                 <div class="card-body">
-                    <?php if ($dados): ?>
-                        <?php foreach ($dados as $cmd): ?>
-                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <!-- <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p> -->
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
-                    <?php endif; ?>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <?php if ($dados): ?>
+                                    <?php foreach ($dados as $cmd): ?>
+                                        <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                        <!-- <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                                        <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                                        <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p> -->
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
                     
@@ -74,8 +86,14 @@
                     <h2>Prefixo Personalizado</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
+                                <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

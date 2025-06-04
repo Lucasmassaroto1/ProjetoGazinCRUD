@@ -93,9 +93,15 @@
                         <h2>Status do Bot</h2>
                     </div>
                     <div class="card-body">
-                        <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                        <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
-                        <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <p><strong>Status:</strong> <span class="status online">Online</span></p>
+                                    <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
+                                    <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-status">
@@ -104,13 +110,19 @@
                         <h2>Comandos Personalizados</h2>
                     </div>
                     <div class="card-body">
-                        <?php if ($dados): ?>
-                            <?php foreach ($dados as $cmd): ?>
-                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>Nenhum comando personalizado cadastrado.</p>
-                        <?php endif; ?>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <?php if ($dados): ?>
+                                        <?php foreach ($dados as $cmd): ?>
+                                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p>Nenhum comando personalizado cadastrado.</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="grid-cards">
@@ -120,8 +132,14 @@
                             <h2>Prefixo</h2>
                         </div>
                         <div class="card-body">
-                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-content">
+                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
+                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,32 +204,5 @@
         </div>
     </footer>
     <script src="src/script/script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () =>{
-            const form = document.querySelector("form");
-            const input = document.querySelector(".input-prefix");
-            const prefixOriginal = document.getElementById("original-prefix");
-            const prefixCustomizado = document.getElementById("custom-prefix");
-
-            form.addEventListener("submit", (event) =>{
-                event.preventDefault();
-                const novoPrefixo = input.value.trim();
-
-                if(novoPrefixo !== ""){
-                    prefixCustomizado.textContent = novoPrefixo;
-
-                    prefixOriginal.classList.remove("online");
-                    prefixOriginal.classList.add("offline");
-
-                    prefixCustomizado.classList.remove("offline");
-                    prefixCustomizado.classList.add("online");
-
-                }else{
-                    event.preventDefault();
-                    prefixCustomizado.textContent = "-";
-                }
-            });
-        });
-    </script>
 </body>
 </html>
