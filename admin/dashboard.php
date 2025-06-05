@@ -47,7 +47,7 @@
     <main class="conteudo">
         <header class="welcome">
             <h1>Dashboard do ByteCode</h1>
-            <p>Configure o ByteCode de forma simples e rápida.</p>
+            <p>Bem-vindo<?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>! Configure o ByteCode de forma simples e rápida.</p>
         </header>
         
         <div class="grid-cards">
