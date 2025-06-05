@@ -488,14 +488,7 @@ footer a:hover{
 .fade.visible{
     opacity: 1;
 }
-.slide-right{
-    opacity: 0;
-    animation: slideRight 1s ease-out;
-}
-.slide-right.visible{
-    opacity: 1;
-}
-.glow-effect{
+/* .glow-effect{
     opacity: 0;
     position: relative;
     overflow: hidden;
@@ -513,7 +506,7 @@ footer a:hover{
 }
 .glow-effect.visible{
     opacity: 1;
-}
+} */
 section:nth-child(2){
     animation-delay: 0.4s;
 }
@@ -522,21 +515,6 @@ section:nth-child(3){
 }
 section:nth-child(4){
     animation-delay: 0.8s;
-}
-.card:nth-child(2){
-    animation-delay: 0.5s;
-}
-.card:nth-child(3){
-    animation-delay: 0.7s;
-}
-.card:nth-child(4){
-    animation-delay: 0.9s;
-}
-.card:nth-child(5){
-    animation-delay: 1.1s;
-}
-.card:nth-child(6){
-    animation-delay: 1.3s;
 }
 .terminal-loader{
     border: 0.1em solid #333;
@@ -667,21 +645,11 @@ section:nth-child(4){
         transform: scale(1);
     }
 }
-@keyframes slideRight{
-    0%{
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@keyframes shimmer{
+/* @keyframes shimmer{
     0%{
         transform: translateX(-100%) rotate(25deg);
     }
     100%{
         transform: translateX(100%) rotate(25deg);
     }
-}
+} */

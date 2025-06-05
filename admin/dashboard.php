@@ -120,6 +120,6 @@
             </div>
         </div>
     </main>
-    <script src="src/script/script.js"></script>
+    <script src="../public/src/script/script.js"></script>
 </body>
 </html>

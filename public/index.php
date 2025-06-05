@@ -84,7 +84,7 @@
             </div>
         </section>
 
-        <div class="container-card">
+        <div class="container-card fade">
             <div class="grid-cards">
                 <div class="card-status">
                     <div class="card-header">
@@ -200,7 +200,7 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
-    <script src="../admin/src/script/script.js"></script>
     <script src="src/script/script.js"></script>
+    
 </body>
 </html>

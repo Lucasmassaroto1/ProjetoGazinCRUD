@@ -1,3 +1,4 @@
+/* ============== BLOCO DO MENU LATERAL ==============*/
 const botao = document.querySelector('.toggle');
 const menuLateral = document.querySelector('.menu-lateral');
 const linksMenu = document.querySelectorAll('.menu-lateral a');
@@ -26,6 +27,33 @@ if(botao && menuLateral && conteudo && background){
     });
 }
 
+/* 
+    ==============Bloco que atualiza o status do bot no card==============
+*/
+const statusBot = "online";
+const statusSpan = document.querySelector(".card-body .status");
+
+statusSpan.textContent = statusBot === "online" ? "Online" : "Offline";
+statusSpan.classList.remove("online", "offline");
+statusSpan.classList.add(statusBot);
+
+function atualizaRelogio(){
+    var agora = new Date();
+
+    var hora = agora.getHours();
+    var minutos = agora.getMinutes();
+    var segundos = agora.getSeconds();
+
+    hora = hora < 10 ? '0' + hora : hora;
+    minutos = minutos < 10 ? '0' + minutos : minutos;
+    segundos = segundos < 10 ? '0' + segundos : segundos;
+
+    var horaAtual = `${hora}h ${minutos}m ${segundos}s`;
+    document.getElementById('uptime').textContent = `${horaAtual}`;
+}
+setInterval(atualizaRelogio, 1000);
+atualizaRelogio();
+
 // ========== ROLAGEM SUAVE PARA LINKS INTERNOS ==========
 const links = document.querySelectorAll("a[href^='#']");
 for (const link of links){
@@ -53,40 +81,6 @@ document.addEventListener("scroll", () =>{
             element.classList.add("visible");
         }else{
             element.classList.remove("visible");
-        }
-    });
-});
-document.addEventListener("scroll", () =>{
-    const elements = document.querySelectorAll(".slide-right, .glow-effect");
-    elements.forEach(element => {
-        const position = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        if(position < screenPosition){
-            element.classList.add("visible");
-        }else{
-            element.classList.remove("visible");
-        }
-    });
-});
-document.addEventListener("scroll", () =>{
-    const elements = document.querySelectorAll(".slide-right, .glow-effect");
-    elements.forEach(element => {
-        const position = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        if (position < screenPosition && !element.classList.contains("visible")) {
-            element.classList.add("visible");
-        } else if (position >= screenPosition && element.classList.contains("visible")) {
-            element.classList.remove("visible");
-        }
-        if(element.classList.contains("slide-right") && !element.classList.contains("visible")){
-            element.classList.remove("slide-right");
-            void element.offsetWidth;
-            element.classList.add("slide-right");
-        }
-        if(element.classList.contains("glow-effect") && !element.classList.contains("visible")){
-            element.classList.remove("glow-effect");
-            void element.offsetWidth;
-            element.classList.add("glow-effect");
         }
     });
 });
