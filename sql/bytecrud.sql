@@ -1,12 +1,15 @@
 Create database bytecrud;
+USE bytecrud;
 
 CREATE TABLE usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL,
-    senha VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL,
+    tipo VARCHAR(20) DEFAULT 'comum'
 );
-INSERT INTO usuarios (usuario, senha)
-VALUES ('admin', SHA2('admin123', 256));
+
+INSERT INTO usuarios (id, usuario, senha, tipo)
+VALUES (1, 'admin', SHA2('admin123', 256), 'admin');
 
 DROP TABLE IF EXISTS conteudo;
 
@@ -16,7 +19,9 @@ CREATE TABLE conteudo(
     descricao TEXT NOT NULL,
     categoria VARCHAR(50) NOT NULL,
     exemplo VARCHAR(255),
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_por INT NOT NULL,
+    FOREIGN KEY (criado_por) REFERENCES usuarios(id)
 );
 
 CREATE TABLE prefixos(

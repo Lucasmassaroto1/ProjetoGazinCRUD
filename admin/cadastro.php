@@ -18,6 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
             $stmt = $conexao->prepare($sql);
             $stmt->execute([$usuario, $senhaCriptografada]);
+
+            $usuario_id = $conexao->lastInsertId();
+
+            session_start();
+            $_SESSION['usuario_id'] = $usuario_id;
+            $_SESSION['usuario_nome'] = $usuario;
+            // Exemplo: coluna `tipo` na tabela `usuarios` com valores 'admin' ou 'comum'
+            $_SESSION['usuario_tipo'] = $user['tipo'];
+
             header('Location: login.php');
             exit;
         }

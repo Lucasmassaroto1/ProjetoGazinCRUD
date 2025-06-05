@@ -8,6 +8,8 @@
 
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

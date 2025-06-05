@@ -1,7 +1,7 @@
 <?php 
-    session_start();
     require_once '../config/conexao.php';
     $conexao =(new Conexao())->conectar();
+
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
@@ -11,11 +11,16 @@
         $stmt->execute([$usuario]);
         $user = $stmt->fetch();
 
-        if ($user && hash('sha256', $senha) === $user['senha']) {
-        $_SESSION['usuario'] = $usuario;
-        header('Location: dashboard.php');
-        exit;
-        } else {
+        if ($user && hash('sha256', $senha) === $user['senha']){
+            session_start();
+            $_SESSION['usuario_id'] = $user['id'];
+            $_SESSION['usuario_nome'] = $user['usuario'];
+            // Exemplo: coluna `tipo` na tabela `usuarios` com valores 'admin' ou 'comum'
+            $_SESSION['usuario_tipo'] = $user['tipo'];
+
+            header('Location: dashboard.php');
+            exit;
+        }else{
             $erro = "Usuário ou senha inválidos!";
         }
     }

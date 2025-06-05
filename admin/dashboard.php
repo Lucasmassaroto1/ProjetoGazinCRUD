@@ -4,11 +4,25 @@
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   /*  $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC); */
 
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
+
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_tipo = $_SESSION['usuario_tipo'];
+
+    if($usuario_tipo === 'admin'){
+        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+    }else{
+        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario_id]);
+    }
+    $conteudos = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -64,8 +78,8 @@
                     <div class="activity-list">
                         <div class="activity-item">
                             <div class="activity-content">
-                                <?php if ($dados): ?>
-                                    <?php foreach ($dados as $cmd): ?>
+                                <?php if ($conteudos): ?>
+                                    <?php foreach ($conteudos as $cmd): ?>
                                         <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                                     <?php endforeach; ?>
                                 <?php else: ?>
@@ -102,14 +116,15 @@
             </div>
             <div class="card-body">
                 <div class="activity-list">
-                    <?php if ($dados): ?>
-                        <?php foreach ($dados as $cmd): ?>
+                    <?php if ($conteudos): ?>
+                        <?php foreach ($conteudos as $cmd): ?>
                     <div class="activity-item">
                         <div class="activity-content">
                                 <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                                 <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
                                 <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
                                 <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                                <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
                             </div>
                         </div>
                         <?php endforeach; ?>
