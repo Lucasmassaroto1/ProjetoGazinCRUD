@@ -84,7 +84,6 @@
             </div>
         </section>
 
-        <!-- <section class="comando slide-right" id="comando"> -->
         <div class="container-card">
             <div class="grid-cards">
                 <div class="card-status">
@@ -97,7 +96,7 @@
                             <div class="activity-item">
                                 <div class="activity-content">
                                     <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                                    <p><strong>Tempo Online:</strong> <span id="uptime">2h 30min</span></p>
+                                    <p><strong>Tempo Online:</strong> <span id="uptime"></span></p>
                                     <p><strong>Servidores:</strong> <span id="servers">2</span></p>
                                 </div>
                             </div>
@@ -135,8 +134,8 @@
                             <div class="activity-list">
                                 <div class="activity-item">
                                     <div class="activity-content">
-                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +147,7 @@
         <div class="card-status activity-log">
             <div class="card-header">
                 <i class="fas fa-terminal"></i>
-                <h2> Detalhes Comandos Personalizados</h2>
+                <h2>Detalhes Comandos Personalizados</h2>
             </div>
             <div class="card-body">
                 <div class="activity-list">
@@ -169,9 +168,7 @@
                 </div>
             </div>
         </div>
-        
         </div>
-        <!-- </section> -->
 
         <section class="fade" id="criador">
             <div class="criador-container">
@@ -203,6 +200,7 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
+    <script src="../admin/src/script/script.js"></script>
     <script src="src/script/script.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php 
+    $acao = 'recuperarTarefasPendentes';
     require_once '../../includes/auth.php';
     require_once '../../config/conexao.php';
 
@@ -18,7 +19,7 @@
     <meta name="description" content="Um simples DashBoard para configurar o ByteCode">
     <meta name="author" content="Lucas Massaroto">
     <!-- ======== FAVICON ======== -->
-    <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ======== FONT & ICONS ======== -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -68,9 +69,6 @@
                                 <?php if ($dados): ?>
                                     <?php foreach ($dados as $cmd): ?>
                                         <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                        <!-- <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                        <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                        <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p> -->
                                         <p class="atalho">
                                             <a href="../create.php">+ Novo Comando</a>
                                         </p>
@@ -94,18 +92,12 @@
                         <h2>Prefixo</h2>
                     </div>
                     <div class="card-body">
-                        <!-- <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-content"> -->
-                                    <form action="../valida_prefix.php" method="post">
-                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix online">!</span></p>
-                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix offline"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                                        <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
-                                        <button type="submit" class="btn btn-primary">Salvar Prefixo</button>
-                                    </form>
-                          <!--       </div>
-                            </div>
-                        </div> -->
+                        <form action="../valida_prefix.php" method="post">
+                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                            <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
+                            <button type="submit" class="btn btn-primary">Salvar Prefixo</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -116,15 +108,9 @@
                     <h2>Usuários</h2>
                 </div>
                 <div class="card-body">
-                   <!--  <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content"> -->
-                                <p><strong>Total:</strong> <span id="total-users">150</span></p>
-                                <p><strong>Ativos:</strong> <span id="active-users">45</span></p>
-                                <p><strong>Novos hoje:</strong> <span id="new-users">12</span></p>
-                     <!--        </div>
-                        </div>
-                    </div> -->
+                    <p><strong>Total:</strong> <span id="total-users">150</span></p>
+                    <p><strong>Ativos:</strong> <span id="active-users">45</span></p>
+                    <p><strong>Novos hoje:</strong> <span id="new-users">12</span></p>
                 </div>
             </div>
             <div class="card-status">
@@ -133,15 +119,9 @@
                     <h2>Comandos</h2>
                 </div>
                 <div class="card-body">
-                    <!-- <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content"> -->
-                                <p><strong>Total:</strong> <span id="total-commands">25</span></p>
-                                <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
-                                <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
-                    <!--         </div>
-                        </div>
-                    </div> -->
+                    <p><strong>Total:</strong> <span id="total-commands">25</span></p>
+                    <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
+                    <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
                 </div>
             </div>
         </div>
@@ -176,32 +156,5 @@
         </div>
     </main>
     <script src="../../public/src/script/script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () =>{
-            const form = document.querySelector("form");
-            const input = document.querySelector(".input-prefix");
-            const prefixOriginal = document.getElementById("original-prefix");
-            const prefixCustomizado = document.getElementById("custom-prefix");
-
-            form.addEventListener("submit", (event) =>{
-                event.preventDefault();
-                const novoPrefixo = input.value.trim();
-
-                if(novoPrefixo !== ""){
-                    prefixCustomizado.textContent = novoPrefixo;
-
-                    prefixOriginal.classList.remove("online");
-                    prefixOriginal.classList.add("offline");
-
-                    prefixCustomizado.classList.remove("offline");
-                    prefixCustomizado.classList.add("online");
-
-                }else{
-                    event.preventDefault();
-                    prefixCustomizado.textContent = "-";
-                }
-            });
-        });
-    </script>
 </body>
 </html>
