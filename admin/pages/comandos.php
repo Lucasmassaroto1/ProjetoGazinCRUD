@@ -87,7 +87,7 @@
                                         </p>
                                     <?php endforeach; ?>
                                 <?php else: ?>
-                                    <tr><td colspan="7">Crie um comando personalizado Aqui.</td></tr>
+                                    <p>Crie um comando personalizado Aqui.</p>
                                     <p class="atalho">
                                         <a href="../create.php"><i class="fas fa-plus"></i></a>
                                     </p>
@@ -148,27 +148,48 @@
                 <div class="activity-list">
                     <?php if ($conteudos): ?>
                         <?php foreach ($conteudos as $cmd): ?>
-                    <div class="activity-item">
-                        <div class="activity-content">
-                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                                <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                                <p class="atalho">
-                                    <a href="../edit.php?id=<?= $cmd['id'] ?>"><i class="fas fa-pen"></i></a>
-                                    <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
-                                </p>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <div id="exibicao-<?= $cmd['id'] ?>">
+                                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                                    <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
+                                    <p class="atalho">
+                                        <a href="../edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
+                                        <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                                    </p>
+                                </div>
+                                <form id="form-<?= $cmd['id'] ?>" action="../edit.php" method="post" style="display: none;">
+                                    <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
+                                    <label>Comando: <input type="text" name="comando" value="<?= htmlspecialchars($cmd['comando']) ?>"></label><br>
+                                    <label>Descrição: <input type="text" name="descricao" value="<?= htmlspecialchars($cmd['descricao']) ?>"></label><br>
+                                    <label>Categoria: <input type="text" name="categoria" value="<?= htmlspecialchars($cmd['categoria']) ?>"></label><br>
+                                    <label>Exemplo: <input type="text" name="exemplo" value="<?= htmlspecialchars($cmd['exemplo']) ?>"></label><br>
+                                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-sm btn-secondary">Cancelar</button>
+                                </form>
                             </div>
                         </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                        <p>Nenhum comando personalizado cadastrado.</p>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </main>
     <script src="../../public/src/script/script.js"></script>
+    <script>
+        function mostrarFormulario(id){
+            document.getElementById('exibicao-' + id).style.display = 'none';
+            document.getElementById('form-' + id).style.display = 'block';
+        }
+        function cancelarFormulario(id){
+            document.getElementById('form-' + id).style.display = 'none';
+            document.getElementById('exibicao-' + id).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
