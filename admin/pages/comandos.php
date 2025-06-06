@@ -7,7 +7,9 @@
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
+    $usuario_id = $_SESSION['usuario_id'];
+    $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
+    $stmt->execute([$usuario_id]);
     $prefixo_atual = $stmt->fetchColumn();
 
     $usuario_id = $_SESSION['usuario_id'];

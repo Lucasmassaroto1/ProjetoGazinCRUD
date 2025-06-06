@@ -1,27 +1,30 @@
 <?php 
     require_once '../config/conexao.php';
-    $conexao =(new Conexao())->conectar();
+    session_start();
 
-    $prefixo = $_POST['prefixo'] ?? null;
+    $usuario_id = $_SESSION['usuario_id'];
+    $prefixo = $_POST['prefixo'];
 
-    if($prefixo && strlen($prefixo) === 1){
-        //======= VERIFICA SE JÁ EXISTE PREFIXOS =======
-        $sql = 'SELECT id FROM prefixos LIMIT 1';
-        $result = $conexao->query($sql)->fetch();
-
-        if($result){
-            //======= ATUALIZA =======
-            $stmt = $conexao->prepare("UPDATE prefixos SET prefixo_customizado = :prefixo, criado_em = CURRENT_TIMESTAMP WHERE id = :id");
-            $stmt->bindValue(':prefixo', $prefixo);
-            $stmt->bindValue(':id', $result['id']);
-            $stmt->execute();
-        }else{
-            //======= INSERE =======
-            $stmt = $conexao->prepare("INSERT INTO prefixos (prefixo_customizado) VALUES (:prefixo)");
-            $stmt->bindValue(':prefixo', $prefixo);
-            $stmt->execute();
-        }
+    if(strlen($prefixo) > 1){
+        die("Prefixo muito longo.");
     }
+
+    $conexao = (new Conexao())->conectar();
+
+    // Verifica se já existe prefixo para o usuário
+    $stmt = $conexao->prepare("SELECT COUNT(*) FROM prefixos WHERE usuario_id = ?");
+    $stmt->execute([$usuario_id]);
+
+    if($stmt->fetchColumn() > 0){
+        // Atualiza
+        $stmt = $conexao->prepare("UPDATE prefixos SET prefixo_customizado = ? WHERE usuario_id = ?");
+        $stmt->execute([$prefixo, $usuario_id]);
+    }else{
+        // Insere
+        $stmt = $conexao->prepare("INSERT INTO prefixos (usuario_id, prefixo_customizado) VALUES (?, ?)");
+        $stmt->execute([$usuario_id, $prefixo]);
+    }
+
     header('Location: pages/comandos.php');
     exit;
 ?>
