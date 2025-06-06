@@ -127,7 +127,7 @@ body{
     border-radius: 6px;
     padding: 0.5rem;
     color: var(--text-color);
-    width: 100%;
+    width: 42%;
     outline: none;
 }
 
@@ -146,6 +146,27 @@ body{
     margin-right: 5px;
 }
 
+.inputwelcome{
+    background: transparent;
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 4px solid var(--secondary-color);
+    color: var(--primary-color);
+}
+.inputwelcome :focus{
+    background: transparent;
+}
+.inputwelcome input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: var(--primary-color) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+.inputwelcome::placeholder{
+    color: var(--primary-color);
+}
 /* ========== ANIMAÇÕES ========== */
 
 /* ========== KEYFRAMES ANIMAÇÕES ========== */

@@ -4,8 +4,9 @@
 
     $conexao =(new Conexao())->conectar();
 
-   /*  $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC); */
+    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $total_commands = count($dados);
 
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
@@ -72,18 +73,23 @@
             <div class="card-status">
                 <div class="card-header">
                     <i class="fas fa-terminal"></i>
-                    <h2>Comandos Personalizados</h2>
+                    <h2>Comandos</h2>
                 </div>
                 <div class="card-body">
                     <div class="activity-list">
                         <div class="activity-item">
                             <div class="activity-content">
-                                <?php if ($conteudos): ?>
-                                    <?php foreach ($conteudos as $cmd): ?>
-                                        <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                    <?php endforeach; ?>
+                                <?php if ($total_commands > 0): ?>
+                                    <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
                                 <?php else: ?>
-                                    <tr><td colspan="7">Nenhum comando cadastrado ainda.</td></tr>
+                                    <p>Nenhum comando cadastrado.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <?php if ($total_commands > 0): ?>
+                                    <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
                                 <?php endif; ?>
                             </div>
                         </div>

@@ -6,6 +6,8 @@
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY categoria ASC, comando ASC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $total_commands = count($dados);
+
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
@@ -114,12 +116,17 @@
                         <div class="activity-list">
                             <div class="activity-item">
                                 <div class="activity-content">
-                                    <?php if ($dados): ?>
-                                        <?php foreach ($dados as $cmd): ?>
-                                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                        <?php endforeach; ?>
+                                    <?php if ($total_commands > 0): ?>
+                                        <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
                                     <?php else: ?>
-                                        <p>Nenhum comando personalizado cadastrado.</p>
+                                        <p>Nenhum comando cadastrado.</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <?php if ($total_commands > 0): ?>
+                                        <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
                                     <?php endif; ?>
                                 </div>
                             </div>

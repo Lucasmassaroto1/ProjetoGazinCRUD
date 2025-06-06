@@ -6,7 +6,9 @@
 
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
+    $total_commands = count($dados);
+
     $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
@@ -25,6 +27,10 @@
         $stmt->execute([$usuario_id]);
     }
     $conteudos = $stmt->fetchAll();
+
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+    $stmtWelcome->execute([$usuario_id]);
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -119,26 +125,72 @@
 
             <div class="card-status">
                 <div class="card-header">
-                    <i class="fas fa-users"></i>
-                    <h2>Usuários</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>Total:</strong> <span id="total-users">150</span></p>
-                    <p><strong>Ativos:</strong> <span id="active-users">45</span></p>
-                    <p><strong>Novos hoje:</strong> <span id="new-users">12</span></p>
-                </div>
-            </div>
-            <div class="card-status">
-                <div class="card-header">
                     <i class="fas fa-terminal"></i>
                     <h2>Comandos</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Total:</strong> <span id="total-commands">25</span></p>
-                    <p><strong>Usados hoje:</strong> <span id="commands-today">156</span></p>
-                    <p><strong>Mais popular:</strong> <span id="popular-command">/help</span></p>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <?php if ($total_commands > 0): ?>
+                                    <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
+                                <?php else: ?>
+                                    <p>Nenhum comando cadastrado.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <?php if ($total_commands > 0): ?>
+                                    <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-users"></i>
+                    <h2>Welcome</h2>
+                </div>
+                <div class="card-body">
+                <div class="activity-list">
+                    <?php if ($welcome): ?>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <div id="exibicao-<?= $wel['id'] ?>">
+                                    
+                                    <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" required>
+                                    <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" required>
+                                    <!-- <input type="text" name="imagem" class="inputwelcome"  placeholder="Imagem">     -->
+
+                                    <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($welcome['titulo']) ?></span></p>
+                                    <p><strong>Mensagem:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($welcome['mensagem'])) ?></span></p>
+                                    <p><strong>Imagem:</strong> <span id="popular-command"><?= htmlspecialchars($welcome['categoria']) ?></span></p>
+                                    <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($welcome['autor']) ?></span></p>
+                                    <p class="atalho">
+                                        <a href="../edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
+                                        <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                                    </p>
+                                </div>
+                                <form id="form-<?= $cmd['id'] ?>" action="../edit.php" method="post" style="display: none;">
+                                    <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
+                                    <label>Titulo: <input type="text" name="titulo" value="<?= htmlspecialchars($cmd['titulo']) ?>"></label><br>
+                                    <label>Mensagem: <input type="text" name="mensagem" value="<?= htmlspecialchars($cmd['mensagem']) ?>"></label><br>
+                                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-sm btn-secondary">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <p>Nenhuma Mensagem registrada.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            </div>
+
         </div>
 
         <div class="card-status activity-log">
