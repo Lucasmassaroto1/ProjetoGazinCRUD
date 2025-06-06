@@ -24,6 +24,10 @@
         $stmt->execute([$usuario_id]);
     }
     $conteudos = $stmt->fetchAll();
+
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+    $stmtWelcome->execute([$usuario_id]);
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,7 +42,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/dash.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
     <link rel="stylesheet" href="../public/src/style/menu.css">
     <title>ByteCode DashBoard</title>
@@ -113,6 +117,24 @@
                     </div>
                 </div>
             </div>
+            <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-users"></i>
+                    <h2>Welcome</h2>
+                </div>
+                <div class="card-body">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <form action="../valida_welcome.php" method="post">
+                                    <h2><?= $welcome['titulo'] ?? ''?></h2>
+                                    <p><?= $welcome['mensagem'] ?? ''?></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="card-status activity-log">
@@ -141,6 +163,7 @@
             </div>
         </div>
     </main>
-    <script src="../public/src/script/script.js"></script>
+    <script src="../public/src/script/menu.js"></script>
+    <script src="../public/src/script/tempo.js"></script>
 </body>
 </html>

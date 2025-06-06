@@ -50,7 +50,7 @@
                         <form method="post">
                             <input type="text" name="usuario" placeholder="Usuário" required><br><br>
                             <input type="password" name="senha" placeholder="Senha" required><br><br>
-                            <button type="submit" class="btn btn-lg btn-primary">Entrar</button>
+                            <button type="submit" class="btn">Entrar</button>
                             <a href="cadastro.php" class="btn btn-link">Criar nova conta</a>
                         </form>
                     </div>

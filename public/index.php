@@ -133,19 +133,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid-cards">
-                    <div class="card-status">
-                        <div class="card-header">
-                            <i class="fas fa-robot"></i>
-                            <h2>Prefixo</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity-list">
-                                <div class="activity-item">
-                                    <div class="activity-content">
-                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                                    </div>
+                <div class="card-status">
+                    <div class="card-header">
+                        <i class="fas fa-robot"></i>
+                        <h2>Prefixo</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -210,6 +208,6 @@
         </div>
     </footer>
     <script src="src/script/script.js"></script>
-    
+    <script src="src/script/tempo.js"></script>
 </body>
 </html>

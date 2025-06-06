@@ -28,7 +28,7 @@
     }
     $conteudos = $stmt->fetchAll();
 
-    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -46,7 +46,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="../src/style/style.css">
+    <link rel="stylesheet" href="../src/style/dash.css">
     <link rel="stylesheet" href="../src/style/responsivel.css">
     <link rel="stylesheet" href="../../public/src/style/menu.css">
     <title>ByteCode DashBoard</title>
@@ -117,7 +117,7 @@
                             <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                             <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                             <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
-                            <button type="submit" class="btn btn-primary">Salvar Prefixo</button>
+                            <button type="submit" class="btn">Salvar Prefixo</button>
                         </form>
                     </div>
                 </div>
@@ -149,46 +149,45 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-users"></i>
-                    <h2>Welcome</h2>
-                </div>
-                <div class="card-body">
-                <div class="activity-list">
-                    <?php if ($welcome): ?>
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <div id="exibicao-<?= $wel['id'] ?>">
-                                    
-                                    <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" required>
-                                    <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" required>
-                                    <!-- <input type="text" name="imagem" class="inputwelcome"  placeholder="Imagem">     -->
-
-                                    <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($welcome['titulo']) ?></span></p>
-                                    <p><strong>Mensagem:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($welcome['mensagem'])) ?></span></p>
-                                    <p><strong>Imagem:</strong> <span id="popular-command"><?= htmlspecialchars($welcome['categoria']) ?></span></p>
-                                    <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($welcome['autor']) ?></span></p>
-                                    <p class="atalho">
-                                        <a href="../edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                                        <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
-                                    </p>
+            <div class="grid-cards">
+                <div class="card-status">
+                    <div class="card-header">
+                        <i class="fas fa-users"></i>
+                        <h2>Welcome</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <form action="../valida_welcome.php" method="post">
+                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcome['titulo'] ?? ''?>" required>
+                                        <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcome['mensagem'] ?? ''?>" required>
+                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcome['footer'] ?? ''?>" required>
+                                        <button type="submit" class="btn"> Criar Mensagem</button>
+                                        
+                                    </form>
                                 </div>
-                                <form id="form-<?= $cmd['id'] ?>" action="../edit.php" method="post" style="display: none;">
-                                    <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
-                                    <label>Titulo: <input type="text" name="titulo" value="<?= htmlspecialchars($cmd['titulo']) ?>"></label><br>
-                                    <label>Mensagem: <input type="text" name="mensagem" value="<?= htmlspecialchars($cmd['mensagem']) ?>"></label><br>
-                                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-                                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-sm btn-secondary">Cancelar</button>
-                                </form>
                             </div>
                         </div>
-                    <?php else: ?>
-                        <p>Nenhuma Mensagem registrada.</p>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
+            
+            <div class="grid-cards">
+                <div class="discord-embed">
+                    <div class="embed-header">
+                        <i class="fas fa-users"></i>
+                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
+                    </div>
+                    <div class="embed-body">
+                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
+                    </div>
+                    <?php if (!empty($welcome['footer'])): ?>
+                    <div class="embed-footer">
+                        <span><?= $welcome['footer'] ?></span>
+                    </div>
+                    <?php endif; ?>
+                </div>
             </div>
 
         </div>
@@ -199,6 +198,22 @@
                 <h2> Detalhes Comandos Personalizados</h2>
             </div>
             <div class="card-body">
+                <div class="grid-cards">
+                <div class="discord-embed">
+                    <div class="embed-header">
+                        <i class="fas fa-users"></i>
+                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
+                    </div>
+                    <div class="embed-body">
+                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
+                    </div>
+                    <?php if (!empty($welcome['footer'])): ?>
+                    <div class="embed-footer">
+                        <span><?= $welcome['footer'] ?></span>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
                 <div class="activity-list">
                     <?php if ($conteudos): ?>
                         <?php foreach ($conteudos as $cmd): ?>
@@ -233,8 +248,9 @@
                 </div>
             </div>
         </div>
+        
     </main>
-    <script src="../../public/src/script/script.js"></script>
+    <script src="../../public/src/script/menu.js"></script>
     <script>
         function mostrarFormulario(id){
             document.getElementById('exibicao-' + id).style.display = 'none';

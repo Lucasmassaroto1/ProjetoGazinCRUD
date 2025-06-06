@@ -1,9 +1,10 @@
 /* ========== CORES DO SITE ========== */
 :root{
-    --primary-color: #c003e6;
-    --secondary-color: #76028d;
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
     --background-color: #000000;
     --color-painel: #1a1a1a;
+    --text-color: #ffffff;
 }
 /* ========== RESET & BASE ========== */
 *{
@@ -51,4 +52,13 @@ input:-webkit-autofill{
 }
 .card-header,.card-body{
     background: var(--color-painel);
+}
+button{
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px;
 }
