@@ -49,10 +49,15 @@
 </head>
 <body>
     <?php $base_url = '../'; $paginaAtual = 'dashboard'; include '../includes/menu.php'?>
+    <div class="parte-login">
+        <div class="avatar">
+            <?= strtoupper($_SESSION['usuario_nome'][0]) ?>
+        </div>
+    </div>
     <main class="conteudo">
         <header class="welcome">
             <h1>Dashboard do ByteCode</h1>
-            <p>Bem-vindo<strong><?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>! Configure o ByteCode de forma simples e rápida.</p>
+            <p>Configure o ByteCode de forma simples e rápida.</p>
         </header>
         <?php include '../includes/cards.php'?>
     </main>

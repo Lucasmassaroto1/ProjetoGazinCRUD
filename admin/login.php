@@ -36,6 +36,7 @@
     <title>Bytecrud - Login</title>
 </head>
 <body>
+    <?php $base_url = '../../';?>
     <div class="container">
         <div class="row">
             <div class="card-login">

@@ -84,17 +84,6 @@
     </div>
     <header class="fade">
         <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
-        <!-- <button class="toggle">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <nav class="menu-lateral">
-            <ul>
-                <li><a href="#inicio" class='link-ativo'><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
-                <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
-                <li><a href="../admin/login.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
-            </ul>
-        </nav>
-        <div class="background"></div> -->
     </header>
     <main class="conteudo">
         <button id="voltarTopo" class="voltar-topo">↑</button>
