@@ -48,7 +48,7 @@
     <title>ByteCode DashBoard</title>
 </head>
 <body>
-    <?php include '../includes/menu.php'?>
+    <?php $base_url = '../'; $paginaAtual = 'dashboard'; include '../includes/menu.php'?>
     <main class="conteudo">
         <header class="welcome">
             <h1>Dashboard do ByteCode</h1>

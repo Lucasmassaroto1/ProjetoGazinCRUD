@@ -47,13 +47,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
     <link rel="stylesheet" href="../src/style/dash.css">
-    <link rel="stylesheet" href="../src/style/responsivel.css">
     <link rel="stylesheet" href="../../public/src/style/menu.css">
     <link rel="stylesheet" href="../../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
-    <div class="menu">
+    <?php $base_url = '../../'; $paginaAtual = 'comandos'; include '../../includes/menu.php'?>
+    <!-- <div class="menu">
         <button class="toggle">
             <i class="fa-solid fa-bars"></i>
         </button>
@@ -63,15 +63,15 @@
                     <h1>ByteCode <span>um simples bot CLT.</span></h1>
                 </div>
                 <ul>
-                    <li><a href="../dashboard.php"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="pages/comandos.php"><i class="fas fa-terminal"></i> Comandos</a></li>
+                    <li><a href="../../public/index.php"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="../dashboard.php"><i class="fas fa-terminal"></i> Dashboard</a></li>
                     <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                     <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
                     <li><a href="../login.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 </ul>
             </nav>
         <div class="background"></div>
-    </div>
+    </div> -->
     <main class="conteudo">
         <header class="welcome">
             <h1>Comandos do ByteCode</h1>

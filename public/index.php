@@ -83,7 +83,8 @@
         <div class="text">Loading...</div>
     </div>
     <header class="fade">
-        <button class="toggle">
+        <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
+        <!-- <button class="toggle">
             <i class="fa-solid fa-bars"></i>
         </button>
         <nav class="menu-lateral">
@@ -93,7 +94,7 @@
                 <li><a href="../admin/login.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
             </ul>
         </nav>
-        <div class="background"></div>
+        <div class="background"></div> -->
     </header>
     <main class="conteudo">
         <button id="voltarTopo" class="voltar-topo">↑</button>

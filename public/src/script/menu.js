@@ -23,10 +23,10 @@ if(botao && menuLateral && conteudo && background){
 
 // ========== IDICADOR DE PÁGINA ATIVA ==========
 const links = document.querySelectorAll('.menu-lateral ul li a');
-const currentPath = window.location.pathname;
+const currentURL = window.location.href;
 
-links.forEach(link =>{
-    if(link.pathname === currentPath){
+links.forEach(link => {
+    if(link.href === currentURL){
         link.classList.add('link-ativo');
     }
 });

@@ -147,6 +147,7 @@ body{
 .toggle:hover{
     background-color: var(--secondary-color);
 }
+
 .menu-lateral ul li a.link-ativo{
     border-left: 4px solid var(--primary-color);
     padding-left: 1rem;
