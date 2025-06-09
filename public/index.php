@@ -1,5 +1,4 @@
 <?php 
-    require_once '../includes/auth.php';
     require_once '../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
@@ -12,6 +11,10 @@
     $prefixo_atual = $stmt->fetchColumn();
 
     $conteudos = [];
+
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome ORDER BY id DESC LIMIT 1");
+    $stmtWelcome->execute();
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 
     if(isset($_SESSION['usuario_id'], $_SESSION['usuario_tipo'])){
         $usuario_id = $_SESSION['usuario_id'];
@@ -29,19 +32,12 @@
 
         $conteudos = $stmt->fetchAll();
 
-        // Consulta welcome só se estiver logado
-        $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
-        $stmtWelcome->execute([$usuario_id]);
-        $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
     }else{
         // Consulta pública padrão (sem filtrar por autor)
         $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
         $stmt = $conexao->prepare($sql);
         $stmt->execute();
         $conteudos = $stmt->fetchAll();
-
-        // Você pode definir $welcome como nulo
-        $welcome = null;
     }
 
 ?>

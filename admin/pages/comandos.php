@@ -61,7 +61,7 @@
     <main class="conteudo">
         <header class="welcome">
             <h1>Comandos do ByteCode</h1>
-            <p>Bem-vindo<?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>! Configure o ByteCode de forma simples e rápida.</p>
+            <p>Configure o ByteCode de forma simples e rápida.</p>
         </header>
         
         <div class="grid-cards">
@@ -110,32 +110,6 @@
                 </div>
             </div>
 
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Comandos</h2>
-                </div>
-                <div class="card-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <?php if ($total_commands > 0): ?>
-                                    <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
-                                <?php else: ?>
-                                    <p>Nenhum comando cadastrado.</p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <?php if ($total_commands > 0): ?>
-                                    <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="grid-cards">
                 <div class="card-status">
                     <div class="card-header">
@@ -150,7 +124,7 @@
                                         <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcome['titulo'] ?? ''?>" required>
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcome['mensagem'] ?? ''?>" required>
                                         <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcome['footer'] ?? ''?>" required>
-                                        <button type="submit" class="btn"> Criar Mensagem</button>
+                                        <button type="submit" class="btn"> Salvar Mensagem</button>
                                     </form>
                                 </div>
                             </div>

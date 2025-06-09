@@ -15,7 +15,6 @@
             session_start();
             $_SESSION['usuario_id'] = $user['id'];
             $_SESSION['usuario_nome'] = $user['usuario'];
-            // Exemplo: coluna `tipo` na tabela `usuarios` com valores 'admin' ou 'comum'
             $_SESSION['usuario_tipo'] = $user['tipo'];
 
             header('Location: dashboard.php');
