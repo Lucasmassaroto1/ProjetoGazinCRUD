@@ -1,17 +1,33 @@
 <?php 
+    require_once '../includes/auth.php';
     require_once '../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY categoria ASC, comando ASC");
+    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     $total_commands = count($dados);
 
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
-    
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_tipo = $_SESSION['usuario_tipo'];
+
+    if($usuario_tipo === 'admin'){
+        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+    }else{
+        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario_id]);
+    }
+    $conteudos = $stmt->fetchAll();
+
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+    $stmtWelcome->execute([$usuario_id]);
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,6 +45,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
+    <link rel="stylesheet" href="src/style/embed.css">
     <script src="src/script/loading.js"></script>
     <title>ByteCode CRUD</title>
 </head>
@@ -89,92 +106,7 @@
         </section>
 
         <div class="container-card fade">
-            <div class="grid-cards">
-                <div class="card-status">
-                    <div class="card-header">
-                        <i class="fas fa-robot"></i>
-                        <h2>Status do Bot</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-content">
-                                    <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                                    <p><strong>Tempo Online:</strong> <span id="uptime"></span></p>
-                                    <p><strong>Servidores:</strong> <span id="servers">2</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-status">
-                    <div class="card-header">
-                        <i class="fas fa-terminal"></i>
-                        <h2>Comandos Personalizados</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-content">
-                                    <?php if ($total_commands > 0): ?>
-                                        <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
-                                    <?php else: ?>
-                                        <p>Nenhum comando cadastrado.</p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-content">
-                                    <?php if ($total_commands > 0): ?>
-                                        <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-status">
-                    <div class="card-header">
-                        <i class="fas fa-robot"></i>
-                        <h2>Prefixo</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-content">
-                                    <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                                    <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        <div class="card-status activity-log">
-            <div class="card-header">
-                <i class="fas fa-terminal"></i>
-                <h2>Detalhes Comandos Personalizados</h2>
-            </div>
-            <div class="card-body">
-                <div class="activity-list">
-                    <?php if ($dados): ?>
-                        <?php foreach ($dados as $cmd): ?>
-                    <div class="activity-item">
-                        <div class="activity-content">
-                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Nenhum comando personalizado cadastrado.</p>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
+            <?php include '../includes/cards.php'?>
         </div>
 
         <section class="fade" id="criador">

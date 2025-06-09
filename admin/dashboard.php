@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="src/style/dash.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
     <link rel="stylesheet" href="../public/src/style/menu.css">
+    <link rel="stylesheet" href="../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
@@ -54,114 +55,7 @@
             <h1>Dashboard do ByteCode</h1>
             <p>Bem-vindo<?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>! Configure o ByteCode de forma simples e rápida.</p>
         </header>
-        
-        <div class="grid-cards">
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-robot"></i>
-                    <h2>Status do Bot</h2>
-                </div>
-                <div class="card-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <p><strong>Status:</strong> <span class="status online">Online</span></p>
-                                <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
-                                <p><strong>Servidores:</strong> <span id="servers">2</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Comandos</h2>
-                </div>
-                <div class="card-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <?php if ($total_commands > 0): ?>
-                                    <p><strong>Total Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
-                                <?php else: ?>
-                                    <p>Nenhum comando cadastrado.</p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <?php if ($total_commands > 0): ?>
-                                    <p><strong>Total Comando Padrão:</strong> <span id="total-commands"><?= $total_commands + 13 ?></span></p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-robot"></i>
-                    <h2>Prefixo Personalizado</h2>
-                </div>
-                <div class="card-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                                <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-status">
-                <div class="card-header">
-                    <i class="fas fa-users"></i>
-                    <h2>Welcome</h2>
-                </div>
-                <div class="card-body">
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-content">
-                                <form action="../valida_welcome.php" method="post">
-                                    <h2><?= $welcome['titulo'] ?? ''?></h2>
-                                    <p><?= $welcome['mensagem'] ?? ''?></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-status activity-log">
-            <div class="card-header">
-                <i class="fas fa-terminal"></i>
-                <h2> Detalhes Comandos Personalizados</h2>
-            </div>
-            <div class="card-body">
-                <div class="activity-list">
-                    <?php if ($conteudos): ?>
-                        <?php foreach ($conteudos as $cmd): ?>
-                    <div class="activity-item">
-                        <div class="activity-content">
-                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                                <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
+        <?php include '../includes/cards.php'?>
     </main>
     <script src="../public/src/script/menu.js"></script>
     <script src="../public/src/script/tempo.js"></script>

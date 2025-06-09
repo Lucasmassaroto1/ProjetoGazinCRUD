@@ -15,21 +15,21 @@ $footer   = $_POST['footer'] ?? null;
 $id       = $_POST['id'] ?? null;
 
 // Validação básica
-if (!$usuario_id || !$titulo || !$mensagem) {
+if(!$usuario_id || !$titulo || !$mensagem){
     die('Dados incompletos.');
 }
 
-try {
+try{
     // Verifica se já existe um welcome para este usuário
     $stmt = $conexao->prepare("SELECT id FROM welcome WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
     $existe = $stmt->fetchColumn();
 
-    if ($id && $existe) {
+    if($id && $existe){
         // UPDATE
         $stmt = $conexao->prepare("UPDATE welcome SET titulo = ?, mensagem = ?, imagem = ?, footer = ? WHERE id = ? AND usuario_id = ?");
         $stmt->execute([$titulo, $mensagem, $imagem, $footer, $id, $usuario_id]);
-    } else {
+    }else{
         // INSERT
         $stmt = $conexao->prepare("INSERT INTO welcome (usuario_id, titulo, mensagem, imagem, footer) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$usuario_id, $titulo, $mensagem, $imagem, $footer]);
@@ -38,6 +38,6 @@ try {
     header('Location: pages/comandos.php');
     exit;
 
-} catch (PDOException $e) {
+}catch(PDOException $e){
     echo "Erro ao salvar: " . $e->getMessage();
 }

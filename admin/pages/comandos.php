@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="../src/style/dash.css">
     <link rel="stylesheet" href="../src/style/responsivel.css">
     <link rel="stylesheet" href="../../public/src/style/menu.css">
+    <link rel="stylesheet" href="../../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
@@ -164,7 +165,6 @@
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcome['mensagem'] ?? ''?>" required>
                                         <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcome['footer'] ?? ''?>" required>
                                         <button type="submit" class="btn"> Criar Mensagem</button>
-                                        
                                     </form>
                                 </div>
                             </div>
@@ -173,23 +173,6 @@
                 </div>
             </div>
             
-            <div class="grid-cards">
-                <div class="discord-embed">
-                    <div class="embed-header">
-                        <i class="fas fa-users"></i>
-                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
-                    </div>
-                    <div class="embed-body">
-                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
-                    </div>
-                    <?php if (!empty($welcome['footer'])): ?>
-                    <div class="embed-footer">
-                        <span><?= $welcome['footer'] ?></span>
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-
         </div>
 
         <div class="card-status activity-log">
