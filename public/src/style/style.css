@@ -173,11 +173,11 @@ section{
     filter: brightness(.8);
 }
 /* ========== HEADER ========== */
-.menu-lateral{
+/* .menu-lateral{
     position: fixed;
-    left: -18.75rem; /* -300px */
+    left: -18.75rem;
     top: 0;
-    width: 18.75rem; /* 300px */
+    width: 18.75rem;
     height: 100%;
     background: var(--color-card-bg);
     border-radius: 0px 20px 20px 0px;
@@ -187,37 +187,37 @@ section{
 .menu-lateral ul{
     list-style: none;
     padding: 0;
-    margin-top: 3.75rem; /* 60px */
+    margin-top: 3.75rem;
 }
 .menu-lateral ul li{
-    padding: 0.9375rem 1.875rem; /* 15px 30px */
+    padding: 0.9375rem 1.875rem;
 }
 .menu-lateral ul li a{
     color:var(--color-txt);
     text-decoration: none;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     display: flex;
     align-items: center;
-    gap: 0.625rem; /* 10px */
+    gap: 0.625rem;
     transition: transform 0.3s ease;
 }
 .menu-lateral ul li a span{
     text-decoration: none;
 }
 .menu-lateral ul li a i{
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
 }
 .toggle{
     background-color:var(--color-primary);
     color:var(--color-txt);
     position: fixed;
-    left: 1.25rem; /* 20px */
-    top: 1.25rem; /* 20px */
+    left: 1.25rem;
+    top: 1.25rem;
     z-index: 3;
-    border-radius: 0.3125rem; /* 5px */
-    font-size: 1.5rem; /* 24px */
+    border-radius: 0.3125rem;
+    font-size: 1.5rem;
     border: none;
-    padding: 0.625rem 0.9375rem; /* 10px 15px*/
+    padding: 0.625rem 0.9375rem;
     cursor: pointer;
     transition: left 0.5s ease;
 }
@@ -225,8 +225,8 @@ section{
     background: transparent;
     color: var(--color-txt);
     border: none;
-    padding: 0.625rem; /* 10px */
-    font-size: 1.5rem; /* 24px */
+    padding: 0.625rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -271,7 +271,7 @@ section{
     left: 0;
 }
 .toggle.ativo{
-    left: 20rem; /* 320px */
+    left: 20rem;
 }
 .conteudo.ativo{
     margin-left: 0;
@@ -280,7 +280,7 @@ section{
     opacity: 1;
     visibility: visible;
     backdrop-filter: blur(5px);
-}
+} */
 
 /* ========== INÍCIO ========== */
 section.inicio{

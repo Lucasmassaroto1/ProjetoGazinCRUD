@@ -1,5 +1,3 @@
-
-
 // ========== ROLAGEM SUAVE PARA LINKS INTERNOS ==========
 const links = document.querySelectorAll("a[href^='#']");
 for (const link of links){
@@ -44,6 +42,8 @@ btnTopo.addEventListener('click', () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
 });
 
+
+/* // ========== FUTURA MODIFICAÇÂO ==========
 // ========== LIGHT/DARK MODE ==========
 const toggleBtn = document.getElementById('toggleTheme');
 if(toggleBtn){
@@ -54,3 +54,4 @@ if(toggleBtn){
         : '<i class="fa-solid fa-moon"></i>';
     });
 }
+ */

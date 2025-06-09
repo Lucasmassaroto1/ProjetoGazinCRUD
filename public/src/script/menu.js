@@ -1,7 +1,6 @@
 /* ============== BLOCO DO MENU LATERAL ==============*/
 const botao = document.querySelector('.toggle');
 const menuLateral = document.querySelector('.menu-lateral');
-const linksMenu = document.querySelectorAll('.menu-lateral a');
 const conteudo = document.querySelector('.conteudo');
 const background = document.querySelector('.background');
 
@@ -20,9 +19,14 @@ if(botao && menuLateral && conteudo && background){
         background.classList.toggle('ativo');
     });
     background.addEventListener('click', fecharMenu);
-    linksMenu.forEach(link => {
-        link.addEventListener('click', () => {
-            fecharMenu();
-        });
-    });
 }
+
+// ========== IDICADOR DE PÁGINA ATIVA ==========
+const links = document.querySelectorAll('.menu-lateral ul li a');
+const currentPath = window.location.pathname;
+
+links.forEach(link =>{
+    if(link.pathname === currentPath){
+        link.classList.add('link-ativo');
+    }
+});

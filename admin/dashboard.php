@@ -43,7 +43,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
     <link rel="stylesheet" href="src/style/dash.css">
-    <link rel="stylesheet" href="src/style/responsivel.css">
     <link rel="stylesheet" href="../public/src/style/menu.css">
     <link rel="stylesheet" href="../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
@@ -53,7 +52,7 @@
     <main class="conteudo">
         <header class="welcome">
             <h1>Dashboard do ByteCode</h1>
-            <p>Bem-vindo<?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>! Configure o ByteCode de forma simples e rápida.</p>
+            <p>Bem-vindo<strong><?= ($_SESSION['usuario_nome'][-1] == 'a') ? 'a' : '' ?>, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>! Configure o ByteCode de forma simples e rápida.</p>
         </header>
         <?php include '../includes/cards.php'?>
     </main>

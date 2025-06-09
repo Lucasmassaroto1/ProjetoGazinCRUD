@@ -11,23 +11,39 @@
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_tipo = $_SESSION['usuario_tipo'];
+    $conteudos = [];
 
-    if($usuario_tipo === 'admin'){
+    if(isset($_SESSION['usuario_id'], $_SESSION['usuario_tipo'])){
+        $usuario_id = $_SESSION['usuario_id'];
+        $usuario_tipo = $_SESSION['usuario_tipo'];
+
+        if($usuario_tipo === 'admin'){
+            $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
+        }else{
+            $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute([$usuario_id]);
+        }
+
+        $conteudos = $stmt->fetchAll();
+
+        // Consulta welcome só se estiver logado
+        $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+        $stmtWelcome->execute([$usuario_id]);
+        $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+    }else{
+        // Consulta pública padrão (sem filtrar por autor)
         $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
         $stmt = $conexao->prepare($sql);
         $stmt->execute();
-    }else{
-        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario_id]);
-    }
-    $conteudos = $stmt->fetchAll();
+        $conteudos = $stmt->fetchAll();
 
-    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
-    $stmtWelcome->execute([$usuario_id]);
-    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+        // Você pode definir $welcome como nulo
+        $welcome = null;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,10 +59,15 @@
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILOS & LOADING ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
+
+    <link rel="stylesheet" href="src/style/menu.css">
     <link rel="stylesheet" href="src/style/embed.css">
+
     <script src="src/script/loading.js"></script>
+
     <title>ByteCode CRUD</title>
 </head>
 <body>
@@ -67,10 +88,9 @@
         </button>
         <nav class="menu-lateral">
             <ul>
-                <li><a href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+                <li><a href="#inicio" class='link-ativo'><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
                 <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i><span>Sobre</span></a></li>
                 <li><a href="../admin/login.php"><i class="fa-solid fa-gears"></i><span>Painel</span></a></li>
-                <li><button id="toggleTheme"><i class="fa-solid fa-moon"></i></button></li>
             </ul>
         </nav>
         <div class="background"></div>
@@ -139,8 +159,8 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
+    <script src="src/script/menu.js"></script>
     <script src="src/script/script.js"></script>
     <script src="src/script/tempo.js"></script>
-    <script src="src/script/menu.js"></script>
 </body>
 </html>
