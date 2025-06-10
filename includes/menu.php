@@ -15,7 +15,7 @@
                 <?php endif; ?>
                 <li><a href="<?=$base_url?>admin/pages/estatisticas.php"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
                 <!-- <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li> -->
-                <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos'): ?>
+                <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos' || $paginaAtual == 'estatistica'): ?>
                     <li><a href="<?=$base_url?>admin/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 <?php endif; ?>
             </ul>

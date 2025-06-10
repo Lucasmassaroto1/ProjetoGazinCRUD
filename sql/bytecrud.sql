@@ -50,3 +50,11 @@ CREATE TABLE welcome(
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 )
 ALTER TABLE welcome ADD COLUMN footer TEXT;
+
+CREATE TABLE musica(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    titulo TEXT NOT NULL,
+    autor TEXT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);

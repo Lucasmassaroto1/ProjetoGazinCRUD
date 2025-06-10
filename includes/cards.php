@@ -69,22 +69,35 @@
         </div>
     </div>
 
-    <div class="grid-cards">
-        <div class="discord-embed">
-            <div class="embed-header">
-                <i class="fas fa-users"></i>
-                <h2><?= $welcome['titulo'] ?? '' ?></h2>
+    <div class="card-status">
+        <div class="card-header">
+            <i class="fas fa-users"></i>
+            <h2>Welcome Embed</h2>
+        </div>
+        <div class="card-body">
+            <div class="activity-list">
+                <div class="activity-content">
+                    <div class="grid-cards">
+                        <div class="discord-embed">
+                            <div class="embed-header">
+                                <i class="fas fa-users"></i>
+                                <h2><?= $welcome['titulo'] ?? '' ?></h2>
+                            </div>
+                            <div class="embed-body">
+                                <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
+                            </div>
+                            <?php if (!empty($welcome['footer'])): ?>
+                            <div class="embed-footer">
+                                <span><?= $welcome['footer'] ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="embed-body">
-                <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
-            </div>
-            <?php if (!empty($welcome['footer'])): ?>
-            <div class="embed-footer">
-                <span><?= $welcome['footer'] ?></span>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
+    
 </div>
 
 <div class="card-status activity-log">

@@ -31,6 +31,11 @@
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+
+    $stmtmusic = $conexao->prepare("SELECT * FROM musica WHERE usuario_id = ?");
+    $stmtmusic->execute([$usuario_id]);
+    $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,160 +64,139 @@
     
     <main class="conteudo">
         <?php include '../../includes/header.php';?>
+
+        <!-- <?php include '../../includes/cardsesta.php';?> -->
         <div class="grid-cards">
             <div class="card-status">
                 <div class="card-header">
-                    <i class="fas fa-terminal"></i>
-                    <h2>Comandos Personalizados</h2>
+                    <i class="fas fa-robot"></i>
+                    <h2>Status do Bot</h2>
                 </div>
                 <div class="card-body">
                     <div class="activity-list">
                         <div class="activity-item">
                             <div class="activity-content">
-                                <?php if ($conteudos): ?>
-                                    <?php foreach ($conteudos as $cmd): ?>
-                                        <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                        <p class="atalho">
-                                            <a href="../create.php">+ Novo Comando</a>
-                                        </p>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <p>Crie um comando personalizado Aqui.</p>
-                                    <p class="atalho">
-                                        <a href="../create.php"><i class="fas fa-plus"></i></a>
-                                    </p>
-                                <?php endif; ?>
+                                <p><strong>Status:</strong> <span class="status online">Online</span></p>
+                                <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
+                                <p><strong>Servidores:</strong> <span id="servers">2</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="grid-cards">
-                <div class="card-status">
-                    <div class="card-header">
-                        <i class="fas fa-robot"></i>
-                        <h2>Prefixo</h2>
-                    </div>
-                    <div class="card-body">
-                        <form action="../valida_prefix.php" method="post">
-                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                            <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
-                            <button type="submit" class="btn">Salvar Prefixo</button>
-                        </form>
+            <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-terminal"></i>
+                    <h2>Comandos</h2>
+                </div>
+                <div class="card-body">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <?php if ($total_commands > 0): ?>
+                                    <p><strong>Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
+                                <?php else: ?>
+                                    <p>Nenhum comando cadastrado.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <p><strong>Comandos Padrão:</strong> <span id="total-commands">8</span></p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <p><strong>Slash Comando Padrão:</strong> <span id="total-commands">4</span></p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-content">
+                                <p><strong>Hybrid Comando Padrão:</strong> <span id="total-commands">1</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="grid-cards">
-                <div class="card-status">
-                    <div class="card-header">
-                        <i class="fas fa-users"></i>
-                        <h2>Welcome</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-content">
-                                    <form action="../valida_welcome.php" method="post">
-                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcome['titulo'] ?? ''?>" required>
-                                        <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcome['mensagem'] ?? ''?>" required>
-                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcome['footer'] ?? ''?>" required>
-                                        <button type="submit" class="btn"> Salvar Mensagem</button>
-                                    </form>
+            
+            <div class="card-status">
+                <div class="card-header">
+                    <i class="fas fa-users"></i>
+                    <h2>Welcome Embed</h2>
+                </div>
+                <div class="card-body">
+                    <div class="activity-list">
+                        <div class="activity-content">
+                            <div class="grid-cards">
+                                <div class="discord-embed">
+                                    <div class="embed-header">
+                                        <i class="fas fa-users"></i>
+                                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
+                                    </div>
+                                    <div class="embed-body">
+                                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
+                                    </div>
+                                    <?php if (!empty($welcome['footer'])): ?>
+                                    <div class="embed-footer">
+                                        <span><?= $welcome['footer'] ?></span>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="card-status activity-log">
             <div class="card-header">
-                <i class="fas fa-terminal"></i>
-                <h2> Detalhes Comandos Personalizados</h2>
+                <i class="fas fa-list"></i>
+                <h2> Fila de Músicas</h2>
             </div>
             <div class="card-body">
-                <div class="grid-cards">
-                <div class="discord-embed">
-                    <div class="embed-header">
-                        <i class="fas fa-users"></i>
-                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
-                    </div>
-                    <div class="embed-body">
-                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
-                    </div>
-                    <?php if (!empty($welcome['footer'])): ?>
-                    <div class="embed-footer">
-                        <span><?= $welcome['footer'] ?></span>
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="filter-container" style="margin-bottom: 1rem;">
-                <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
-                <select id="filtro-categoria" onchange="filtrarPorCategoria()">
-                    <option value="">Todas</option>
-                    <?php 
-                        // Gera as categorias únicas
-                        $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));
-                        foreach ($categoriasUnicas as $categoria):?>
-                            <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
                 <div class="activity-list">
-                    <?php if ($conteudos): ?>
-                        <?php foreach ($conteudos as $cmd): ?>
-                        <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
+                    <?php if ($musica): ?>
+                        <?php foreach ($musica as $mus): ?>
+                        <div class="activity-item">
                             <div class="activity-content">
-                                <div id="exibicao-<?= $cmd['id'] ?>">
-                                    <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                    <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                                    <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                                    <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                                    <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                                    <p class="atalho">
-                                        <a href="../edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                                        <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
-                                    </p>
-                                </div>
-                                <form id="form-<?= $cmd['id'] ?>" action="../edit.php" method="post" style="display: none;">
-                                    <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
-                                    <label>Comando: <input type="text" name="comando" value="<?= htmlspecialchars($cmd['comando']) ?>"></label><br>
-                                    <label>Descrição: <input type="text" name="descricao" value="<?= htmlspecialchars($cmd['descricao']) ?>"></label><br>
-                                    <label>Categoria: <input type="text" name="categoria" value="<?= htmlspecialchars($cmd['categoria']) ?>"></label><br>
-                                    <label>Exemplo: <input type="text" name="exemplo" value="<?= htmlspecialchars($cmd['exemplo']) ?>"></label><br>
-                                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-                                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-sm btn-secondary">Cancelar</button>
-                                </form>
+                                <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($mus['titulo']) ?></span></p>
+                                <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
+                                <p class="atalho">
+                                    <a href="../delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                                </p>
+
                             </div>
                         </div>
                         <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Nenhum comando personalizado cadastrado.</p>
-                    <?php endif; ?>
+                        <?php else: ?>
+                            <p>Nenhuma música adicionada na fila.</p>
+                        <?php endif; ?>
+                            <form id="formAdicionar" action="../adicionarfila.php" method="post" style="display: none;">
+                                <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
+                                <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
+                                <button type="submit" class="btn">Adicionar</button>
+                                <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
+                            </form>
+                        <p class="atalho" id='atalho'>
+                            <button onclick="mostrarFormularioAdicionar()"><i class="fas fa-plus"></i>Adicionar fila</button>
+                        </p>
                 </div>
             </div>
         </div>
 
-
-        <!-- <?php include '../../includes/cardsesta.php';?> -->
     </main>
     <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/filtro.js"></script>
     <script src="../../public/src/script/tempo.js"></script>
     <script>
-        function mostrarFormulario(id){
-            document.getElementById('exibicao-' + id).style.display = 'none';
-            document.getElementById('form-' + id).style.display = 'block';
+        function mostrarFormularioAdicionar(){
+            document.getElementById('formAdicionar').style.display = 'block';      
         }
-        function cancelarFormulario(id){
-            document.getElementById('form-' + id).style.display = 'none';
-            document.getElementById('exibicao-' + id).style.display = 'block';
+        function cancelarFormularioAdicionar(){
+            document.getElementById('formAdicionar').style.display = 'none';
         }
     </script>
 </body>
