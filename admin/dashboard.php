@@ -43,25 +43,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
     <link rel="stylesheet" href="src/style/dash.css">
+    
+    <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="../public/src/style/menu.css">
+    <link rel="stylesheet" href="../public/src/style/filtro.css">
     <link rel="stylesheet" href="../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
     <?php $base_url = '../'; $paginaAtual = 'dashboard'; include '../includes/menu.php'?>
-    <div class="parte-login">
-        <div class="avatar">
-            <?= strtoupper($_SESSION['usuario_nome'][0]) ?>
-        </div>
-    </div>
     <main class="conteudo">
-        <header class="welcome">
-            <h1>Dashboard do ByteCode</h1>
-            <p>Configure o ByteCode de forma simples e rápida.</p>
-        </header>
+        <?php include '../includes/header.php';?>
+        
         <?php include '../includes/cards.php'?>
     </main>
     <script src="../public/src/script/menu.js"></script>
+    <script src="../public/src/script/filtro.js"></script>
     <script src="../public/src/script/tempo.js"></script>
 </body>
 </html>

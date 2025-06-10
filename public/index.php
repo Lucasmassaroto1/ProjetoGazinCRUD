@@ -55,11 +55,11 @@
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILOS & LOADING ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
-
+    <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/menu.css">
+    <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/embed.css">
 
     <script src="src/script/loading.js"></script>
@@ -146,6 +146,7 @@
         </div>
     </footer>
     <script src="src/script/menu.js"></script>
+    <script src="src/script/filtro.js"></script>
     <script src="src/script/script.js"></script>
     <script src="src/script/tempo.js"></script>
 </body>

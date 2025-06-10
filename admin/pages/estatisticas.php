@@ -45,17 +45,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
+    <!-- ======== ESTILO ======== -->
     <link rel="stylesheet" href="../src/style/dash.css">
 
-    <!-- ======== ELEMENTOS SEPARADOS ======== -->
+    <!-- ======== ESTILO SEPARADOS ======== -->
     <link rel="stylesheet" href="../../public/src/style/menu.css">
     <link rel="stylesheet" href="../../public/src/style/filtro.css">
     <link rel="stylesheet" href="../../public/src/style/embed.css">
-    <title>ByteCode Comandos</title>
+    <title>ByteCode Estatisticas</title>
 </head>
 <body>
-    <?php $base_url = '../../'; $paginaAtual = 'comandos'; include '../../includes/menu.php'?>
+    <?php $base_url = '../../'; $paginaAtual = 'estatistica'; include '../../includes/menu.php'?>
+    
     <main class="conteudo">
         <?php include '../../includes/header.php';?>
         <div class="grid-cards">
@@ -71,10 +72,10 @@
                                 <?php if ($conteudos): ?>
                                     <?php foreach ($conteudos as $cmd): ?>
                                         <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                        <?php endforeach; ?>
                                         <p class="atalho">
                                             <a href="../create.php">+ Novo Comando</a>
                                         </p>
+                                    <?php endforeach; ?>
                                 <?php else: ?>
                                     <p>Crie um comando personalizado Aqui.</p>
                                     <p class="atalho">
@@ -197,10 +198,13 @@
                 </div>
             </div>
         </div>
-        
+
+
+        <!-- <?php include '../../includes/cardsesta.php';?> -->
     </main>
     <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/filtro.js"></script>
+    <script src="../../public/src/script/tempo.js"></script>
     <script>
         function mostrarFormulario(id){
             document.getElementById('exibicao-' + id).style.display = 'none';

@@ -1,0 +1,16 @@
+/* ========== CORES DO SITE ========== */
+:root{
+    --primary-color: #00CA76;
+    --text-color: #ffffff;
+}
+
+select{
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px;
+    outline: none;
+}

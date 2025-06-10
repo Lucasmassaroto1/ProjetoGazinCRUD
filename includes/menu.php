@@ -13,8 +13,8 @@
                 <?php if ($paginaAtual == 'dashboard'): ?>
                     <li><a href="<?= $base_url ?>admin/pages/comandos.php" class="<?= ($paginaAtual == 'comandos') ? 'link-ativo' : '' ?>"><i class="fas fa-terminal"></i> Comandos</a></li>
                 <?php endif; ?>
-                <!-- <li><a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
-                <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li> -->
+                <li><a href="<?=$base_url?>admin/pages/estatisticas.php"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
+                <!-- <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li> -->
                 <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos'): ?>
                     <li><a href="<?=$base_url?>admin/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 <?php endif; ?>
