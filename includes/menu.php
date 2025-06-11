@@ -14,8 +14,8 @@
                     <li><a href="<?= $base_url ?>admin/pages/comandos.php" class="<?= ($paginaAtual == 'comandos') ? 'link-ativo' : '' ?>"><i class="fas fa-terminal"></i> Comandos</a></li>
                     <?php endif; ?>
                     <li><a href="<?=$base_url?>admin/pages/estatisticas.php" class="<?= ($paginaAtual == 'estatistica') ? 'link-ativo' : '' ?>"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
-                <!-- <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li> -->
-                <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos' || $paginaAtual == 'estatistica'): ?>
+                    <li><a href="<?=$base_url?>admin/pages/configuracoes.php" class="<?= ($paginaAtual == 'configuracoes') ? 'link-ativo' : '' ?>"><i class="fas fa-cog"></i> Configurações</a></li>
+                <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos' || $paginaAtual == 'estatistica' || $paginaAtual == 'configuracoes'): ?>
                     <li><a href="<?=$base_url?>admin/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                 <?php endif; ?>
             </ul>

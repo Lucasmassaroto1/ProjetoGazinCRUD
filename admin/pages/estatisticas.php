@@ -32,14 +32,7 @@
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 
-    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status 
-                                    FROM musica m 
-                                    JOIN status s ON m.id_status = s.id 
-                                    WHERE usuario_id = ?
-                                    ORDER BY
-                                    m.id ASC,
-                                    m.id_status ASC
-                                ");
+    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC");
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
 
