@@ -31,6 +31,17 @@
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+
+    $mensagemEnviada = isset($_GET['mensagemEnviada']) && $_GET['mensagemEnviada'] == '1';
+    if($mensagemEnviada){
+        $welcomeInputs = [
+            'titulo' => '',
+            'mensagem' => '',
+            'footer' => ''
+        ];
+    }else{
+        $welcomeInputs = $welcomePreviw ?: ['titulo' => '', 'mensagem' => '', 'footer' => ''];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -103,7 +114,8 @@
                     </div>
                 </div>
             </div>
-
+            
+            <?php if ($mensagemEnviada): ?>
             <div class="grid-cards">
                 <div class="card-status">
                     <div class="card-header">
@@ -115,9 +127,9 @@
                             <div class="activity-item">
                                 <div class="activity-content">
                                     <form action="../valida_welcome.php" method="post">
-                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcome['titulo'] ?? ''?>" required>
-                                        <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcome['mensagem'] ?? ''?>" required>
-                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcome['footer'] ?? ''?>" required>
+                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required>
+                                        <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
+                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required>
                                         <button type="submit" class="btn"> Salvar Mensagem</button>
                                     </form>
                                 </div>
@@ -126,7 +138,8 @@
                     </div>
                 </div>
             </div>
-            
+            <?php endif; ?>
+
         </div>
 
         <div class="card-status activity-log">

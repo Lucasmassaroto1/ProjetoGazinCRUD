@@ -10,13 +10,18 @@
                     <div class="activity-content">
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
-                        <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                        <!-- <p><strong>Servidores:</strong> <span id="servers">2</span></p> -->
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="card-status">
         <div class="card-header">
             <i class="fas fa-terminal"></i>
@@ -51,76 +56,68 @@
             </div>
         </div>
     </div>
-            
     <div class="card-status">
         <div class="card-header">
-            <i class="fas fa-robot"></i>
-            <h2>Prefixo Personalizado</h2>
+            <i class="fas fa-users"></i>
+            <h2>Welcome Embed</h2>
         </div>
         <div class="card-body">
             <div class="activity-list">
-                <div class="activity-item">
-                    <div class="activity-content">
-                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                <div class="activity-content">
+                    <div class="grid-cards">
+                        <div class="discord-embed">
+                            <div class="embed-header">
+                                <i class="fas fa-users"></i>
+                                <h2><?= $welcome['titulo'] ?? '' ?></h2>
+                            </div>
+                            <div class="embed-body">
+                                <p><?= $welcome['mensagem'] ?></p>
+                            </div>
+                            <?php if (!empty($welcome['footer'])): ?>
+                            <div class="embed-footer">
+                                <span><?= $welcome['footer'] ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="grid-cards">
-        <div class="discord-embed">
-            <div class="embed-header">
-                <i class="fas fa-users"></i>
-                <h2><?= $welcome['titulo'] ?? '' ?></h2>
-            </div>
-            <div class="embed-body">
-                <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
-            </div>
-            <?php if (!empty($welcome['footer'])): ?>
-            <div class="embed-footer">
-                <span><?= $welcome['footer'] ?></span>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>
 
 <div class="card-status activity-log">
     <div class="card-header">
-        <i class="fas fa-terminal"></i>
-        <h2> Detalhes Comandos Personalizados</h2>
+        <i class="fas fa-list"></i>
+        <h2> Fila de Músicas</h2>
     </div>
-        <div class="card-body">
-            <div class="filter-container" style="margin-bottom: 1rem;">
-                <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
-                <select id="filtro-categoria" onchange="filtrarPorCategoria()">
-                    <option value="">Todas</option>
-                    <?php 
-                        // Gera as categorias únicas
-                        $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));
-                        foreach ($categoriasUnicas as $categoria):?>
-                            <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+    <div class="card-body">
         <div class="activity-list">
-            <?php if ($conteudos): ?>
-                <?php foreach ($conteudos as $cmd): ?>
-            <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
-                <div class="activity-content">
-                        <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                        <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                        <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                        <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                        <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
+            <?php if ($musica): ?>
+                <?php foreach ($musica as $mus): ?>
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($mus['titulo']) ?></span></p>
+                        <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
+                        <p><strong>Status:</strong> <span id="commands-today"><?= htmlspecialchars($mus['nome_status']) ?></span></p>
+                        <p class="atalho">
+                            <a href="../delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                        </p>
                     </div>
                 </div>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
-            <?php endif; ?>
+                <?php else: ?>
+                    <p>Nenhuma música adicionada na fila.</p>
+                <?php endif; ?>
+                    <form id="formAdicionar" action="../adicionarfila.php" method="post" style="display: none;">
+                        <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
+                        <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
+                        <button type="submit" class="btn">Adicionar</button>
+                        <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
+                    </form>
+                <p class="atalho" id='atalho'>
+                    <button onclick="mostrarFormularioAdicionar()"><i class="fas fa-plus"></i>Adicionar fila</button>
+                </p>
         </div>
-    </div> 
+    </div>
 </div>

@@ -10,7 +10,7 @@
                     <div class="activity-content">
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
-                        <p><strong>Servidores:</strong> <span id="servers">2</span></p>
+                        <!-- <p><strong>Servidores:</strong> <span id="servers">2</span></p> -->
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                                 <h2><?= $welcome['titulo'] ?? '' ?></h2>
                             </div>
                             <div class="embed-body">
-                                <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
+                                <p><?= $welcome['mensagem'] ?></p>
                             </div>
                             <?php if (!empty($welcome['footer'])): ?>
                             <div class="embed-footer">
