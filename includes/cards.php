@@ -109,7 +109,7 @@
             <div class="filter-container" style="margin-bottom: 1rem;">
                 <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
                 <select id="filtro-categoria" onchange="filtrarPorCategoria()">
-                    <option value="">Todas</option>
+                    <option value="">Todos</option>
                     <?php 
                         // Gera as categorias únicas
                         $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));

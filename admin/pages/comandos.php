@@ -1,5 +1,5 @@
 <?php 
-    require_once '../../includes/auth.php';
+    require_once '../../config/auth.php';
     require_once '../../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
@@ -130,7 +130,7 @@
                                         <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required><br>
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                         <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
-                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required>
+                                        <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required><br>
                                         <button type="submit" class="btn"> Salvar Mensagem</button>
                                     </form>
                                 </div>
@@ -168,7 +168,7 @@
             <div class="filter-container" style="margin-bottom: 1rem;">
                 <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
                 <select id="filtro-categoria" onchange="filtrarPorCategoria()">
-                    <option value="">Todas</option>
+                    <option value="">Todos</option>
                     <?php 
                         // Gera as categorias únicas
                         $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));

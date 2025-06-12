@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/auth.php';
+require_once '../config/auth.php';
 require_once '../config/conexao.php';
 
 $conexao = (new Conexao())->conectar();
