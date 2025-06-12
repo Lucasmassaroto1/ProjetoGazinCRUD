@@ -40,7 +40,7 @@
             'footer' => ''
         ];
     }else{
-        $welcomeInputs = $welcomePreviw ?: ['titulo' => '', 'mensagem' => '', 'footer' => ''];
+        $welcomeInputs = $welcome ?: ['titulo' => '', 'mensagem' => '', 'footer' => ''];
     }
 ?>
 <!DOCTYPE html>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             
-            <?php if ($mensagemEnviada): ?>
+            <?php if ($welcomeInputs): ?>
             <div class="grid-cards">
                 <div class="card-status">
                     <div class="card-header">
