@@ -20,7 +20,6 @@
 }
 body{
     background: var(--background-color);
-    color: var(--text-color);
     font-family: "Exo 2", sans-serif;
     min-height: 100vh;
 }
@@ -78,7 +77,6 @@ body{
     border-left: 5px solid var(--secondary-color);
     padding: 1.5rem;
     border-radius: 0.625rem;
-    box-shadow: 0 0 10px rgba(162, 3, 194, 0.2);
    /*  max-width: 400px; SE FICAR RUIM SEM É SÓ DESCOMENTAR :)
     margin-bottom: 2rem; */
 }
@@ -139,19 +137,10 @@ body{
     margin: 0;
     color: var(--text-color);
 }
-.input-prefix{
-    background-color: var(--card-background);
-    border: none;
-    border-radius: 6px;
-    padding: 0.5rem;
-    color: var(--text-color);
-    width: 42%;
-    outline: none;
-}
 
 .atalho a, button{
     background: var(--primary-color);
-    color: var(--text-color);
+    color: var(--background-color);
     text-decoration: none;
     display: inline-block;
     padding: 10px;
@@ -159,7 +148,7 @@ body{
     margin: 8px;
 }
 .atalho a i{
-    color: var(--text-color);
+    color: var(--background-color);
     font-size: 1.2rem;
 }
 

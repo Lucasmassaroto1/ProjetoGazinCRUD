@@ -83,14 +83,10 @@
                                     <?php foreach ($conteudos as $cmd): ?>
                                         <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                                         <?php endforeach; ?>
-                                        <p class="atalho">
-                                            <a href="../create.php">+ Novo Comando</a>
-                                        </p>
+                                        <button onclick="window.location.href='../create.php'" type="button" class="btn">+ Novo Comando</button>
                                 <?php else: ?>
                                     <p>Crie um comando personalizado Aqui.</p>
-                                    <p class="atalho">
-                                        <a href="../create.php"><i class="fas fa-plus"></i></a>
-                                    </p>
+                                    <button onclick="window.location.href='../create.php'" type="button" class="btn"><i class="fas fa-plus"></i></button>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -105,12 +101,18 @@
                         <h2>Prefixo</h2>
                     </div>
                     <div class="card-body">
-                        <form action="../valida_prefix.php" method="post">
-                            <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                            <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                            <p><input type="text" name="prefixo" id="input-prefix" class="input-prefix" placeholder="Digite o prefixo" maxlength="1"></p>
-                            <button type="submit" class="btn">Salvar Prefixo</button>
-                        </form>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <form action="../valida_prefix.php" method="post">
+                                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
+                                        <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
+                                        <button type="submit" class="btn">Salvar Prefixo</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

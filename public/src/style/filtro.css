@@ -1,12 +1,12 @@
 /* ========== CORES DO SITE ========== */
 :root{
     --primary-color: #00CA76;
-    --text-color: #ffffff;
+    --background-color: #000000;
 }
 
 select{
     background: var(--primary-color);
-    color: var(--text-color);
+    color: var(--background-color);
     text-decoration: none;
     display: inline-block;
     padding: 10px;
