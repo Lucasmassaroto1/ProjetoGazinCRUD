@@ -6,7 +6,7 @@
     --text-color: #ffffff;
     --card-background: #3d3d3d;
     --color-painel: #1a1a1a;
-    --prefix-color: #000000;
+    --marcador-color: #838383;
     --success-color: #00ff88;
     --danger-color: #ff5555;
 }
@@ -63,6 +63,7 @@ body{
     justify-content: center;
     font-size: 18px;
     text-transform: uppercase;
+    user-select: none;
 }
 
 /* ========== CARDS GERAL ========== */
@@ -132,7 +133,7 @@ body{
 .activity-item i{
     font-size: 1.25rem;
     color: var(--primary-color);
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
 }
 .activity-content p{
     margin: 0;
@@ -160,7 +161,6 @@ body{
 .atalho a i{
     color: var(--text-color);
     font-size: 1.2rem;
-    margin-right: 5px;
 }
 
 .inputwelcome{

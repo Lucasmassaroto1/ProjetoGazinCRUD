@@ -68,23 +68,34 @@
     <div class="card-status">
         <div class="card-header">
             <i class="fas fa-music"></i>
-            <h2>Volume</h2>
+            <h2>Informações Música</h2>
         </div>
         <div class="card-body">
             <div class="activity-list">
-                <div class="activity-item">
+                <?php foreach ($musica as $mus): ?>
                     <div class="activity-content">
-                        <p>50%</p>
+                        <div class="grid-cards">
+                            <div class="discord-embed-music">
+                                <div class="embed-header-music">
+                                    <i class="fas fa-music"></i>
+                                    <h2>Informações Dj ByteCode</h2>
+                                </div>
+                                <div class="embed-body-music">
+                                    <p><strong>Música:</strong> <?= htmlspecialchars($mus['titulo']) ?></p>
+                                    <p><strong>Artista:</strong> <?= htmlspecialchars($mus['autor']) ?></p>
+                                    <!-- <p><strong>Duração:</strong> <?= htmlspecialchars($mus['duracao']) ?></p> -->
+                                    <p><strong>Status:</strong> <?= htmlspecialchars($mus['nome_status']) ?></p>
+                                </div>
+                                <div class="embed-footer-music">
+                                    <span>Dj ByteCode</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <style>
-                    p i{
-                        cursor: pointer;
-                    }
-                </style>
-                <div class="activity-item">
+                <?php endforeach; ?>
+                <div class="activity-item volume-card">
                     <div class="activity-content">
-                        <p><i class="fas fa-plus"></i><i class="fas fa-minus"></i></p>
+                        <p><i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i></p>
                     </div>
                 </div>
             </div>
@@ -92,6 +103,7 @@
     </div>
     
 </div>
+
 
 <!-- <div class="card-status activity-log">
     <div class="card-header">

@@ -69,3 +69,9 @@ CREATE TABLE status (
 
 insert into status(nome)values('Andamento');
 insert into status(nome)values('Em espera');
+
+CREATE TABLE configuracoes (
+    id INT PRIMARY KEY,
+    volume INT DEFAULT 50
+);
+INSERT INTO configuracoes (id, volume) VALUES (1, 50);

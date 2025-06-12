@@ -127,8 +127,9 @@
                             <div class="activity-item">
                                 <div class="activity-content">
                                     <form action="../valida_welcome.php" method="post">
-                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required>
+                                        <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required><br>
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
+                                        <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
                                         <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required>
                                         <button type="submit" class="btn"> Salvar Mensagem</button>
                                     </form>
