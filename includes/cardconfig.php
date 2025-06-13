@@ -72,7 +72,7 @@
         </div>
         <div class="card-body">
             <div class="activity-list">
-                <?php foreach ($musica as $mus): ?>
+                <?php foreach (array_slice($musica, 0, 2) as $mus): ?>
                     <div class="activity-content">
                         <div class="grid-cards">
                             <div class="discord-embed-music">
@@ -83,7 +83,6 @@
                                 <div class="embed-body-music">
                                     <p><strong>Música:</strong> <?= htmlspecialchars($mus['titulo']) ?></p>
                                     <p><strong>Artista:</strong> <?= htmlspecialchars($mus['autor']) ?></p>
-                                    <!-- <p><strong>Duração:</strong> <?= htmlspecialchars($mus['duracao']) ?></p> -->
                                     <p><strong>Status:</strong> <?= htmlspecialchars($mus['nome_status']) ?></p>
                                 </div>
                                 <div class="embed-footer-music">

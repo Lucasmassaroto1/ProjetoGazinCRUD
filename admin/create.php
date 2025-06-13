@@ -30,7 +30,7 @@
     <meta name="author" content="Lucas Massaroto">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/style/login.css">
+    <link rel="stylesheet" href="../public/src/style/login.css">
     <title>Bytecrud - Adicionar Comando</title>
 </head>
 <body>
@@ -47,7 +47,7 @@
                             <input type="text" name="descricao" placeholder="Descrição" required><br><br>
                             <input type="text" name="categoria" placeholder="Categoria" required><br><br>
                             <input type="text" name="exemplo" placeholder="Exemplo de uso"><br><br>
-                            <button type="submit" class="btn ">Salvar</button>
+                            <button type="submit" class="btn">Salvar</button>
                             <p><a href="dashboard.php">← Voltar para dashboard</a></p>
                         </form>
                     </div>

@@ -10,11 +10,6 @@
     --success-color: #00ff88;
     --danger-color: #ff5555;
 }
-body.light-mode{
-    --color-bg: #f5f5f5;
-    --color-txt: #111;
-    --color-card-bg: #e0e0e0;
-}
 
 /* ========== RESET & BASE ========== */
 *{
@@ -178,13 +173,13 @@ section.inicio{
     height: 100vh;
 }
 .inicio .txt-inicio h1{
-    font-size: 3rem; /* 48px */
-    margin-bottom: 1.25rem; /* 20px */
+    font-size: 3rem;
+    margin-bottom: 1.25rem;
     line-height: 1.2;
 }
 .inicio .txt-inicio h1 span{
     display: block;
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem;
     background: linear-gradient(90deg, var(--color-primary), var(--color-txt), var(--color-primary));
     background-size: 200% auto;
     color: transparent;
@@ -194,7 +189,7 @@ section.inicio{
 }
 .inicio .img-inicio img{
     width: 100%;
-    max-width: 25rem; /* 400px */
+    max-width: 25rem;
     position: relative;
     animation: flutuar 2s ease-in-out infinite alternate;
 }
@@ -204,15 +199,15 @@ section.sobre{
     height: 100vh;
 }
 .sobre .txt-sobre{
-    max-width: 50rem; /* 800px */
-    text-indent: 1.25rem; /* 20px */
+    max-width: 50rem;
+    text-indent: 1.25rem;
     text-align: justify;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     line-height: 1.6;
-    padding: 0 0.9375rem; /* 0 15px */
+    padding: 0 0.9375rem;
 }
 .sobre .txt-sobre h2{
-    margin-bottom: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem;
 }
 .sobre .txt-sobre h2 span{
     display: block;
@@ -227,98 +222,18 @@ section.sobre{
     text-decoration: underline;
 }
 
-/* ========== COMANDOS ========== */
-.container-card{
-    padding: 3.75rem 1.25rem; 
-    margin: 1rem;
-}
-.grid-cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-.card-status{
-    background: var(--color-painel);
-    border-left: 5px solid var(--color-secondary);
-    padding: 1.5rem;
-    border-radius: 0.625rem;
-    box-shadow: 0 0 10px rgba(162, 3, 194, 0.2);
-    /* max-width: 400px; SE FICAR RUIM SEM É SÓ DESCOMENTAR :)
-    margin-bottom: 2rem; */
-}
-.card-header{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-}
-.card-header i{
-    font-size: 1.5rem;
-    color: var(--color-secondary);
-}
-.card-header h2{
-    font-size: 1.5rem;
-    color: var(--color-secondary);
-    margin: 0;
-}
-.card-body p{
-    font-size: 1.1rem;
-    margin: 0.5rem 0;
-}
-
-.status, .status-prefix{
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: bold;
-}
-.status.online{
-    background-color: rgba(34, 197, 94, 0.1);
-    color: var(--success-color);
-}
-.status.offline{
-    background-color: rgba(239, 68, 68, 0.1);
-    color: var(--danger-color);
-}
-
-.activity-log{
-    margin-top: 2rem;
-}
-.activity-list{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.activity-item{
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--color-card-bg);
-    border-radius: 8px;
-}
-.activity-item i{
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    margin-right: 1rem;
-}
-.activity-content p{
-    margin: 0;
-    color: var(--color-txt);
-}
-
 /* ========== CRIADOR ========== */
 #criador{
     background: var(--color-card-bg);
-    padding: 3.75rem 1.25rem; /* 60px 20px */
+    padding: 3.75rem 1.25rem;
 }
 .criador-container{
-    max-width: 62.5rem; /* 1000px */
+    max-width: 62.5rem;
     margin: 0 auto;
 }
 .criador-container h2{
-    font-size: 2rem; /* 32px */
-    margin-bottom: 1.875rem; /* 30px */
+    font-size: 2rem;
+    margin-bottom: 1.875rem;
     text-align: center;
     color: var(--color-primary);
 }
@@ -326,22 +241,22 @@ section.sobre{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem; /* 20px */
+    gap: 1.25rem;
 }
 .perfil img{
-    width: 7.5rem; /* 120px */
-    height: 7.5rem; /* 120px */
+    width: 7.5rem;
+    height: 7.5rem;
     border-radius: 50%;
     border: 3px solid var(--color-primary);
 }
 .texto{
-    max-width: 37.5rem; /* 600px */
+    max-width: 37.5rem;
     text-align: center;
 }
 .texto h3{
     font-size: 1.5rem;
     color: var(--color-primary);
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem;
 }
 .texto p{
     font-size: 1rem;
@@ -350,12 +265,12 @@ section.sobre{
 
 /* ========== FOOTER ========== */
 footer{
-    padding: 2.5rem 1.25rem; /* 40px 20px */
+    padding: 2.5rem 1.25rem;
     text-align: center;
     color: var(--color-txt);
 }
 footer .line-footer{
-    padding: 0.625rem 0; /* 10px 0 */
+    padding: 0.625rem 0;
 }
 footer .btn-adiciona{
     justify-content: center;
@@ -379,25 +294,6 @@ footer a:hover{
 .fade.visible{
     opacity: 1;
 }
-/* .glow-effect{
-    opacity: 0;
-    position: relative;
-    overflow: hidden;
-}
-.glow-effect::before{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(120deg, transparent, var(--color-primary), transparent);
-    transform: rotate(25deg);
-    animation: shimmer 2.5s forwards;
-}
-.glow-effect.visible{
-    opacity: 1;
-} */
 section:nth-child(2){
     animation-delay: 0.4s;
 }
@@ -474,21 +370,7 @@ section:nth-child(4){
     blinkCursor 0.5s step-end infinite alternate;
     margin-top: 1.5em;
 }
-.voltar-topo{
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    display: none;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.5rem;
-    border: none;
-    background: var(--color-primary);
-    color: var(--color-txt);
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1;
-}
+
 /* ========== KEYFRAMES ========== */
 @keyframes blinkCursor{
     50%{

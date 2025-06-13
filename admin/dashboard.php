@@ -25,9 +25,16 @@
     }
     $conteudos = $stmt->fetchAll();
 
-    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ?");
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cargo_auto'])){
+        $_SESSION['cargo_auto'] = $_POST['cargo_auto'];
+    }
+    $mensagemOriginal = $welcome['mensagem'] ?? '';
+    $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
+    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,11 +49,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="src/style/dash.css">
+    <link rel="stylesheet" href="../public/src/style/dash.css">
     
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="../public/src/style/menu.css">
     <link rel="stylesheet" href="../public/src/style/filtro.css">
+    <link rel="stylesheet" href="../public/src/style/cards.css">
     <link rel="stylesheet" href="../public/src/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>

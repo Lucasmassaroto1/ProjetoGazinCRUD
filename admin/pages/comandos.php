@@ -57,11 +57,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="../src/style/dash.css">
+    <link rel="stylesheet" href="../../public/src/style/dash.css">
 
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="../../public/src/style/menu.css">
     <link rel="stylesheet" href="../../public/src/style/filtro.css">
+    <link rel="stylesheet" href="../../public/src/style/cards.css">
     <link rel="stylesheet" href="../../public/src/style/embed.css">
     <title>ByteCode Comandos</title>
 </head>

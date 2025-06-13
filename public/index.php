@@ -12,9 +12,9 @@
 
     $conteudos = [];
 
-    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome ORDER BY id DESC LIMIT 1");
+    /* $stmtWelcome = $conexao->prepare("SELECT * FROM welcome ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute();
-    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC); */
 
     if(isset($_SESSION['usuario_id'], $_SESSION['usuario_tipo'])){
         $usuario_id = $_SESSION['usuario_id'];
@@ -32,14 +32,29 @@
 
         $conteudos = $stmt->fetchAll();
 
+        $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
+        $stmtWelcome->execute([$usuario_id]);
+        $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+
     }else{
         // Consulta pública padrão (sem filtrar por autor)
         $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
         $stmt = $conexao->prepare($sql);
         $stmt->execute();
         $conteudos = $stmt->fetchAll();
+
+        // Pega a última mensagem pública (sem usuário)
+        $stmtWelcome = $conexao->prepare("SELECT * FROM welcome ORDER BY id DESC LIMIT 1");
+        $stmtWelcome->execute();
+        $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
     }
 
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cargo_auto'])){
+        $_SESSION['cargo_auto'] = $_POST['cargo_auto'];
+    }
+    $mensagemOriginal = $welcome['mensagem'] ?? '';
+    $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
+    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,6 +75,7 @@
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/menu.css">
     <link rel="stylesheet" href="src/style/filtro.css">
+    <link rel="stylesheet" href="src/style/cards.css">
     <link rel="stylesheet" href="src/style/embed.css">
 
     <script src="src/script/loading.js"></script>
@@ -82,7 +98,6 @@
         <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
     </header>
     <main class="conteudo">
-        <button id="voltarTopo" class="voltar-topo">↑</button>
         <section class="inicio fade" id="inicio">
             <div class="flex">
                 <div class="img-inicio">
@@ -147,7 +162,21 @@
     </footer>
     <script src="src/script/menu.js"></script>
     <script src="src/script/filtro.js"></script>
-    <script src="src/script/script.js"></script>
     <script src="src/script/tempo.js"></script>
+    <script>
+        // ========== ANIMAÇÃO DE FADE ==========
+        document.addEventListener("scroll", () =>{
+            const elements = document.querySelectorAll(".fade");
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                if(position < screenPosition){
+                    element.classList.add("visible");
+                }else{
+                    element.classList.remove("visible");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
