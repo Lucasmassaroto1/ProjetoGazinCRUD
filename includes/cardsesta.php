@@ -101,7 +101,7 @@
                         <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
                         <p><strong>Status:</strong> <span id="commands-today"><?= htmlspecialchars($mus['nome_status']) ?></span></p>
                         <p class="atalho">
-                            <a href="../delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                            <a href="../component/delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
                         </p>
                     </div>
                 </div>
@@ -109,14 +109,14 @@
                 <?php else: ?>
                     <p>Nenhuma música adicionada na fila.</p>
                 <?php endif; ?>
-                    <form id="formAdicionar" action="../adicionarfila.php" method="post" style="display: none;">
+                    <form id="formAdicionar" action="../component/adicionarfila.php" method="post" style="display: none;">
                         <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
                         <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
                         <button type="submit" class="btn">Adicionar</button>
                         <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
                     </form>
                 <p class="atalho" id='atalho'>
-                    <button onclick="mostrarFormularioAdicionar()"><i class="fas fa-plus"></i>Adicionar fila</button>
+                    <button onclick="mostrarFormularioAdicionar()" class="btn"><i class="fas fa-plus"></i>Adicionar fila</button>
                 </p>
         </div>
     </div>

@@ -104,7 +104,7 @@
                         <div class="activity-list">
                             <div class="activity-item">
                                 <div class="activity-content">
-                                    <form action="../valida_prefix.php" method="post">
+                                    <form action="../component/valida_prefix.php" method="post">
                                         <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                                         <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                         <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
@@ -128,7 +128,7 @@
                         <div class="activity-list">
                             <div class="activity-item">
                                 <div class="activity-content">
-                                    <form action="../valida_welcome.php" method="post">
+                                    <form action="../component/valida_welcome.php" method="post">
                                         <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required><br>
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                         <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
@@ -191,11 +191,11 @@
                                     <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                                     <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
                                     <p class="atalho">
-                                        <a href="../edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                                        <a href="../delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                                        <a href=".../component/edit.php"?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
+                                        <a href="../component/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
                                     </p>
                                 </div>
-                                <form id="form-<?= $cmd['id'] ?>" action="../edit.php" method="post" style="display: none;">
+                                <form id="form-<?= $cmd['id'] ?>" action="../component/edit.php" method="post" style="display: none;">
                                     <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
                                     <label>Comando: <input type="text" name="comando" value="<?= htmlspecialchars($cmd['comando']) ?>"></label><br>
                                     <label>Descrição: <input type="text" name="descricao" value="<?= htmlspecialchars($cmd['descricao']) ?>"></label><br>

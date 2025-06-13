@@ -1,6 +1,6 @@
 <?php 
-    require_once '../config/auth.php';
-    require_once '../config/conexao.php';
+    require_once '../../config/auth.php';
+    require_once '../../config/conexao.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'] ?? null;
@@ -24,7 +24,7 @@
 
             if ($stmt->execute()) {
                 // Atualizado com sucesso, redirecionar para a página de comandos
-                header('Location: pages/comandos.php');
+                header('Location: ../pages/comandos.php');
                 exit;
             } else {
                 echo "Erro ao atualizar o comando.";
