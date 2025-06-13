@@ -1,3 +1,18 @@
+<?php
+$itens_menu = [];
+
+if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes'])){
+    $itens_menu[] = ['href' => $base_url . 'admin/pages/comandos.php', 'icon' => 'fas fa-terminal', 'label' => 'Comandos', 'active' => ($paginaAtual == 'comandos')];
+}
+if(in_array($paginaAtual, ['comandos', 'estatistica', 'configuracoes'])){
+    $itens_menu[] = ['href' => $base_url . 'admin/pages/estatisticas.php', 'icon' => 'fas fa-chart-bar', 'label' => 'Estatísticas', 'active' => ($paginaAtual == 'estatistica')];
+    $itens_menu[] = ['href' => $base_url . 'admin/pages/configuracoes.php', 'icon' => 'fas fa-cog', 'label' => 'Configurações', 'active' => ($paginaAtual == 'configuracoes')];
+}
+if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes'])){
+    $itens_menu[] = ['href' => $base_url . 'admin/component/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
+}
+?>
+<link rel="stylesheet" href="../../public/src/style/menu.css">
 <div class="menu">
     <button class="toggle">
         <i class="fa-solid fa-bars"></i>
@@ -10,14 +25,10 @@
             <ul>
                 <li><a href="<?=$base_url?>public/index.php" class="<?= ($paginaAtual == 'inicio') ? 'link-ativo' : '' ?>"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="<?=$base_url?>admin/dashboard.php" class="<?= ($paginaAtual == 'dashboard') ? 'link-ativo' : '' ?>"><i class="fas fa-terminal"></i> Dashboard</a></li>
-                <?php if ($paginaAtual == 'dashboard'): ?>
-                    <li><a href="<?= $base_url ?>admin/pages/comandos.php" class="<?= ($paginaAtual == 'comandos') ? 'link-ativo' : '' ?>"><i class="fas fa-terminal"></i> Comandos</a></li>
-                    <?php endif; ?>
-                    <li><a href="<?=$base_url?>admin/pages/estatisticas.php" class="<?= ($paginaAtual == 'estatistica') ? 'link-ativo' : '' ?>"><i class="fas fa-chart-bar"></i> Estatísticas</a></li>
-                    <li><a href="<?=$base_url?>admin/pages/configuracoes.php" class="<?= ($paginaAtual == 'configuracoes') ? 'link-ativo' : '' ?>"><i class="fas fa-cog"></i> Configurações</a></li>
-                <?php if ($paginaAtual == 'dashboard' || $paginaAtual == 'comandos' || $paginaAtual == 'estatistica' || $paginaAtual == 'configuracoes'): ?>
-                    <li><a href="<?=$base_url?>admin/component/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
-                <?php endif; ?>
+                
+                <?php foreach ($itens_menu as $item): ?>
+                    <li><a href="<?= $item['href'] ?>" class="<?= $item['active'] ? 'link-ativo' : '' ?>"><i class="<?= $item['icon'] ?>"></i> <?= $item['label'] ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </nav>
     <div class="background"></div>

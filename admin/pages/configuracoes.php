@@ -41,7 +41,6 @@
     <link rel="stylesheet" href="../../public/src/style/dash.css">
 
     <!-- ======== ESTILO SEPARADOS ======== -->
-    <link rel="stylesheet" href="../../public/src/style/menu.css">
     <link rel="stylesheet" href="../../public/src/style/cards.css">
     <link rel="stylesheet" href="../../public/src/style/embed.css">
     <title>ByteCode Configurações</title>
