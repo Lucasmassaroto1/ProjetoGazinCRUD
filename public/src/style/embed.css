@@ -104,6 +104,11 @@
     color: var(--text-color);
     height: 90px; /* distancia o footer */
 }
+.embed-body-music img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
 .embed-footer-music{
     padding-top: 0.5rem;
     font-size: 0.875rem;
