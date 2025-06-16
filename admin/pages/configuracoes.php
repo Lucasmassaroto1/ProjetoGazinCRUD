@@ -54,6 +54,5 @@
     </main>
     <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/volume.js"></script>
-    <script src="../../public/src/script/tempo.js"></script>
 </body>
 </html>

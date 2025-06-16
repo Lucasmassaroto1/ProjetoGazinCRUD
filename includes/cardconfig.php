@@ -93,27 +93,19 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
-
-            <div class="activity-item volume-card">
-                <div class="activity-content">
-                    <p><i class="fas fa-volume-high volume-icon" onclick="mostravolume()"></i></p>
-                    
-                    <div class="activity-content volume-controls"  id="volume-controls" style="display: none;">
-                        <p><i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i></p>
+                <div class="activity-item volume-card">
+                    <div class="activity-content">
+                    <div class="activity-content music-painel">
+                        <i class="fas fa-backward-step"></i> <i class="fas fa-play"></i> <i class="fas fa-forward-step"></i>
+                    </div>    
+                    <i class="fas fa-volume-high volume-icon" onclick="mostravolume()"></i>
+                        
+                        <div class="activity-content volume-controls"  id="volume-controls" style="display: none;">
+                            <p><i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i></p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="activity-item volume-card">
-                <div class="activity-content">
-                    <p><i class="fas fa-volume-high" onclick="mostravolume()"></i></p>
-                    
-                    <div class="activity-content volume-controls"  id="volume-controls" style="display: none;">
-                        <p><i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i></p>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     
