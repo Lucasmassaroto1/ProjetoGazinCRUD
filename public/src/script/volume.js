@@ -28,3 +28,29 @@ function alterarVolume(value){
     })
     .catch(err => console.error('Erro na requisição:', err));
 }
+
+// =========== AO CLICAR EM VOLUME MOSTRA A OPÇÃO PARA AUTERAR VOLUME ===========
+let volumeVisible = false;
+
+function mostravolume(){
+    const volumeControls = document.getElementById("volume-controls")
+    const volumeIcon = document.querySelector(".volume-icon");
+
+    if(!volumeVisible){
+        // Mostrar controles
+        volumeControls.style.display = "block"
+        setTimeout(() =>{
+        volumeControls.classList.add("show")
+        volumeIcon.classList.add("active");
+        }, 10)
+        volumeVisible = true
+    }else{
+        // Esconder controles
+        volumeControls.classList.remove("show")
+        volumeIcon.classList.remove("active");
+        setTimeout(() =>{
+        volumeControls.style.display = "none"
+        }, 300)
+        volumeVisible = false
+    }
+}
