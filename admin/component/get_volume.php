@@ -1,10 +1,11 @@
 <?php 
     require_once '../../config/conexao.php';
+    session_start();
     $conexao = (new Conexao())->conectar();
 
     $usuario_id = $_SESSION['usuario_id'];
 
-    $stmtVolume = $conexao->query("SELECT volume FROM configuracoes WHERE usuario_id = :usuario_id");
+    $stmtVolume = $conexao->prepare("SELECT volume FROM configuracoes WHERE usuario_id = :usuario_id");
     $stmtVolume->execute([':usuario_id' => $usuario_id]);
     $volume = $stmtVolume->fetchColumn();
 

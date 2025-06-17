@@ -48,7 +48,7 @@
                             <input type="text" name="categoria" placeholder="Categoria" required><br><br>
                             <input type="text" name="exemplo" placeholder="Exemplo de uso"><br><br>
                             <button type="submit" class="btn">Salvar</button>
-                            <p><a href="dashboard.php">← Voltar para dashboard</a></p>
+                            <p><a href="pages/comandos.php">← Voltar para dashboard</a></p>
                         </form>
                     </div>
                 </div>
