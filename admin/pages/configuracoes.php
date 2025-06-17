@@ -21,8 +21,24 @@
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmtVolume = $conexao->query("SELECT volume FROM configuracoes WHERE id = 1");
+    /* $stmtVolume = $conexao->query("SELECT volume FROM configuracoes WHERE id = 1");
+    $volume = $stmtVolume->fetchColumn(); */
+
+    $usuario_id = $_SESSION['usuario_id'];
+
+    $stmtVolume = $conexao->prepare("SELECT volume FROM configuracoes WHERE usuario_id = :usuario_id");
+    $stmtVolume->execute([':usuario_id' => $usuario_id]);
+
     $volume = $stmtVolume->fetchColumn();
+    if($volume === false){
+        $volume = 50;
+
+        $stmtInserir = $conexao->prepare("INSERT INTO configuracoes (usuario_id, volume) VALUES (:usuario_id, :volume)");
+        $stmtInserir->execute([
+            ':usuario_id' => $usuario_id,
+            ':volume' => $volume
+        ]);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

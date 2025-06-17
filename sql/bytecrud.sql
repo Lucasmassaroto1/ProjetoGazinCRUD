@@ -32,7 +32,7 @@ CREATE TABLE conteudo(
 );
  */
 
-CREATE TABLE prefixos ( --TABELA PREFIXO POR USUARIO (USANDO ATUALMENTE)
+CREATE TABLE prefixos( --TABELA PREFIXO POR USUARIO (USANDO ATUALMENTE)
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
     prefixo_customizado VARCHAR(5) DEFAULT NULL,
@@ -62,7 +62,7 @@ ALTER TABLE musica ADD COLUMN id_status INT;
 ALTER TABLE musica ADD CONSTRAINT fk_status FOREIGN KEY (id_status) REFERENCES status(id);
 
 
-CREATE TABLE status (
+CREATE TABLE status(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome TEXT NOT NULL
 );
@@ -70,8 +70,8 @@ CREATE TABLE status (
 insert into status(nome)values('Andamento');
 insert into status(nome)values('Em espera');
 
-CREATE TABLE configuracoes (
-    id INT PRIMARY KEY,
+CREATE TABLE configuracoes(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
     volume INT DEFAULT 50
 );
-INSERT INTO configuracoes (id, volume) VALUES (1, 50);

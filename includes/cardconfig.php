@@ -101,7 +101,7 @@
                     <i class="fas fa-volume-high volume-icon" onclick="mostravolume()"></i>
                         
                         <div class="activity-content volume-controls"  id="volume-controls" style="display: none;">
-                            <p><i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i></p>
+                            <i class="fas fa-minus" onclick="alterarVolume(-10)"></i><span id="volume-valor"><?= $volume ?>%</span><i class="fas fa-plus" onclick="alterarVolume(10)"></i>
                         </div>
                     </div>
                 </div>
