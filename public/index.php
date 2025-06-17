@@ -73,7 +73,6 @@
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/responsivel.css">
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
-    <link rel="stylesheet" href="src/style/menu.css">
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">
     <link rel="stylesheet" href="src/style/embed.css">
