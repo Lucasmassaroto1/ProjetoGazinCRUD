@@ -63,6 +63,8 @@
         <?php include '../includes/header.php';?>
         
         <?php include '../includes/cards.php'?>
+        
+        <?php include '../includes/footer.php'?>
     </main>
     <script src="../public/src/script/menu.js"></script>
     <script src="../public/src/script/filtro.js"></script>

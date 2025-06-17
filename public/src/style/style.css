@@ -263,29 +263,6 @@ section.sobre{
     line-height: 1.6;
 }
 
-/* ========== FOOTER ========== */
-footer{
-    padding: 2.5rem 1.25rem;
-    text-align: center;
-    color: var(--color-txt);
-}
-footer .line-footer{
-    padding: 0.625rem 0;
-}
-footer .btn-adiciona{
-    justify-content: center;
-}
-.borda{
-    border-top: 2px solid var(--color-primary);
-}
-footer a{
-    color: var(--color-primary);
-    text-decoration: none;
-}
-footer a:hover{
-    text-decoration: underline;
-}
-
 /* ========== ANIMAÇÕES ========== */
 .fade{
     opacity: 0;

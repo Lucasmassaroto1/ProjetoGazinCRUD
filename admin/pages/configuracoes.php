@@ -65,6 +65,7 @@
     <main class="conteudo">
         <?php include '../../includes/header.php';?>
         <?php include '../../includes/cardconfig.php';?>
+        <?php include '../../includes/footer.php'?>
     </main>
     <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/musica.js"></script>

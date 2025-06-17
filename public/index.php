@@ -76,6 +76,7 @@
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">
     <link rel="stylesheet" href="src/style/embed.css">
+    <link rel="stylesheet" href="src/style/footer.css">
 
     <script src="src/script/loading.js"></script>
 
