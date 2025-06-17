@@ -96,7 +96,7 @@
                 <div class="activity-item volume-card">
                     <div class="activity-content">
                     <div class="activity-content music-painel">
-                        <i class="fas fa-backward-step"></i> <i class="fas fa-play"></i> <i class="fas fa-forward-step"></i>
+                        <i class="fas fa-backward-step" onclick="volta()"></i> <i class="fas fa-play" id="play-pause" onclick="tocar()"></i> <i class="fas fa-forward-step" onclick="passa()"></i>
                     </div>    
                     <i class="fas fa-volume-high volume-icon" onclick="mostravolume()"></i>
                         

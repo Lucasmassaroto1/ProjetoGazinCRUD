@@ -69,6 +69,7 @@ CREATE TABLE status(
 
 insert into status(nome)values('Andamento');
 insert into status(nome)values('Em espera');
+insert into status(nome)values('Tocado');
 
 CREATE TABLE configuracoes(
     id INT AUTO_INCREMENT PRIMARY KEY,

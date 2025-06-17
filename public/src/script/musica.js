@@ -54,3 +54,39 @@ function mostravolume(){
         volumeVisible = false
     }
 }
+
+// =========== AO CLICAR EM PLAY MUDA PARA PAUSE ===========
+
+function volta(){
+    fetch('../component/voltarmusica.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+}
+
+function tocar(){
+    const botaoPlay = document.getElementById('play-pause');
+
+    if(botaoPlay.classList.contains('fa-play')){
+        botaoPlay.classList.remove('fa-play');
+        botaoPlay.classList.add('fa-pause');
+    }else{
+        botaoPlay.classList.remove('fa-pause');
+        botaoPlay.classList.add('fa-play');
+    }
+}
+
+function passa(){
+    fetch('../component/passamusica.php')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+}

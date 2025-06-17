@@ -17,12 +17,10 @@
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 
-    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC");
+    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? AND m.id_status IN (1, 2) ORDER BY m.id_status ASC, m.id ASC");
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
 
-    /* $stmtVolume = $conexao->query("SELECT volume FROM configuracoes WHERE id = 1");
-    $volume = $stmtVolume->fetchColumn(); */
 
     $usuario_id = $_SESSION['usuario_id'];
 
@@ -69,6 +67,6 @@
         <?php include '../../includes/cardconfig.php';?>
     </main>
     <script src="../../public/src/script/menu.js"></script>
-    <script src="../../public/src/script/volume.js"></script>
+    <script src="../../public/src/script/musica.js"></script>
 </body>
 </html>
