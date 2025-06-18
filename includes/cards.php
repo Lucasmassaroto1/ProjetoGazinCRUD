@@ -10,7 +10,6 @@
                     <div class="activity-content">
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
-                        <!-- <p><strong>Servidores:</strong> <span id="servers">2</span></p> -->
                     </div>
                 </div>
             </div>

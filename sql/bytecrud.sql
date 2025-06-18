@@ -76,3 +76,9 @@ CREATE TABLE configuracoes(
     usuario_id INT NOT NULL,
     volume INT DEFAULT 50
 );
+
+CREATE TABLE status_bot(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    status VARCHAR(10) NOT NULL
+);
+INSERT INTO status_bot (status) VALUES ('online');

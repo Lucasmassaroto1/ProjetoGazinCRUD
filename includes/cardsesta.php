@@ -10,9 +10,15 @@
                     <div class="activity-content">
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
-                        <!-- <p><strong>Servidores:</strong> <span id="servers">2</span></p> -->
                     </div>
                 </div>
+                <?php if($usuario_tipo === 'admin'):?>
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <button class="btn" id="lig-des" onclick="ligdes()">Ligado</button>
+                    </div>
+                </div>
+                <?php endif;?>
                 <div class="activity-item">
                     <div class="activity-content">
                         <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>

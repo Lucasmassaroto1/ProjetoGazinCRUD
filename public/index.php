@@ -156,7 +156,7 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
-    <script src="src/script/filtro.js"></script>
     <script src="src/script/tempo.js"></script>
+    <script src="src/script/filtro.js"></script>
 </body>
 </html>
