@@ -93,6 +93,15 @@
     </div>
     <div class="card-body">
         <div class="activity-list">
+            <form id="formAdicionar" action="../component/adicionarfila.php" method="post" style="display: none;">
+                <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
+                <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
+                <button type="submit" class="btn">Adicionar</button>
+                <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
+            </form>
+            <p class="atalho" id='atalho'>
+                <button onclick="mostrarFormularioAdicionar()" class="btn"><i class="fas fa-plus"></i>Adicionar fila</button>
+            </p>
             <?php if ($musica): ?>
                 <?php foreach ($musica as $mus): ?>
                 <div class="activity-item">
@@ -106,18 +115,28 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Nenhuma música adicionada na fila.</p>
-                <?php endif; ?>
-                    <form id="formAdicionar" action="../component/adicionarfila.php" method="post" style="display: none;">
-                        <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
-                        <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
-                        <button type="submit" class="btn">Adicionar</button>
-                        <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
-                    </form>
-                <p class="atalho" id='atalho'>
-                    <button onclick="mostrarFormularioAdicionar()" class="btn"><i class="fas fa-plus"></i>Adicionar fila</button>
-                </p>
+            <?php else: ?>
+                <p>Nenhuma música adicionada na fila.</p>
+            <?php endif; ?>
+            
+            <?php if ($totalPaginas > 1): ?>
+                <div class="paginacao">
+                    <?php if ($pagina > 1): ?>
+                        <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                        <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+
+                    <?php if ($pagina < $totalPaginas): ?>
+                        <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            
         </div>
     </div>
 </div>

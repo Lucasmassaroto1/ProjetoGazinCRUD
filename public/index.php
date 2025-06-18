@@ -3,9 +3,25 @@
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    $limite = 3;
+    
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = $pagina < 1 ? 1 : $pagina;
+
+    $offset = ($pagina - 1) * $limite;
+
+    $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
+    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $total_commands = count($dados);
+
+    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+
+    $totalPaginas = ceil($total / $limite);
+
+    $total_commands = $total;
 
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
@@ -64,35 +80,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- ========== FAVICON ========== -->
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
-    <!-- ========== ESTILOS & LOADING ========== -->
+    <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
-    
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">
     <link rel="stylesheet" href="src/style/embed.css">
     <link rel="stylesheet" href="src/style/footer.css">
 
-    <script src="src/script/loading.js"></script>
-
     <title>ByteCode CRUD</title>
 </head>
 <body>
-    <div class="terminal-loader" id="loader">
-        <div class="terminal-header">
-            <div class="terminal-title">Status</div>
-            <div class="terminal-controls">
-            <div class="control close"></div>
-            <div class="control minimize"></div>
-            <div class="control maximize"></div>
-            </div>
-        </div>
-        <div class="text">Loading...</div>
-    </div>
-    <header>
-        <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
-    </header>
+    <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
     <main class="conteudo">
         <section class="inicio" id="inicio">
             <div class="flex">

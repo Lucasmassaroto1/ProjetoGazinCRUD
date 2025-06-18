@@ -4,10 +4,33 @@
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    // Quantidade de comandos por página
+    $limite = 3;
+
+    // Página atual (pega da URL, se não tiver, assume 1)
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = $pagina < 1 ? 1 : $pagina;
+
+    // Calcula o offset
+    $offset = ($pagina - 1) * $limite;
+
+    // Query para buscar os comandos da página atual
+    $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
+    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $total_commands = count($dados);
+    // Query para contar o total de comandos
+    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+
+    // Total de páginas
+    $totalPaginas = ceil($total / $limite);
+
+    // Total de comandos para exibir em algum lugar (se quiser)
+    $total_commands = $total;
+    
 
     $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
@@ -157,15 +180,15 @@
                     <option value="">Todos</option>
                     <?php 
                         // Gera as categorias únicas
-                        $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));
+                        $categoriasUnicas = array_unique(array_column($dados, 'categoria'));
                         foreach ($categoriasUnicas as $categoria):?>
                             <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
                 <div class="activity-list">
-                    <?php if ($conteudos): ?>
-                        <?php foreach ($conteudos as $cmd): ?>
+                    <?php if ($dados): ?>
+                        <?php foreach ($dados as $cmd): ?>
                         <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
                             <div class="activity-content">
                                 <div id="exibicao-<?= $cmd['id'] ?>">
@@ -173,7 +196,7 @@
                                     <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
                                     <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
                                     <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                                    <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
+                                    <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
                                     <p class="atalho">
                                         <a href=".../component/edit.php"?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
                                         <a href="../component/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
@@ -193,6 +216,21 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <p>Nenhum comando personalizado cadastrado.</p>
+                    <?php endif; ?>
+                    <?php if ($totalPaginas > 1): ?>
+                        <div class="paginacao">
+                            <?php if ($pagina > 1): ?>
+                                <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
+                            <?php endif; ?>
+                            <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                                <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
+                                    <?= $i ?>
+                                </a>
+                            <?php endfor; ?>
+                            <?php if ($pagina < $totalPaginas): ?>
+                                <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>

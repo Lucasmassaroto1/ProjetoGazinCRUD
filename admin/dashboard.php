@@ -4,10 +4,26 @@
 
     $conexao =(new Conexao())->conectar();
 
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $total_commands = count($dados);
+    $limite = 3;
+    
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = $pagina < 1 ? 1 : $pagina;
 
+    $offset = ($pagina - 1) * $limite;
+
+    $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
+    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+
+    $totalPaginas = ceil($total / $limite);
+
+    $total_commands = $total;
+    
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 

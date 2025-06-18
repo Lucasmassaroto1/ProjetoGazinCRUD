@@ -39,9 +39,32 @@
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 
-    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC");
-    $stmtmusic->execute([$usuario_id]);
+    // Quantidade de músicas por página
+    $limite = 3;
+
+    // Página atual (pega da URL, se não tiver, assume 1)
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = $pagina < 1 ? 1 : $pagina;
+
+    // Calcula o offset
+    $offset = ($pagina - 1) * $limite;
+
+    // Query para buscar as músicas da página atual
+    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC LIMIT ? OFFSET ?");
+
+    $stmtmusic->bindValue(1, $usuario_id, PDO::PARAM_INT);
+    $stmtmusic->bindValue(2, $limite, PDO::PARAM_INT);
+    $stmtmusic->bindValue(3, $offset, PDO::PARAM_INT);
+    $stmtmusic->execute();
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
+
+    // Query para contar o total de músicas
+    $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM musica WHERE usuario_id = ?");
+    $stmtTotal->execute([$usuario_id]);
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+
+    // Calcula o total de páginas
+    $totalPaginas = ceil($total / $limite);
 
 ?>
 <!DOCTYPE html>

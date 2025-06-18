@@ -105,35 +105,54 @@
         <i class="fas fa-terminal"></i>
         <h2> Detalhes Comandos Personalizados</h2>
     </div>
-        <div class="card-body">
-            <div class="filter-container" style="margin-bottom: 1rem;">
-                <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
-                <select id="filtro-categoria" onchange="filtrarPorCategoria()">
-                    <option value="">Todos</option>
-                    <?php 
-                        // Gera as categorias únicas
-                        $categoriasUnicas = array_unique(array_column($conteudos, 'categoria'));
-                        foreach ($categoriasUnicas as $categoria):?>
-                            <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+    <div class="card-body">
+        <div class="filter-container" style="margin-bottom: 1rem;">
+            <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
+            <select id="filtro-categoria" onchange="filtrarPorCategoria()">
+                <option value="">Todos</option>
+                <?php 
+                    // Gera as categorias únicas
+                    $categoriasUnicas = array_unique(array_column($dados, 'categoria'));
+                    foreach ($categoriasUnicas as $categoria):?>
+                        <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
         <div class="activity-list">
-            <?php if ($conteudos): ?>
-                <?php foreach ($conteudos as $cmd): ?>
-            <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
-                <div class="activity-content">
-                        <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                        <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                        <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                        <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                        <p><strong>Criado por:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['autor']) ?></span></p>
+            <?php if ($dados): ?>
+                <?php foreach ($dados as $cmd): ?>
+                <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
+                    <div class="activity-content">
+                        <div id="exibicao-<?= $cmd['id'] ?>">
+                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
+                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
+                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
+                            <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="7">Nenhum comando personalizado cadastrado.</td></tr>
+                <p>Nenhum comando personalizado cadastrado.</p>
+            <?php endif; ?>
+            <?php if ($totalPaginas > 1): ?>
+                <div class="paginacao">
+                    <?php if ($pagina > 1): ?>
+                        <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                        <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+
+                    <?php if ($pagina < $totalPaginas): ?>
+                        <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div>
-    </div> 
+    </div>
 </div>
