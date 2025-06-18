@@ -32,6 +32,13 @@
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
 
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cargo_auto'])){
+        $_SESSION['cargo_auto'] = $_POST['cargo_auto'];
+    }
+    $mensagemOriginal = $welcome['mensagem'] ?? '';
+    $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
+    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
+
     $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC");
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
@@ -69,7 +76,6 @@
 
         <?php include '../../includes/footer.php'?>
     </main>
-    <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/filtro.js"></script>
     <script src="../../public/src/script/tempo.js"></script>
     <script>

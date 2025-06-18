@@ -33,3 +33,4 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
         </nav>
     <div class="background"></div>
 </div>
+<script src="<?=$base_url?>public/src/script/menu.js" defer></script>

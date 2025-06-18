@@ -151,22 +151,6 @@
                 <h2> Detalhes Comandos Personalizados</h2>
             </div>
             <div class="card-body">
-                <div class="grid-cards">
-                <div class="discord-embed">
-                    <div class="embed-header">
-                        <i class="fas fa-users"></i>
-                        <h2><?= $welcome['titulo'] ?? '' ?></h2>
-                    </div>
-                    <div class="embed-body">
-                        <p><?= nl2br($welcome['mensagem'] ?? '') ?></p>
-                    </div>
-                    <?php if (!empty($welcome['footer'])): ?>
-                    <div class="embed-footer">
-                        <span><?= $welcome['footer'] ?></span>
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </div>
             <div class="filter-container" style="margin-bottom: 1rem;">
                 <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
                 <select id="filtro-categoria" onchange="filtrarPorCategoria()">
@@ -216,7 +200,6 @@
         
         <?php include '../../includes/footer.php'?>
     </main>
-    <script src="../../public/src/script/menu.js"></script>
     <script src="../../public/src/script/filtro.js"></script>
     <script>
         function mostrarFormulario(id){

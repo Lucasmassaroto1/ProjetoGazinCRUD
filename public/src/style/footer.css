@@ -1,6 +1,7 @@
 /* ========== CORES DO SITE ========== */
 :root{
     --color-primary: #00CA76;
+    --color-secondary: #01916D;
     --color-txt: #FFFFFF;
     --color-bg: #000000;
 }
@@ -83,4 +84,5 @@ footer a{
 }
 footer a:hover{
     text-decoration: underline;
+    color: var(--color-secondary);
 }

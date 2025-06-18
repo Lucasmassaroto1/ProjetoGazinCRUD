@@ -16,20 +16,6 @@
         font-size: 1.125rem; /*18px*/
         text-indent: 0.625rem; /*10px*/
     }
-    section.comando{
-        grid-template-columns: 1fr;
-    }
-    .glow-effect::before{
-        transform: rotate(0deg);
-    }
-    @keyframes shimmer{
-        0%{
-            transform: translateX(-100%) rotate(15deg);
-        }
-        100%{
-            transform: translateX(100%) rotate(15deg);
-        }
-    }
 }
 @media screen and (max-width: 61.9375rem){ /*991px*/
     section.inicio .flex{

@@ -71,7 +71,7 @@
                                 <h2><?= $welcome['titulo'] ?? '' ?></h2>
                             </div>
                             <div class="embed-body">
-                                <p><?= $welcome['mensagem'] ?></p>
+                                <p><?= $mensagemComCargo ?></p>
                             </div>
                             <?php if (!empty($welcome['footer'])): ?>
                             <div class="embed-footer">

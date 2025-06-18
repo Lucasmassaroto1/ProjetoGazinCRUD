@@ -66,7 +66,6 @@
         
         <?php include '../includes/footer.php'?>
     </main>
-    <script src="../public/src/script/menu.js"></script>
     <script src="../public/src/script/filtro.js"></script>
     <script src="../public/src/script/tempo.js"></script>
 </body>

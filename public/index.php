@@ -12,10 +12,6 @@
 
     $conteudos = [];
 
-    /* $stmtWelcome = $conexao->prepare("SELECT * FROM welcome ORDER BY id DESC LIMIT 1");
-    $stmtWelcome->execute();
-    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC); */
-
     if(isset($_SESSION['usuario_id'], $_SESSION['usuario_tipo'])){
         $usuario_id = $_SESSION['usuario_id'];
         $usuario_tipo = $_SESSION['usuario_tipo'];
@@ -71,7 +67,7 @@
     <!-- ========== ESTILOS & LOADING ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
-    <link rel="stylesheet" href="src/style/responsivel.css">
+    
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">
@@ -94,11 +90,11 @@
         </div>
         <div class="text">Loading...</div>
     </div>
-    <header class="fade">
+    <header>
         <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
     </header>
     <main class="conteudo">
-        <section class="inicio fade" id="inicio">
+        <section class="inicio" id="inicio">
             <div class="flex">
                 <div class="img-inicio">
                     <img class="bytefoto" src="img/ByteCode.svg" alt="ByteCodeLogo">
@@ -115,7 +111,7 @@
                 </div>
             </div>
         </section>
-        <section class="sobre fade" id="sobre">
+        <section class="sobre" id="sobre">
             <div class="flex">
                 <div class="txt-sobre">
                     <h2 class="titulo">Venha conhecer o <span>ByteCode.</span></h2>
@@ -126,11 +122,11 @@
             </div>
         </section>
 
-        <div class="container-card fade">
+        <div class="container-card">
             <?php include '../includes/cards.php'?>
         </div>
 
-        <section class="fade" id="criador">
+        <section id="criador">
             <div class="criador-container">
                 <h2 class="titulo">Criador</h2>
                 <div class="perfil">
@@ -160,23 +156,7 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
-    <script src="src/script/menu.js"></script>
     <script src="src/script/filtro.js"></script>
     <script src="src/script/tempo.js"></script>
-    <script>
-        // ========== ANIMAÇÃO DE FADE ==========
-        document.addEventListener("scroll", () =>{
-            const elements = document.querySelectorAll(".fade");
-            elements.forEach(element => {
-                const position = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                if(position < screenPosition){
-                    element.classList.add("visible");
-                }else{
-                    element.classList.remove("visible");
-                }
-            });
-        });
-    </script>
 </body>
 </html>
