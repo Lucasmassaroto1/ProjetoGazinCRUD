@@ -116,7 +116,7 @@
                                         <button onclick="window.location.href='../create.php'" type="button" class="btn">+ Novo Comando</button>
                                 <?php else: ?>
                                     <p>Crie um comando personalizado Aqui.</p>
-                                    <button onclick="window.location.href='../create.php'" type="button" class="btn"><i class="fas fa-plus"></i></button>
+                                    <button onclick="window.location.href='../create.php'" type="button" class="btn">+ Novo Comando</button>
                                 <?php endif; ?>
                             </div>
                         </div>

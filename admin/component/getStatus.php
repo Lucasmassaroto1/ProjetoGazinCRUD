@@ -6,5 +6,5 @@
     $stmt = $conexao->query("SELECT status FROM status_bot WHERE id = 1");
     $status = $stmt->fetchColumn();
 
-    echo json_encode(['status' => $status]);
+    echo json_encode(['status' => $status])
 ?>
