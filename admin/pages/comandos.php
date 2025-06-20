@@ -86,9 +86,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- ======== ESTILO & RESPONSIVIDADE ======== -->
-    <link rel="stylesheet" href="../../public/src/style/dash.css">
-
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="../../public/src/style/filtro.css">
     <link rel="stylesheet" href="../../public/src/style/cards.css">
@@ -113,10 +110,10 @@
                                     <?php foreach ($conteudos as $cmd): ?>
                                         <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                                         <?php endforeach; ?>
-                                        <button onclick="window.location.href='../create.php'" type="button" class="btn">+ Novo Comando</button>
+                                            <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover"><i class="fa-solid fa-plus"></i> Novo Comando</button>
                                 <?php else: ?>
                                     <p>Crie um comando personalizado Aqui.</p>
-                                    <button onclick="window.location.href='../create.php'" type="button" class="btn">+ Novo Comando</button>
+                                    <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover">+ Novo Comando</button>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -138,7 +135,7 @@
                                         <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                                         <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                         <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
-                                        <button type="submit" class="btn">Salvar Prefixo</button>
+                                        <button type="submit" class="btn btnhover">Salvar Prefixo</button>
                                     </form>
                                 </div>
                             </div>
@@ -163,7 +160,7 @@
                                         <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                         <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
                                         <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required><br>
-                                        <button type="submit" class="btn"> Salvar Mensagem</button>
+                                        <button type="submit" class="btn btnhover"> Salvar Mensagem</button>
                                     </form>
                                 </div>
                             </div>

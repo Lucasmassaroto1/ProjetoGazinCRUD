@@ -10,15 +10,18 @@
                     <div class="activity-content">
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
+                        <?php if($usuario_tipo === 'admin'):?>
+                            <button class="btn btnhover" id="lig-des" onclick="ligdes()">Ligado</button>
+                        <?php endif;?>
                     </div>
                 </div>
-                <?php if($usuario_tipo === 'admin'):?>
+                <!-- <?php if($usuario_tipo === 'admin'):?>
                 <div class="activity-item">
                     <div class="activity-content">
                         <button class="btn" id="lig-des" onclick="ligdes()">Ligado</button>
                     </div>
                 </div>
-                <?php endif;?>
+                <?php endif;?> -->
                 <div class="activity-item">
                     <div class="activity-content">
                         <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
@@ -100,13 +103,13 @@
     <div class="card-body">
         <div class="activity-list">
             <form id="formAdicionar" action="../component/adicionarfila.php" method="post" style="display: none;">
-                <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
-                <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
-                <button type="submit" class="btn">Adicionar</button>
-                <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
+                <input type="text" name="titulo" class="inputwelcome" placeholder="Título" required><br>
+                <input type="text" name="autor" class="inputwelcome" placeholder="Autor" required><br>
+                <button type="submit" class="btn btnhover">Adicionar</button>
+                <button type="button" onclick="cancelarFormularioAdicionar()" class="btn btnhover">Cancelar</button>
             </form>
             <p class="atalho" id='atalho'>
-                <button onclick="mostrarFormularioAdicionar()" class="btn"><i class="fas fa-plus"></i>Adicionar fila</button>
+                <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i>Adicionar fila</button>
             </p>
             <?php if ($musica): ?>
                 <?php foreach ($musica as $mus): ?>
