@@ -107,7 +107,8 @@
                         <button onclick="window.open('https://discord.gg/Bs9pMBnDX3', '_blank')" type="button"><i class="fa-brands fa-discord"></i> Comunidade</button>
                     </div>
                     <div class="individual">
-                        <button onclick="window.open('https://github.com/Lucasmassaroto1/botdiscord', '_blank')" type="button"><i class="fa-solid fa-code"></i> Meu Código</button>
+                        <button onclick="window.location.href='../admin/dashboard.php'" type="button"><i class="fa-solid fa-terminal"></i> Personalizar</button>
+                        <!-- <button onclick="window.open('https://github.com/Lucasmassaroto1/botdiscord', '_blank')" type="button"><i class="fa-solid fa-code"></i> Meu Código</button> -->
                     </div>
                 </div>
             </div>
@@ -117,7 +118,8 @@
                 <div class="txt-sobre">
                     <h2 class="titulo">Venha conhecer o <span>ByteCode.</span></h2>
                     <p>Olá, sou <strong>ByteCode</strong>, um simples bot CLT criado para auxiliar e entreter os usuários. Comigo, você pode tocar músicas, traduzir textos, jogar e muito mais. Fui desenvolvido por <strong>Lucas Massaroto</strong>.</p>
-                    <p>Sou um projeto de codigo aberto, permitindo que qualquer pessoa faça modificações e rode sua própria versão do bot localmente no computador. Se você quiser dar uma olhada no código ou contribuir, acesse o <a href="https://github.com/Lucasmassaroto1/botdiscord" target="_blank" rel="noopener noreferrer">repositório no GitHub</a>.</p>
+                    <p>Sou um projeto de código aberto, permitindo que qualquer pessoa faça modificações e rode sua própria versão do bot localmente no computador. Se você está em busca de uma base para criar seu próprio bot, acesse o meu <a href="https://github.com/Lucasmassaroto1/botdiscord" target="_blank" rel="noopener noreferrer">repositório no GitHub</a>.</p>
+                    <p>O <strong>ByteCode</strong> é totalmente <strong>personalizável através de uma <a href="../admin/dashboard.php">dashboard</a></strong>, onde você pode ajustar configurações, gerenciar comandos e muito mais - tudo de forma simples e intuitiva.</p>
                     <p><strong>Junte-se à comunidade ByteCode!</strong> <a href="https://discord.gg/Bs9pMBnDX3" target="_blank" rel="noopener noreferrer">Clique aqui</a> para entrar no nosso servidor e ficar por dentro de novidades, atualizações e suporte.</p>
                 </div>
             </div>
