@@ -19,7 +19,7 @@
     <div class="card-status">
         <div class="card-header">
             <i class="fas fa-terminal"></i>
-            <h2>Comandos</h2>
+            <h2>Comandos total</h2>
         </div>
         <div class="card-body">
             <div class="activity-list">

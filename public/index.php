@@ -134,15 +134,15 @@
                 <h2 class="titulo">Criador</h2>
                 <div class="perfil">
                     <img src="https://avatars.githubusercontent.com/u/102060111?v=4" alt="Foto do Lucas Massaroto criador do ByteCode" class="foto-perfil" loading="lazy"> 
-                <div class="texto">
-                    <h3>Lucas Massaroto</h3>
-                    <p>Desenvolvedor FullStack e criador do ByteCode, apaixonado por tecnologia, programação e automação. Buscando sempre evoluir e trazer ideias úteis para a comunidade!</p>
-                <div class="btn-global redes">
-                    <button onclick="window.open('https://www.tiktok.com/@lucasmassaroto1', '_blank')" type="button"><i class="fa-brands fa-tiktok"></i></button>
-                    <button onclick="window.open('https://www.instagram.com/lucasmassaroto17', '_blank')" type="button"><i class="fa-brands fa-instagram"></i></button>
-                    <button onclick="window.open('mailto:lucasmassaroto17@gmail.com')" type="button"><i class="fa-solid fa-envelope"></i></button>
-                </div>
-                </div>
+                    <div class="texto">
+                        <h3>Lucas Massaroto</h3>
+                        <p>Desenvolvedor FullStack e criador do ByteCode, apaixonado por tecnologia, programação e automação. Buscando sempre evoluir e trazer ideias úteis para a comunidade!</p>
+                        <div class="btn-global redes">
+                            <button onclick="window.open('https://www.tiktok.com/@lucasmassaroto1', '_blank')" type="button"><i class="fa-brands fa-tiktok"></i></button>
+                            <button onclick="window.open('https://www.instagram.com/lucasmassaroto17', '_blank')" type="button"><i class="fa-brands fa-instagram"></i></button>
+                            <button onclick="window.open('mailto:lucasmassaroto17@gmail.com')" type="button"><i class="fa-solid fa-envelope"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
