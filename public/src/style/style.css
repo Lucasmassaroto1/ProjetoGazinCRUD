@@ -56,6 +56,10 @@ section{
     justify-content: center;
     align-items: center;
 }
+.conteudo{
+    padding: 2rem;
+    padding-left: 3rem;
+}
 .btn-global{
     display: flex;
     flex-wrap: wrap;
@@ -221,6 +225,7 @@ section.sobre{
 #criador{
     background: var(--color-card-bg);
     padding: 3.75rem 1.25rem;
+    margin-top: 3rem;
 }
 .criador-container{
     max-width: 62.5rem;

@@ -83,6 +83,7 @@
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/responsivel.css">
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">
@@ -122,9 +123,9 @@
             </div>
         </section>
 
-        <div class="container-card">
+        <section class="container-card">
             <?php include '../includes/cards.php'?>
-        </div>
+        </section>
 
         <section id="criador">
             <div class="criador-container">

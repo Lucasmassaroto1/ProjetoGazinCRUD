@@ -6,26 +6,6 @@
     --text-color: #ffffff;
     --color-painel: #1a1a1a;
 }
-/* ========== RESET & BASE ========== */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-user-drag: none;
-}
-body{
-    background: var(--background-color);
-    color: var(--text-color);
-    font-family: "Exo 2", sans-serif;
-    min-height: 100vh;
-}
-
-/* ========== GERAL ========== */
-.conteudo{
-    padding: 1rem;
-    padding-left: 6rem;
-    margin: 0 auto;
-}
 
 /* ========== MENU LATERAL ========== */
 .foto-menu{
@@ -41,6 +21,7 @@ body{
     border-radius: 50%;
 }
 .foto-menu h1{
+    color: var(--text-color);
     font-size: 1.6rem;
     margin-top: 1.25rem;
     line-height: 1.2;
@@ -52,6 +33,7 @@ body{
     color: var(--primary-color);
 }
 .menu-lateral{
+    font-family: "Exo 2", sans-serif;
     position: fixed;
     left: -18.75rem;
     top: 0;
