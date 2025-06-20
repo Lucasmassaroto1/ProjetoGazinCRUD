@@ -82,4 +82,4 @@ CREATE TABLE status_bot(
     status VARCHAR(10) NOT NULL
 );
 INSERT INTO status_bot (status) VALUES ('online');
-ALTER TABLE status_bot ADD COLUMN hora_ligado DATETIME NULL;
+ALTER TABLE status_bot ADD COLUMN hora DATETIME NULL;

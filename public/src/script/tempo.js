@@ -50,6 +50,31 @@ function buscarStatus(){
         atualizaStatus();
 
         if(statusBot === "online"){
+            const horaSalva = new Date(data.hora);
+            const agora = new Date();
+
+            const diffEmSegundos = Math.floor((agora - horaSalva) / 1000);
+            segundosUptime = diffEmSegundos > 0 ? diffEmSegundos : 0;
+
+            atualizaRelogio();
+            intervaloRelogio = setInterval(atualizaRelogio, 1000);
+            botaoligdes.textContent = "Desligar";
+        }else{
+            clearInterval(intervaloRelogio);
+            segundosUptime = 0;
+            document.getElementById('uptime').textContent = '00h 00m 00s';
+            botaoligdes.textContent = "Ligar";
+        }
+    });
+    
+    
+    /* fetch(BASE_URL + 'component/getStatus.php')
+    .then(res => res.json())
+    .then(data => {
+        statusBot = data.status;
+        atualizaStatus();
+
+        if(statusBot === "online"){
             atualizaRelogio();
             intervaloRelogio = setInterval(atualizaRelogio, 1000);
             botaoligdes.textContent = "Desligar";
@@ -58,7 +83,7 @@ function buscarStatus(){
             document.getElementById('uptime').textContent = '00h 00m 00s';
             botaoligdes.textContent = "Ligar";
         }
-    });
+    }); */
 }
 
 function ligdes(){
