@@ -1,14 +1,17 @@
 <?php
 $itens_menu = [];
 
-if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes'])){
+if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/pages/comandos.php', 'icon' => 'fas fa-terminal', 'label' => 'Comandos', 'active' => ($paginaAtual == 'comandos')];
 }
-if(in_array($paginaAtual, ['comandos', 'estatistica', 'configuracoes'])){
+if(in_array($paginaAtual, ['comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/pages/estatisticas.php', 'icon' => 'fas fa-chart-bar', 'label' => 'Estatísticas', 'active' => ($paginaAtual == 'estatistica')];
     $itens_menu[] = ['href' => $base_url . 'admin/pages/configuracoes.php', 'icon' => 'fas fa-cog', 'label' => 'Configurações', 'active' => ($paginaAtual == 'configuracoes')];
 }
-if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes'])){
+if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
+    $itens_menu[] = ['href' => $base_url . 'admin/pages/perfil.php', 'icon' => 'fas fa-user', 'label' => 'Perfil', 'active' => ($paginaAtual == 'perfil')];
+}
+if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/component/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
 }
 ?>
@@ -24,7 +27,7 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
             </div>
             <ul>
                 <li><a href="<?=$base_url?>public/index.php" class="<?= ($paginaAtual == 'inicio') ? 'link-ativo' : '' ?>"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="<?=$base_url?>admin/dashboard.php" class="<?= ($paginaAtual == 'dashboard') ? 'link-ativo' : '' ?>"><i class="fas fa-terminal"></i> Dashboard</a></li>
+                <li><a href="<?=$base_url?>admin/dashboard.php" class="<?= ($paginaAtual == 'dashboard') ? 'link-ativo' : '' ?>"><i class="fas fa-table-columns"></i> Dashboard</a></li>
                 
                 <?php foreach ($itens_menu as $item): ?>
                     <li><a href="<?= $item['href'] ?>" class="<?= $item['active'] ? 'link-ativo' : '' ?>"><i class="<?= $item['icon'] ?>"></i> <?= $item['label'] ?></a></li>

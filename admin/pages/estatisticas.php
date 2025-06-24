@@ -88,9 +88,8 @@
         <?php include '../../includes/header.php';?>
 
         <?php include '../../includes/cardsesta.php';?>
-
-        <?php include '../../includes/footer.php'?>
     </main>
+    <?php include '../../includes/footer.php'?>
     <script src="../../public/src/script/filtro.js"></script>
     <script src="../../public/src/script/tempo.js"></script>
     <script>

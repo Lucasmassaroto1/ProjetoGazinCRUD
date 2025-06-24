@@ -1,4 +1,5 @@
 <?php 
+    require_once '../config/auth.php';
     require_once '../config/conexao.php';
     $conexao = (new Conexao())->conectar();
 
@@ -9,10 +10,16 @@
         $senha_atual = $_POST['senha_atual'] ?? '';
         $nova_senha = $_POST['nova_senha'] ?? '';
         $confirma_senha = $_POST['confirma_senha'] ?? '';
-
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+        
+        $usuario_id = $_SESSION['usuario_id'];
+        /* $sql = "SELECT * FROM usuarios WHERE usuario = ?";
         $stmt = $conexao->prepare($sql);
         $stmt->execute([$usuario]);
+        $user = $stmt->fetch(); */
+
+        $sql = "SELECT senha FROM usuarios WHERE id = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario_id]);
         $user = $stmt->fetch();
 
         if($user){
@@ -90,12 +97,12 @@
                     <div class="card-body">
                         <?= $mensagem ?? '' ?>
                         <form method="post">
-                            <input type="text" name="usuario" placeholder="Usuário" required><br><br>
+                            <!-- <input type="text" name="usuario" placeholder="Usuário" required><br><br> -->
                             <input type="password" name="senha_atual" placeholder="Senha atual" required><br><br>
                             <input type="password" name="nova_senha" placeholder="Senha nova" required><br><br>
                             <input type="password" name="confirma_senha" placeholder="Confirmar senha" required><br><br>
-                            <button type="submit" class="btn">Alterar Senha</button>
-                            <a href="login.php" class="btn btn-link">Voltar para Login</a>
+                            <button type="submit" class="btn btnhover">Salvar Senha</button>
+                            <a href="pages/perfil.php" class="btn btn-link">Voltar para Perfil</a>
                         </form>
                     </div>
                 </div>
