@@ -1,0 +1,152 @@
+/* ========== CORES DO SITE ========== */
+:root{
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --color-painel: #1a1a1a;
+}
+
+/* ========== MENU LATERAL ========== */
+.foto-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+.foto-menu img{
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+}
+.foto-menu h1{
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin-top: 1.25rem;
+    line-height: 1.2;
+    text-align: center;
+}
+.foto-menu h1 span{
+    display: block;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+.menu-lateral{
+    font-family: "Exo 2", sans-serif;
+    position: fixed;
+    left: -18.75rem;
+    top: 0;
+    width: 16rem;
+    height: 100%;
+    background: var(--color-painel);
+    border-radius: 0px 20px 20px 0px;
+    z-index: 3;
+    transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.menu-lateral ul{
+    list-style: none;
+    padding: 0;
+    margin-top: 3.75rem;
+}
+.menu-lateral ul li{
+    padding: 0.9375rem 1.875rem;
+}
+.menu-lateral ul li a{
+    color:var(--text-color);
+    text-decoration: none;
+    font-size: 1.125rem; 
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    transition: transform 0.3s ease;
+}
+.menu-lateral ul li a span{
+    text-decoration: none;
+}
+.menu-lateral ul li a i{
+    font-size: 1.5rem;
+}
+.toggle{
+    background-color:var(--primary-color);
+    color:var(--text-color);
+    position: fixed;
+    left: 1.25rem;
+    top: 1.25rem;
+    z-index: 3;
+    border-radius: 0.3125rem;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0.625rem 0.9375rem;
+    cursor: pointer;
+    transition: left 0.5s ease;
+}
+#toggleTheme{
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0.625rem; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.conteudo{
+    width: 100%;
+    transition: margin-left 0.5s ease;
+}
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.menu-lateral ul li a:hover{
+    transition: text-decoration 0.3s ease;
+}
+.menu-lateral ul li a:hover span{
+    text-decoration: underline;
+}
+.menu-lateral ul li:hover{
+    background: var(--secondary-color);
+}
+.menu-lateral ul li:hover a{
+    transform: translateX(5px);
+}
+.menu-lateral ul li a i:hover{
+    transform: translateX(5px) rotate(5deg);
+}
+#toggleTheme:hover{
+    transform: translateX(5px) rotate(5deg);
+}
+.toggle:hover{
+    background-color: var(--secondary-color);
+}
+.toggle:focus{
+    outline: none;
+}
+.menu-lateral ul li a.link-ativo{
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    font-weight: bold;
+}
+
+.menu-lateral.ativo{
+    left: 0;
+}
+.toggle.ativo{
+    left: 17rem;
+}
+.conteudo.ativo{
+    margin-left: 0;
+}
+.background.ativo{
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(5px);
+}

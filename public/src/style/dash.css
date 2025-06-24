@@ -1,0 +1,43 @@
+/* ========== CORES DO SITE ========== */
+:root{
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --card-background: #3d3d3d;
+    --color-scrollbar: rgba(161, 161, 161, 0.3);
+    --color-painel: #1a1a1a;
+}
+
+/* ========== RESET & BASE ========== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+}
+body{
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: "Exo 2", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 8px;
+}
+body::-webkit-scrollbar-track{
+    background: var(--color-scrollbar);
+    border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* ========== GERAL ========== */
+.conteudo{
+    padding: 1rem;
+    padding-left: 6rem;
+    margin: 0 auto;
+}
