@@ -55,10 +55,15 @@ input:-webkit-autofill{
 }
 button{
     background: var(--primary-color);
-    color: var(--text-color);
+    color: var(--background-color);
     text-decoration: none;
     display: inline-block;
     padding: 10px;
     border-radius: 10px;
+    border: none;
     margin: 8px;
+    cursor: pointer;
+}
+.btnhover:hover{
+    background: var(--secondary-color);
 }

@@ -63,8 +63,8 @@
     <main class="conteudo">
         <?php include '../../includes/header.php';?>
         <?php include '../../includes/cardconfig.php';?>
-        <?php include '../../includes/footer.php'?>
     </main>
+    <?php include '../../includes/footer.php'?>
     <script src="../../public/src/script/musica.js"></script>
 </body>
 </html>

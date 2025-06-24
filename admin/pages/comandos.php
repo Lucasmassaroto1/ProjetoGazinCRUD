@@ -240,9 +240,8 @@
                 </div>
             </div>
         </div>
-        
-        <?php include '../../includes/footer.php'?>
     </main>
+    <?php include '../../includes/footer.php'?>
     <script src="../../public/src/script/filtro.js"></script>
     <script>
         function mostrarFormulario(id){
