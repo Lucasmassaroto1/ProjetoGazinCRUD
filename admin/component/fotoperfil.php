@@ -16,6 +16,31 @@
     $stmt->bindParam(':id', $usuario_id);
     $stmt->execute();
 
+    // Excluir a foto
+    if(isset($_POST['remover_foto'])){
+        // Busca nome da foto atual
+        $stmt = $conexao->prepare("SELECT foto_perfil FROM usuarios WHERE id = :id");
+        $stmt->bindParam(':id', $usuario_id);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if(!empty($user['foto_perfil'])){
+            $caminho_foto = "../../public/uploads/".$user['foto_perfil'];
+
+            // Remove o arquivo do servidor
+            if(file_exists($caminho_foto)){
+                unlink($caminho_foto);
+            }
+
+            // Remove o nome do campo no banco
+            $stmt = $conexao->prepare("UPDATE usuarios SET foto_perfil = NULL WHERE id = :id");
+            $stmt->bindParam(':id', $usuario_id);
+            $stmt->execute();
+        }
+        header('Location: ../pages/perfil.php');
+        exit;
+    }
+    
     // Foto
     if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK){
         $foto = $_FILES['foto'];

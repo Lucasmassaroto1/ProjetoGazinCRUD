@@ -29,7 +29,7 @@ CREATE TABLE conteudo(
     exemplo VARCHAR(255),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     criado_por INT NOT NULL,
-    FOREIGN KEY (criado_por) REFERENCES usuarios(id)
+    FOREIGN KEY (criado_por) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 /* CREATE TABLE prefixos( --TABELA PREFIXO POR SERVIDOR (USAR FUTURAMENTE)

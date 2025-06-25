@@ -6,6 +6,11 @@
     $usuario_id = $_SESSION['usuario_id'];
 
     try{
+        // Deleta todos os conteúdos criados pelo usuário
+        $sqlConteudo = "DELETE FROM conteudo WHERE criado_por = ?";
+        $stmtConteudo = $conexao->prepare($sqlConteudo);
+        $stmtConteudo->execute([$usuario_id]);
+
         //Deleta usuario logado
         $sql = "DELETE FROM usuarios WHERE id = ?";
         $stmt = $conexao->prepare($sql);

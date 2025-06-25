@@ -1,0 +1,76 @@
+:root{
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
+    --text-color: #ffffff;
+}
+.alinhacard{
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+/* ========== CONFIGURAÇÕES PERFIL ========== */
+.upload-area{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+.custom-upload-btn{
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+}
+.custom-upload-btn:hover{
+    background-color: var(--secondary-color);
+}
+input[type="file"]{
+    display: none;
+}
+
+/* ========== PERFIL RESULTADO ========== */
+.resultado-perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.resultado-image{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+.resultado-letra{
+    width: 70px;
+    height: 70px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.resultado-nome{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-align: center;
+}

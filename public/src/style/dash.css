@@ -34,8 +34,6 @@ body::-webkit-scrollbar-thumb{
     background: var(--secondary-color);
     border-radius: 10px;
 }
-
-/* ========== GERAL ========== */
 .conteudo{
     padding: 1rem;
     padding-left: 6rem;
