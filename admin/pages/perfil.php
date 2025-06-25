@@ -11,6 +11,11 @@
     $stmt->execute([$usuario_id]);
     $user = $stmt->fetch();
 
+    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $mensagem = '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){

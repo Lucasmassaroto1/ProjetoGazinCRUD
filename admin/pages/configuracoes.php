@@ -6,6 +6,11 @@
 
     $usuario_id = $_SESSION['usuario_id'];
     
+    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);

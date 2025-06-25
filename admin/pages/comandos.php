@@ -7,6 +7,11 @@
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 
+    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $limite = 3;
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     $pagina = $pagina < 1 ? 1 : $pagina;

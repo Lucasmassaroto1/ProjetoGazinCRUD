@@ -9,11 +9,13 @@
             <div class="activity-list">
                 <div class="activity-item">
                     <div class="activity-content">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data" action="../component/fotoperfil.php">
                             <label>Nome:</label><br>
                             <input type="text" name="nome" class="inputwelcome" value="<?= htmlspecialchars($_SESSION['usuario_nome']) ?>"><br><br>
                             <label>Email:</label><br>
                             <input type="email" name="email" class="inputwelcome" value="<?= htmlspecialchars($user['email']) ?>"><br><br>
+                            <label>Foto de perfil:</label><br>
+                            <input type="file" name="foto" id="">
                             <button type="submit" class="btn btnhover">Salvar Alterações</button>
                         </form>
                         <button onclick="window.location.href='../trocasenha.php'" type="button" class="btn btnhover"><i class="fas fa-key"></i> Alterar Senha</button>

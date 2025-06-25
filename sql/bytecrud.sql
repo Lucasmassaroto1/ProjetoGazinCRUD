@@ -5,15 +5,19 @@ CREATE TABLE usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    tipo VARCHAR(20) DEFAULT 'comum'
+    tipo VARCHAR(20) DEFAULT 'comum',
+    token_recuperacao VARCHAR(255) NULL,
+    token_expiracao DATETIME NULL,
+    foto_perfil VARCHAR(255) NULL
 );
 
 INSERT INTO usuarios (id, usuario, senha, tipo)
 VALUES (1, 'admin', SHA2('admin123', 256), 'admin');
 
-ALTER TABLE usuarios ADD COLUMN token_recuperacao VARCHAR(255) NULL;
-ALTER TABLE usuarios ADD COLUMN token_expiracao DATETIME NULL;
-ALTER TABLE usuarios ADD COLUMN email VARCHAR(255) NOT NULL;
+-- ALTER TABLE usuarios ADD COLUMN token_recuperacao VARCHAR(255) NULL;
+-- ALTER TABLE usuarios ADD COLUMN token_expiracao DATETIME NULL;
+-- ALTER TABLE usuarios ADD COLUMN email VARCHAR(255) NOT NULL;
+-- ALTER TABLE usuarios ADD COLUMN foto_perfil VARCHAR(255) NULL;
 
 DROP TABLE IF EXISTS conteudo;
 

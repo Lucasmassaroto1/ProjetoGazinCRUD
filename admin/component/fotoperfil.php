@@ -1,0 +1,42 @@
+<?php
+    require_once '../../config/conexao.php';
+    session_start();
+    $conexao = (new Conexao())->conectar();
+
+    $usuario_id = $_SESSION['usuario_id'];
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+
+    // Atualiza nome e email
+    $query = "UPDATE usuarios SET usuario = :nome, email = :email WHERE id = :id";
+    $stmt = $conexao->prepare($query);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+
+    // Foto
+    if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK){
+        $foto = $_FILES['foto'];
+        $ext = pathinfo($foto['name'], PATHINFO_EXTENSION);
+        $nome_arquivo = uniqid() . "." . $ext;
+        $caminho = "../../public/uploads/" . $nome_arquivo;
+
+        // Move o arquivo
+        if(move_uploaded_file($foto['tmp_name'], $caminho)){
+            // Atualiza no banco
+            $stmt = $conexao->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE id = :id");
+            $stmt->bindParam(':foto', $nome_arquivo);
+            $stmt->bindParam(':id', $usuario_id);
+            $stmt->execute();
+        }
+    }
+
+    // Atualiza a sessão
+    $_SESSION['usuario_nome'] = $nome;
+
+    // Redireciona
+    header("Location: ../pages/perfil.php");
+    exit;
+?>

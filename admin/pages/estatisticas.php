@@ -14,6 +14,11 @@
     $stmt->execute([$usuario_id]);
     $prefixo_atual = $stmt->fetchColumn();
 
+    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 
