@@ -4,11 +4,13 @@
 
     $conexao =(new Conexao())->conectar();
 
+    // ================ CONTEUDO (COMANDOS) ================
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $total_commands = count($dados);
 
+    // ================ PREFIXO_PERSONALIZADO ================
     $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
@@ -18,7 +20,7 @@
     $stmt->bindParam(':id', $usuario_id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    // ================ CONTEUDOS GERAIS ================
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 

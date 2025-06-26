@@ -3,6 +3,7 @@
 
     $conexao =(new Conexao())->conectar();
 
+    // ================ CONTEUDO (COMANDOS) ================
     $limite = 3;
     
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -23,9 +24,11 @@
 
     $total_commands = $total;
 
+    // ================ PREFIXO_PERSONALIZADO ================
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
+    // ================ CONTEUDOS GERAIS (COMANDOS E MENSAGEM DE BEM VINDO) ================
     $conteudos = [];
 
     if(isset($_SESSION['usuario_id'], $_SESSION['usuario_tipo'])){
@@ -83,7 +86,6 @@
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/style/style.css">
-    <link rel="stylesheet" href="src/style/responsivel.css">
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
     <link rel="stylesheet" href="src/style/filtro.css">
     <link rel="stylesheet" href="src/style/cards.css">

@@ -117,8 +117,8 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="activity-list">
-            <?php if ($dados): ?>
+        <div class="activity-list" id="lista-comandos">
+            <!-- <?php if ($dados): ?>
                 <?php foreach ($dados as $cmd): ?>
                 <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
                     <div class="activity-content">
@@ -151,7 +151,9 @@
                         <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
                     <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            <?php endif; ?> -->
         </div>
     </div>
 </div>
+
+<script src="<?=$base_url?>/public/src/script/lista_pagina.js"></script>

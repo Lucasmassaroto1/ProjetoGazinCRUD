@@ -4,11 +4,10 @@
 
     $conexao =(new Conexao())->conectar();
 
+    // ================ CONTEUDO (COMANDOS) ================
     $limite = 3;
-    
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     $pagina = $pagina < 1 ? 1 : $pagina;
-
     $offset = ($pagina - 1) * $limite;
 
     $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
@@ -19,14 +18,14 @@
 
     $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
     $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-
     $totalPaginas = ceil($total / $limite);
-
     $total_commands = $total;
     
+    // ================ PREFIXO_PERSONALIZADO ================
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
+    // ================ CONTEUDOS GERAIS (COMANDOS E MENSAGEM DE BEM VINDO) ================
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 

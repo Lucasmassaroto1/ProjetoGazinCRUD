@@ -3,7 +3,7 @@
     require_once '../../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
-
+    
     $usuario_id = $_SESSION['usuario_id'];
     
     $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
@@ -11,6 +11,7 @@
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // ================ MENSAGEM DE BEM VINDO ================
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
@@ -22,6 +23,7 @@
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 
+    // ================ MUSICA E VOLUME ================
     $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? AND m.id_status IN (1, 2) ORDER BY m.id_status ASC, m.id ASC");
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);

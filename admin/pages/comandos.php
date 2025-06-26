@@ -12,6 +12,7 @@
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // ================ CONTEUDO (COMANDOS) ================
     $limite = 3;
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     $pagina = $pagina < 1 ? 1 : $pagina;
@@ -44,11 +45,13 @@
     
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // ================ PREFIXO_PERSONALIZADO ================
     $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
     $prefixo_atual = $stmt->fetchColumn();
 
+    // ================ CONTEUDO CONTINUAÇÃO (COMANDOS 2) ================
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 
@@ -63,6 +66,7 @@
     }
     $conteudos = $stmt->fetchAll();
 
+    // ================ MENSAGEM DE BEM VINDO ================
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
