@@ -41,7 +41,7 @@
         exit;
     }
     
-    // Foto
+    /* // Foto Sem Corte
     if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK){
         $foto = $_FILES['foto'];
         $ext = pathinfo($foto['name'], PATHINFO_EXTENSION);
@@ -56,6 +56,27 @@
             $stmt->bindParam(':id', $usuario_id);
             $stmt->execute();
         }
+    } */
+
+    // Foto Com Corte Usando O Cropper.js
+    if(!empty($_POST['cropped_image'])){
+        $data = $_POST['cropped_image'];
+
+        // Separa os metadados do base64
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $data = base64_decode($data);
+
+        // Gera nome e salva imagem
+        $nome_arquivo = uniqid() . '.png';
+        $caminho = "../../public/uploads/" . $nome_arquivo;
+        file_put_contents($caminho, $data);
+
+        // Atualiza no banco
+        $stmt = $conexao->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE id = :id");
+        $stmt->bindParam(':foto', $nome_arquivo);
+        $stmt->bindParam(':id', $usuario_id);
+        $stmt->execute();
     }
 
     // Atualiza a sessão

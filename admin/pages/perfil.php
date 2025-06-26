@@ -68,6 +68,10 @@
     <link rel="stylesheet" href="../../public/src/style/dash.css">
     <link rel="stylesheet" href="../../public/src/style/cards.css">
     <link rel="stylesheet" href="../../public/src/style/embed.css">
+
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
     <title>ByteCode - Perfil</title>
 </head>
 <body>
