@@ -2,7 +2,7 @@ let volumeAtual = 50;
 
 fetch('../component/get_volume.php')
     .then(res => res.json())
-    .then(data => {
+    .then(data =>{
         if(typeof data.volume === 'number'){
             volumeAtual = data.volume;
             document.getElementById('volume-valor').textContent = volumeAtual + '%';
@@ -15,13 +15,13 @@ function alterarVolume(value){
     document.getElementById('volume-valor').textContent = volumeAtual + '%';
 
     // Manda para o php
-    fetch('../component/valida_volume.php', {
+    fetch('../component/valida_volume.php',{
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: 'volume=' + encodeURIComponent(volumeAtual)
     })
     .then(res => res.json())
-    .then(data => {
+    .then(data =>{
         if(data.status !== 'sucesso'){
             console.error('Erro ao salvar volume');
         }
@@ -60,8 +60,8 @@ function mostravolume(){
 function volta(){
     fetch('../component/voltarmusica.php')
         .then(response => response.json())
-        .then(data => {
-            if (data.success) {
+        .then(data =>{
+            if(data.success){
                 location.reload();
             }
         })
@@ -83,8 +83,8 @@ function tocar(){
 function passa(){
     fetch('../component/passamusica.php')
     .then(response => response.json())
-    .then(data => {
-        if (data.success) {
+    .then(data =>{
+        if(data.success){
             location.reload();
         }
     })

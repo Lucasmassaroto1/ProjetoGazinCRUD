@@ -12,7 +12,7 @@
 
     $mensagem = '';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $usuario_ou_email = $_POST['usuario'] ?? '';
 
         // Consulta aceitando usuário ou e-mail
@@ -21,7 +21,7 @@
         $stmt->execute([$usuario_ou_email, $usuario_ou_email]);
         $user = $stmt->fetch();
 
-        if ($user) {
+        if($user){
             $token = bin2hex(random_bytes(50));
             $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
@@ -34,13 +34,13 @@
             // Envia e-mail
             $mail = new PHPMailer(true);
 
-            try {
+            try{
                 // Configurações do servidor SMTP
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
                 $mail->Username   = 'lucasmassaroto17@gmail.com';   // Seu e-mail
-                $mail->Password   = '';          // Senha de app do Gmail
+                $mail->Password   = '';          // Senha de app do Gmail (https://myaccount.google.com/apppasswords?rapt=AEjHL4OA7WatJy9vrmx3aICkZJGSYbCK3UnPa6oCJI8Lm0jQNgRuK6Rqa59jO5cH9tbFPsKORrOerNwVSQV3QUFKHUAbG9shN1rIG_l7TdAf8AqIlU6R_pE)
                 $mail->SMTPSecure = 'tls';
                 $mail->Port       = 587;
                 $mail->CharSet = 'UTF-8';
@@ -57,45 +57,13 @@
 
                 $mail->send();
                 $mensagem = "<p style='color:green'>Um link de recuperação foi enviado para seu e-mail!</p>";
-            } catch (Exception $e){
+            }catch (Exception $e){
                 $mensagem = "<p style='color:red'>Erro ao enviar o e-mail: {$mail->ErrorInfo}</p>";
             }
-
         }else{
             $mensagem = "<p style='color:red'>Usuário ou e-mail não encontrado.</p>";
         }
     }
-    /* if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $email = $_POST['email'] ?? '';
-
-        // Verifica se o usuário existe
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if($user){
-            // Gera token único
-            $token = bin2hex(random_bytes(50));
-            $expira = date('Y-m-d H:i:s', strtotime('+1 hour'));
-
-            // Salva no banco
-            $sql = "UPDATE usuarios SET token_recuperacao = ?, token_expiracao = ? WHERE usuario = ?";
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute([$token, $expira, $email]);
-
-            // Monta link
-            $link = "http://localhost/ProjetoGazinCRUD/admin/redefinir.php?token=$token";
-
-            // Simula envio de e-mail (para produção, use PHPMailer)
-            // mail($user['email'], "Recuperação de Senha", "Clique aqui para redefinir sua senha: $link");
-
-            // Exibe mensagem simulada
-            $mensagem = "<p style='color:green'>Um link de recuperação foi enviado para seu e-mail. (Link: <a href='$link'>$link</a>)</p>";
-        }else{
-            $mensagem = "<p style='color:red'>Usuário não encontrado.</p>";
-        }
-    } */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

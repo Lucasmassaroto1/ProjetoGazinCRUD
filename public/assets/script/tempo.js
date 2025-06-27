@@ -10,7 +10,7 @@ if(pathname.includes('/admin/') && !pathname.includes('/admin/pages/')){ // DASH
     BASE_URL = './';
 }
 
-if (pathname.includes('/admin/pages/')){ // ESTATISTICA
+if (pathname.includes('/admin/pages/')){ // OUTRAS PÁGINAS
     BASE_URL = '../';
 }
 
@@ -45,7 +45,7 @@ function atualizaRelogio(){
 function buscarStatus(){
     fetch(BASE_URL + 'component/getStatus.php')
     .then(res => res.json())
-    .then(data => {
+    .then(data =>{
         statusBot = data.status;
         atualizaStatus();
 
@@ -66,40 +66,21 @@ function buscarStatus(){
             botaoligdes.textContent = "Ligar";
         }
     });
-    
-    
-    /* fetch(BASE_URL + 'component/getStatus.php')
-    .then(res => res.json())
-    .then(data => {
-        statusBot = data.status;
-        atualizaStatus();
-
-        if(statusBot === "online"){
-            atualizaRelogio();
-            intervaloRelogio = setInterval(atualizaRelogio, 1000);
-            botaoligdes.textContent = "Desligar";
-        }else{
-            clearInterval(intervaloRelogio);
-            document.getElementById('uptime').textContent = '00h 00m 00s';
-            botaoligdes.textContent = "Ligar";
-        }
-    }); */
 }
 
 function ligdes(){
     const acao = statusBot === "online" ? "desligar" : "ligar";
 
-    fetch(BASE_URL + 'component/statusBot.php', {
+    fetch(BASE_URL + 'component/statusBot.php',{
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'status=' + acao
     })
     .then(response => response.json())
-    .then(data => {
-        //alert(data.mensagem || data.erro);
+    .then(data =>{
         buscarStatus();
     })
-    .catch(error => {
+    .catch(error =>{
         alert('Erro na requisição: ' + error);
     });
 }

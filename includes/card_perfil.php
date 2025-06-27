@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="<?= $base_url ?>public/assets/style/inputperfil.css">
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/cards.css">
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/embed.css">
+
 <div class="alinhacard">
     <div class="grid-cards">
         <div class="card-status">
@@ -21,18 +24,8 @@
                                     <label for="foto" class="custom-upload-btn"><i class="fas fa-upload"></i> Adicionar imagem</label>
                                     <input type="file" name="foto" id="foto" accept="image/*" onchange="loadPreview(this)">
                                 
-                                <!-- MODAL CORTE DE FOTOS -->
-
-                                <!-- ================ Versão com corte porem sem modal ================
-                                <div id="cropper-container" style="display:none;">
-                                    <img id="cropper-image" style="max-width:50%;">
-                                    <button type="button" class="btn btnhover" onclick="recortarImagem()"><i class="fas fa-scissors"></i> Recortar</button>
-                                </div>
-                                <input type="hidden" name="cropped_image" id="cropped_image_input"> -->
-
-                                <!-- Modal Overlay -->
+                                <!-- ================ MODAL CORTE DE FOTOS ================ -->
                                 <div id="modal-overlay" style="display: none;"></div>
-                                <!-- Modal Cropper -->
                                 <div id="cropper-modal" style="display: none;">
                                     <div id="cropper-content">
                                         <span id="close-modal">&times;</span>
@@ -42,11 +35,10 @@
                                         </button>
                                     </div>
                                 </div>
-                                <!-- Input oculto e preview -->
                                 <input type="hidden" name="cropped_image" id="cropped_image_input">
                                 <img id="preview" style="margin-top: 10px; max-width: 150px;">
                                 
-                                <!-- FIM MODAL RECORTE DE FOTO -->
+                                <!-- ================ FIM MODAL RECORTE DE FOTO ================ -->
                                 
                                 </div>
                                 <div class="activity-item">
@@ -101,72 +93,12 @@
 </div>
 
 <script>
-/* 
-================ Versão que apenas atualiza ================
-
-function loadPreview(input){
-    const file = input.files[0];
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(e){
-            document.getElementById('preview').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-} */
-
-/* 
-================ Versão com corte porem sem modal ================
 let cropper;
 function loadPreview(input){
     const file = input.files[0];
     if(file){
         const reader = new FileReader();
         reader.onload = function(e){
-            const image = document.getElementById('cropper-image');
-            image.src = e.target.result;
-
-            // Mostra o container do Cropper
-            document.getElementById('cropper-container').style.display = 'block';
-
-            // Destroi o anterior se existir
-            if(cropper) cropper.destroy();
-
-            // Cria o novo cropper
-            cropper = new Cropper(image,{
-                aspectRatio: 1,
-                viewMode: 1,
-                movable: true,
-                zoomable: true,
-                rotatable: false,
-                scalable: false,
-            });
-        };
-        reader.readAsDataURL(file);
-    }
-}
-function recortarImagem(){
-    const canvas = cropper.getCroppedCanvas({
-        width: 300,
-        height: 300,
-    });
-
-    // Mostra o preview recortado (opcional)
-    document.getElementById('preview').src = canvas.toDataURL();
-
-    // Envia a imagem recortada via input oculto
-    document.getElementById('cropped_image_input').value = canvas.toDataURL();
-
-    // Oculta a área de recorte
-    document.getElementById('cropper-container').style.display = 'none';
-} */
-
-let cropper;
-function loadPreview(input){
-    const file = input.files[0];
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(e) {
             const image = document.getElementById('cropper-image');
             image.src = e.target.result;
 

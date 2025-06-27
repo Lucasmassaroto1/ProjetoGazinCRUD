@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/filtro.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/cards.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/embed.css">
+
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -117,43 +121,9 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="activity-list" id="lista-comandos">
-            <!-- <?php if ($dados): ?>
-                <?php foreach ($dados as $cmd): ?>
-                <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
-                    <div class="activity-content">
-                        <div id="exibicao-<?= $cmd['id'] ?>">
-                            <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <p><strong>Descrição:</strong> <span id="commands-today"><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                            <p><strong>Categoria:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                            <p><strong>Exemplo:</strong> <span id="popular-command"><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                            <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Nenhum comando personalizado cadastrado.</p>
-            <?php endif; ?>
-            <?php if ($totalPaginas > 1): ?>
-                <div class="paginacao">
-                    <?php if ($pagina > 1): ?>
-                        <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
-                    <?php endif; ?>
-
-                    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
-                        <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php endfor; ?>
-
-                    <?php if ($pagina < $totalPaginas): ?>
-                        <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?> -->
-        </div>
+        <div class="activity-list" id="lista-comandos"></div>
     </div>
 </div>
-
-<script src="<?=$base_url?>/public/assets/script/lista_pagina.js"></script>
+<script src="<?=$base_url?>public/assets/script/filtro.js"></script>
+<script src="<?=$base_url?>public/assets/script/tempo.js"></script>
+<script src="<?=$base_url?>public/assets/script/lista_pagina.js"></script>

@@ -25,7 +25,7 @@ if(botao && menuLateral && conteudo && background){
 const links = document.querySelectorAll('.menu-lateral ul li a');
 const currentURL = window.location.href;
 
-links.forEach(link => {
+links.forEach(link =>{
     if(link.href === currentURL){
         link.classList.add('link-ativo');
     }

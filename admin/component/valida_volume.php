@@ -3,7 +3,7 @@
     session_start();
     $conexao = (new Conexao())->conectar();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $volume = isset($_POST['volume']) ? (int)$_POST['volume'] : 50;
         $usuario_id = $_SESSION['usuario_id'];
 
@@ -19,7 +19,7 @@
 
         if($existe){
             $stmt = $conexao->prepare("UPDATE configuracoes SET volume = :volume WHERE usuario_id = :usuario_id");
-        } else {
+        }else{
             $stmt = $conexao->prepare("INSERT INTO configuracoes (usuario_id, volume) VALUES (:usuario_id, :volume)");
         }
 
@@ -27,7 +27,7 @@
             ':usuario_id' => $usuario_id,
             ':volume' => $volume
         ]);
-
+        
         echo json_encode(['status' => 'sucesso', 'volume' => $volume]);
 }else{
     echo json_encode(['status' => 'erro']);

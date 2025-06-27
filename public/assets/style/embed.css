@@ -146,6 +146,7 @@
 .music-painel i:hover{
     color: var(--secondary-color);
 }
+
 /* ========== Animação suave para mostrar/esconder ========== */
 .fade-in{
     animation: slideIn 0.3s ease-in forwards;
@@ -153,7 +154,7 @@
 .fade-out{
     animation: slideOut 0.3s ease-out forwards;
 }
-@keyframes slideIn {
+@keyframes slideIn{
     from{
         opacity: 0;
         transform: translateX(-100%);

@@ -5,7 +5,7 @@
     session_start();
     $erro = '';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $usuario_ou_email = trim($_POST['usuario']) ?? '';
         $senha = $_POST['senha'] ?? '';
 
@@ -13,34 +13,6 @@
         $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
         $stmt = $conexao->prepare($sql);
         $stmt->execute([$usuario_ou_email, $usuario_ou_email]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($senha, $user['senha'])) {
-            // Login bem-sucedido
-            $_SESSION['usuario_id'] = $user['id'];
-            $_SESSION['usuario_nome'] = $user['usuario'];
-            $_SESSION['usuario_tipo'] = $user['tipo'];
-
-            header('Location: dashboard.php');
-            exit;
-        } else {
-            $erro = "Usuário, e-mail ou senha inválidos!";
-        }
-    }
-    
-    /* require_once '../config/conexao.php';
-    $conexao = (new Conexao())->conectar();
-
-    session_start();
-    $erro = '';
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usuario = $_POST['usuario'] ?? '';
-        $senha = $_POST['senha'] ?? '';
-
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
         $user = $stmt->fetch();
 
         if($user && password_verify($senha, $user['senha'])){
@@ -52,33 +24,9 @@
             header('Location: dashboard.php');
             exit;
         }else{
-            $erro = "Usuário ou senha inválidos!";
+            $erro = "Usuário, e-mail ou senha inválidos!";
         }
-    } */
-    /* require_once '../config/conexao.php';
-    $conexao =(new Conexao())->conectar();
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usuario = $_POST['usuario'] ?? '';
-        $senha = $_POST['senha'] ?? '';
-
-        $sql = "select * from usuarios where usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
-        $user = $stmt->fetch();
-
-        if ($user && hash('sha256', $senha) === $user['senha']){
-            session_start();
-            $_SESSION['usuario_id'] = $user['id'];
-            $_SESSION['usuario_nome'] = $user['usuario'];
-            $_SESSION['usuario_tipo'] = $user['tipo'];
-
-            header('Location: dashboard.php');
-            exit;
-        }else{
-            $erro = "Usuário ou senha inválidos!";
-        }
-    } */
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -10,7 +10,7 @@ $stmt = $conexao->prepare("SELECT * FROM musica WHERE usuario_id = ? AND id_stat
 $stmt->execute([$usuario_id]);
 $musica_atual = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($musica_atual) {
+if($musica_atual){
     // Atualizar status da música atual para "tocada" (ou outro status, exemplo id_status = 3)
     $stmt = $conexao->prepare("UPDATE musica SET id_status = 3 WHERE id = ?");
     $stmt->execute([$musica_atual['id']]);
@@ -21,7 +21,7 @@ $stmt = $conexao->prepare("SELECT * FROM musica WHERE usuario_id = ? AND id_stat
 $stmt->execute([$usuario_id]);
 $proxima_musica = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($proxima_musica) {
+if($proxima_musica){
     // Atualizar para "em andamento" (id_status = 1)
     $stmt = $conexao->prepare("UPDATE musica SET id_status = 1 WHERE id = ?");
     $stmt->execute([$proxima_musica['id']]);

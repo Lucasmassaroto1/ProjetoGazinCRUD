@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/cards.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/embed.css">
+
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -15,13 +18,6 @@
                         <?php endif;?>
                     </div>
                 </div>
-                <!-- <?php if($usuario_tipo === 'admin'):?>
-                <div class="activity-item">
-                    <div class="activity-content">
-                        <button class="btn" id="lig-des" onclick="ligdes()">Ligado</button>
-                    </div>
-                </div>
-                <?php endif;?> -->
                 <div class="activity-item">
                     <div class="activity-content">
                         <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
@@ -149,3 +145,12 @@
         </div>
     </div>
 </div>
+<script src="<?=$base_url?>public/assets/script/tempo.js"></script>
+<script>
+    function mostrarFormularioAdicionar(){
+        document.getElementById('formAdicionar').style.display = 'block';      
+    }
+    function cancelarFormularioAdicionar(){
+        document.getElementById('formAdicionar').style.display = 'none';
+    }
+</script>

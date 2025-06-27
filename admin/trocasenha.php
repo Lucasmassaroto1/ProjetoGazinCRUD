@@ -42,38 +42,6 @@
             $mensagem = "<p style='color:red'>Usuário não encontrado.</p>";
         }
     }
-    /* require_once '../config/conexao.php';
-    $conexao =(new Conexao())->conectar();
-
-    
-    $mensagem = '';
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usuario = $_POST['usuario'] ?? '';
-        $nova_senha = $_POST['nova_senha'] ?? '';
-        $confirma_senha = $_POST['confirma_senha'] ?? '';
-
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
-        $user = $stmt->fetch();
-
-        if($user){
-            if($nova_senha === $confirma_senha){
-                // $novaSenhaHash = hash('sha256', $nova_senha);
-                $novaSenhaHash = password_hash($nova_senha, PASSWORD_DEFAULT);
-                $update = "UPDATE usuarios SET senha = ? WHERE usuario = ?";
-                $stmt = $conexao->prepare($update);
-                $stmt->execute([$novaSenhaHash, $usuario]);
-
-                $mensagem = "<p style='color:green'>Senha alterada com sucesso!</p>";
-            }else{
-                $mensagem = "<p style='color:red'>As senhas não coincidem.</p>";
-            }
-        }else{
-            $mensagem = "<p style='color:red'>Usuário não encontrado.</p>";
-        }
-    } */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -97,7 +65,6 @@
                     <div class="card-body">
                         <?= $mensagem ?? '' ?>
                         <form method="post">
-                            <!-- <input type="text" name="usuario" placeholder="Usuário" required><br><br> -->
                             <input type="password" name="senha_atual" placeholder="Senha atual" required><br><br>
                             <input type="password" name="nova_senha" placeholder="Senha nova" required><br><br>
                             <input type="password" name="confirma_senha" placeholder="Confirmar senha" required><br><br>

@@ -4,7 +4,7 @@
 
     $conexao =(new Conexao())->conectar();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $comando = $_POST['comando'];
         $descricao = $_POST['descricao'];
         $categoria = $_POST['categoria'];
@@ -30,7 +30,7 @@
     <meta name="author" content="Lucas Massaroto">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/src/style/login.css">
+    <link rel="stylesheet" href="../public/assets/style/login.css">
     <title>Bytecrud - Adicionar Comando</title>
 </head>
 <body>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/cards.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/embed.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -111,40 +113,4 @@
     </div>
     
 </div>
-
-
-<!-- <div class="card-status activity-log">
-    <div class="card-header">
-        <i class="fas fa-list"></i>
-        <h2> Fila de Músicas</h2>
-    </div>
-    <div class="card-body">
-        <div class="activity-list">
-            <?php if ($musica): ?>
-                <?php foreach ($musica as $mus): ?>
-                <div class="activity-item">
-                    <div class="activity-content">
-                        <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($mus['titulo']) ?></span></p>
-                        <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
-                        <p><strong>Status:</strong> <span id="commands-today"><?= htmlspecialchars($mus['nome_status']) ?></span></p>
-                        <p class="atalho">
-                            <a href="../delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
-                        </p>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Nenhuma música adicionada na fila.</p>
-                <?php endif; ?>
-                    <form id="formAdicionar" action="../adicionarfila.php" method="post" style="display: none;">
-                        <input type="text" name="titulo" class="inputwelcome" placeholder="Título"><br>
-                        <input type="text" name="autor" class="inputwelcome" placeholder="Autor"><br>
-                        <button type="submit" class="btn">Adicionar</button>
-                        <button type="button" onclick="cancelarFormularioAdicionar()" class="btn ">Cancelar</button>
-                    </form>
-                <p class="atalho" id='atalho'>
-                    <button onclick="mostrarFormularioAdicionar()"><i class="fas fa-plus"></i>Adicionar fila</button>
-                </p>
-        </div>
-    </div>
-</div> -->
+<script src="<?=$base_url?>public/assets/script/musica.js"></script>

@@ -38,38 +38,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $erro = "Preencha todos os campos.";
     }
 }
-
-/* if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $usuario = $_POST['usuario'] ?? '';
-    $senha = $_POST['senha'] ?? '';
-
-    if(!empty($usuario) && !empty($senha)){
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
-
-        if($stmt->fetch()){
-            $erro = "Usuário já existe!";
-        }else{
-            $senhaCriptografada = hash('sha256', $senha);
-            $sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute([$usuario, $senhaCriptografada]);
-
-            $usuario_id = $conexao->lastInsertId();
-
-            session_start();
-            $_SESSION['usuario_id'] = $usuario_id;
-            $_SESSION['usuario_nome'] = $usuario;
-            $_SESSION['usuario_tipo'] = $user['tipo'];
-
-            header('Location: login.php');
-            exit;
-        }
-    }else{
-        $erro = "Preencha todos os campos.";
-    }
-} */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -78,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/src/style/login.css">
+    <link rel="stylesheet" href="../public/assets/style/login.css">
     <title>Bytecrud - Novo usuario</title>
 </head>
 <body>

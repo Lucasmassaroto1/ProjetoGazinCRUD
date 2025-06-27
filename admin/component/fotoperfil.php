@@ -41,23 +41,6 @@
         exit;
     }
     
-    /* // Foto Sem Corte
-    if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK){
-        $foto = $_FILES['foto'];
-        $ext = pathinfo($foto['name'], PATHINFO_EXTENSION);
-        $nome_arquivo = uniqid() . "." . $ext;
-        $caminho = "../../public/uploads/" . $nome_arquivo;
-
-        // Move o arquivo
-        if(move_uploaded_file($foto['tmp_name'], $caminho)){
-            // Atualiza no banco
-            $stmt = $conexao->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE id = :id");
-            $stmt->bindParam(':foto', $nome_arquivo);
-            $stmt->bindParam(':id', $usuario_id);
-            $stmt->execute();
-        }
-    } */
-
     // Foto Com Corte Usando O Cropper.js
     if(!empty($_POST['cropped_image'])){
         $data = $_POST['cropped_image'];
