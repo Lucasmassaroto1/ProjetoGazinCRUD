@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?=$base_url?>public/src/style/footer.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/footer.css">
 <footer>
     <div class="line-footer">
         <div class="btn-global">

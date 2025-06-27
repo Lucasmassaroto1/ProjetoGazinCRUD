@@ -85,12 +85,12 @@
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="assets/style/style.css">
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
-    <link rel="stylesheet" href="src/style/filtro.css">
-    <link rel="stylesheet" href="src/style/cards.css">
-    <link rel="stylesheet" href="src/style/embed.css">
-    <link rel="stylesheet" href="src/style/footer.css">
+    <link rel="stylesheet" href="assets/style/filtro.css">
+    <link rel="stylesheet" href="assets/style/cards.css">
+    <link rel="stylesheet" href="assets/style/embed.css">
+    <link rel="stylesheet" href="assets/style/footer.css">
 
     <title>ByteCode CRUD</title>
 </head>
@@ -161,7 +161,7 @@
             <p>&copy; Developed By <a href="https://github.com/Lucasmassaroto1" target="_blank" rel="noopener noreferrer">Lucas Massaroto.</a></p>
         </div>
     </footer>
-    <script src="src/script/tempo.js"></script>
-    <script src="src/script/filtro.js"></script>
+    <script src="assets/script/tempo.js"></script>
+    <script src="assets/script/filtro.js"></script>
 </body>
 </html>

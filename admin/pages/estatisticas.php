@@ -82,10 +82,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- ======== ESTILO SEPARADOS ======== -->
-    <link rel="stylesheet" href="../../public/src/style/dash.css">
-    <link rel="stylesheet" href="../../public/src/style/filtro.css">
-    <link rel="stylesheet" href="../../public/src/style/cards.css">
-    <link rel="stylesheet" href="../../public/src/style/embed.css">
+    <link rel="stylesheet" href="../../public/assets/style/dash.css">
+    <link rel="stylesheet" href="../../public/assets/style/filtro.css">
+    <link rel="stylesheet" href="../../public/assets/style/cards.css">
+    <link rel="stylesheet" href="../../public/assets/style/embed.css">
     <title>ByteCode Estatisticas</title>
 </head>
 <body>
@@ -97,8 +97,8 @@
         <?php include '../../includes/cardsesta.php';?>
     </main>
     <?php include '../../includes/footer.php'?>
-    <script src="../../public/src/script/filtro.js"></script>
-    <script src="../../public/src/script/tempo.js"></script>
+    <script src="../../public/assets/script/filtro.js"></script>
+    <script src="../../public/assets/script/tempo.js"></script>
     <script>
         function mostrarFormularioAdicionar(){
             document.getElementById('formAdicionar').style.display = 'block';      

@@ -156,4 +156,4 @@
     </div>
 </div>
 
-<script src="<?=$base_url?>/public/src/script/lista_pagina.js"></script>
+<script src="<?=$base_url?>/public/assets/script/lista_pagina.js"></script>

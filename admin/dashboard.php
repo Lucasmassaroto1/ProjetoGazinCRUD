@@ -68,11 +68,11 @@
     <!-- ======== FONT & ICONS ======== -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/src/style/dash.css">
+    <link rel="stylesheet" href="../public/assets/style/dash.css">
     <!-- ======== ELEMENTOS SEPARADOS ======== -->
-    <link rel="stylesheet" href="../public/src/style/filtro.css">
-    <link rel="stylesheet" href="../public/src/style/cards.css">
-    <link rel="stylesheet" href="../public/src/style/embed.css">
+    <link rel="stylesheet" href="../public/assets/style/filtro.css">
+    <link rel="stylesheet" href="../public/assets/style/cards.css">
+    <link rel="stylesheet" href="../public/assets/style/embed.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
@@ -84,7 +84,7 @@
         
     </main>
     <?php include '../includes/footer.php'?>
-    <script src="../public/src/script/filtro.js"></script>
-    <script src="../public/src/script/tempo.js"></script>
+    <script src="../public/assets/script/filtro.js"></script>
+    <script src="../public/assets/script/tempo.js"></script>
 </body>
 </html>

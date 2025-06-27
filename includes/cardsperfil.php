@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= $base_url ?>public/src/style/inputperfil.css">
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/inputperfil.css">
 <div class="alinhacard">
     <div class="grid-cards">
         <div class="card-status">

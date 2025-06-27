@@ -65,9 +65,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- ======== ESTILO SEPARADOS ======== -->
-    <link rel="stylesheet" href="../../public/src/style/dash.css">
-    <link rel="stylesheet" href="../../public/src/style/cards.css">
-    <link rel="stylesheet" href="../../public/src/style/embed.css">
+    <link rel="stylesheet" href="../../public/assets/style/dash.css">
+    <link rel="stylesheet" href="../../public/assets/style/cards.css">
+    <link rel="stylesheet" href="../../public/assets/style/embed.css">
 
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
