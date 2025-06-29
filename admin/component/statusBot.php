@@ -3,6 +3,9 @@ session_start();
 require_once '../../config/auth.php';
 require_once '../../config/conexao.php';
 
+// NÃO TROCAR TIMEZONE!!!!!!!!
+date_default_timezone_set('America/Sao_Paulo');
+
 $conexao = (new Conexao())->conectar();
 
 if (!isset($_SESSION['usuario_id'])) {

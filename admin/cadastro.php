@@ -38,6 +38,44 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $erro = "Preencha todos os campos.";
     }
 }
+
+/* 
+----------------------------------------------------------------------------
+------------------------------ VERSÃO USANDO HASH --------------------------
+---------------------------------------------------------------------------- 
+*/
+/* 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $usuario = $_POST['usuario'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    if(!empty($usuario) && !empty($senha)){
+        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario]);
+
+        if($stmt->fetch()){
+            $erro = "Usuário já existe!";
+        }else{
+            $senhaCriptografada = hash('sha256', $senha);
+            $sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute([$usuario, $senhaCriptografada]);
+
+            $usuario_id = $conexao->lastInsertId();
+
+            session_start();
+            $_SESSION['usuario_id'] = $usuario_id;
+            $_SESSION['usuario_nome'] = $usuario;
+            $_SESSION['usuario_tipo'] = $user['tipo'];
+
+            header('Location: login.php');
+            exit;
+        }
+    }else{
+        $erro = "Preencha todos os campos.";
+    }
+} */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

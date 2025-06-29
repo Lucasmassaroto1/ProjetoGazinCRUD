@@ -6,13 +6,12 @@
     $erro = '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usuario_ou_email = trim($_POST['usuario']) ?? '';
+        $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
 
-        // Consulta que aceita tanto usuário quanto e-mail
-        $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
+        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario_ou_email, $usuario_ou_email]);
+        $stmt->execute([$usuario]);
         $user = $stmt->fetch();
 
         if($user && password_verify($senha, $user['senha'])){
@@ -24,9 +23,39 @@
             header('Location: dashboard.php');
             exit;
         }else{
-            $erro = "Usuário, e-mail ou senha inválidos!";
+            $erro = "Usuário ou senha inválidos!";
         }
     }
+    /* 
+    ----------------------------------------------------------------------------
+    ------------------------------ VERSÃO USANDO HASH --------------------------
+    ---------------------------------------------------------------------------- 
+    */
+    /* 
+    require_once '../config/conexao.php';
+    $conexao =(new Conexao())->conectar();
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $usuario = $_POST['usuario'] ?? '';
+        $senha = $_POST['senha'] ?? '';
+
+        $sql = "select * from usuarios where usuario = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$usuario]);
+        $user = $stmt->fetch();
+
+        if ($user && hash('sha256', $senha) === $user['senha']){
+            session_start();
+            $_SESSION['usuario_id'] = $user['id'];
+            $_SESSION['usuario_nome'] = $user['usuario'];
+            $_SESSION['usuario_tipo'] = $user['tipo'];
+
+            header('Location: dashboard.php');
+            exit;
+        }else{
+            $erro = "Usuário ou senha inválidos!";
+        }
+    } */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

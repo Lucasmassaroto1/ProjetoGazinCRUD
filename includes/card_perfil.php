@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="cropped_image" id="cropped_image_input">
-                                <img id="preview" style="margin-top: 10px; max-width: 150px;">
+                                <!-- <img id="preview" style="margin-top: 10px; max-width: 150px;"> VERIFICAR SE É IMPORTANTE -->
                                 
                                 <!-- ================ FIM MODAL RECORTE DE FOTO ================ -->
                                 
