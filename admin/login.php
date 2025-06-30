@@ -9,13 +9,12 @@
         $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
 
-        $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
+        $stmt->execute([$usuario, $usuario]);
         $user = $stmt->fetch();
 
         if($user && password_verify($senha, $user['senha'])){
-            // Login bem-sucedido
             $_SESSION['usuario_id'] = $user['id'];
             $_SESSION['usuario_nome'] = $user['usuario'];
             $_SESSION['usuario_tipo'] = $user['tipo'];
@@ -39,9 +38,9 @@
         $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
 
-        $sql = "select * from usuarios where usuario = ?";
+        $sql = "select * from usuarios where usuario = ? OR email = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
+        $stmt->execute([$usuario, $usuario]);
         $user = $stmt->fetch();
 
         if ($user && hash('sha256', $senha) === $user['senha']){
