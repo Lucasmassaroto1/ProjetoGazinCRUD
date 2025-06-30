@@ -3,6 +3,60 @@
     require_once '../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
+    
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_tipo = $_SESSION['usuario_tipo'];
+
+    // ================ PAGINAÇÃO ================
+    $limite = 3;
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = max(1, $pagina);
+    $offset = ($pagina - 1) * $limite;
+
+    // ================ CONSULTA COM FILTRO ================
+    if($usuario_tipo === 'admin'){
+        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
+
+        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    }else{
+        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = :usuario_id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
+
+        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id");
+        $stmtTotal->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
+    }
+
+    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtTotal->execute();
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+    $totalPaginas = ceil($total / $limite);
+    $total_commands = $total;
+    
+    // ================ PREFIXO_PERSONALIZADO ================
+    $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
+    $prefixo_atual = $stmt->fetchColumn();
+
+    // ================ WELCOME ================
+
+    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
+    $stmtWelcome->execute([$usuario_id]);
+    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cargo_auto'])){
+        $_SESSION['cargo_auto'] = $_POST['cargo_auto'];
+    }
+    $mensagemOriginal = $welcome['mensagem'] ?? '';
+    $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
+    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
+
+    /* require_once '../config/auth.php';
+    require_once '../config/conexao.php';
+
+    $conexao =(new Conexao())->conectar();
 
     // ================ CONTEUDO (COMANDOS) ================
     $limite = 3;
@@ -54,7 +108,7 @@
     }
     $mensagemOriginal = $welcome['mensagem'] ?? '';
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
-    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
+    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal); */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

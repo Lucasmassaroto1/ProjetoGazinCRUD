@@ -4,10 +4,12 @@
 
     $conexao =(new Conexao())->conectar();
 
+    $usuario_id = $_SESSION['usuario_id'];
+    $usuario_tipo = $_SESSION['usuario_tipo'];
+
     // ================ CONTEUDO (COMANDOS) ================
     $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     $total_commands = count($dados);
 
     // ================ PREFIXO_PERSONALIZADO ================
@@ -20,9 +22,6 @@
     $stmt->bindParam(':id', $usuario_id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    // ================ CONTEUDOS GERAIS ================
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_tipo = $_SESSION['usuario_tipo'];
 
     if($usuario_tipo === 'admin'){
         $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";

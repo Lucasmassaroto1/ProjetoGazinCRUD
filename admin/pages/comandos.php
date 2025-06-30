@@ -12,7 +12,7 @@
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // ================ CONTEUDO (COMANDOS) ================
+    // ================ PAGINAÇÃO ================
     $limite = 3;
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     $pagina = $pagina < 1 ? 1 : $pagina;
