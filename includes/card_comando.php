@@ -12,15 +12,25 @@
             <div class="activity-list">
                 <div class="activity-item">
                     <div class="activity-content">
-                        <?php if ($conteudos): ?>
+                        <form id="formAdicionar" action="../component/create.php" method="post" style="display: none;">
+                            <input type="text" name="comando" class="inputwelcome" placeholder="Comando" required><br><br>
+                            <input type="text" name="descricao" class="inputwelcome" placeholder="Descrição" required><br><br>
+                            <input type="text" name="categoria" class="inputwelcome" placeholder="Categoria" required><br><br>
+                            <input type="text" name="exemplo" class="inputwelcome" placeholder="Exemplo de uso"><br><br>
+                            <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
+                            <button type="button" onclick="cancelarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-xmark"></i> Cancelar</button>
+                        </form>
+                        <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>   
+                        <div id="lista-comandos"></div>
+                        <!-- <?php if ($conteudos): ?>
                             <?php foreach ($conteudos as $cmd): ?>
                                 <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
                                 <?php endforeach; ?>
                                     <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover"><i class="fa-solid fa-plus"></i> Novo Comando</button>
                         <?php else: ?>
                             <p>Crie um comando personalizado Aqui.</p>
-                            <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover">+ Novo Comando</button>
-                        <?php endif; ?>
+                            <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover"><i class="fa-solid fa-plus"></i> Novo Comando</button>
+                        <?php endif; ?> -->
                     </div>
                 </div>
             </div>
@@ -41,7 +51,7 @@
                                 <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                                 <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                 <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
-                                <button type="submit" class="btn btnhover">Salvar Prefixo</button>
+                                <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar Prefixo</button>
                             </form>
                         </div>
                     </div>
@@ -66,7 +76,7 @@
                                 <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                 <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
                                 <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required><br>
-                                <button type="submit" class="btn btnhover"> Salvar Mensagem</button>
+                                <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar Mensagem</button>
                             </form>
                         </div>
                     </div>
@@ -96,56 +106,11 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="activity-list">
-            <?php if ($dados): ?>
-                <?php foreach ($dados as $cmd): ?>
-                <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
-                    <div class="activity-content">
-                        <div id="exibicao-<?= $cmd['id'] ?>">
-                            <p><strong>Comando:</strong> <span><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                            <p><strong>Descrição:</strong> <span><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                            <p><strong>Categoria:</strong> <span><?= htmlspecialchars($cmd['categoria']) ?></span></p>
-                            <p><strong>Exemplo:</strong> <span><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
-                            <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                            <p class="atalho">
-                                <a href=".../component/edit.php"?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                                <a href="../component/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
-                            </p>
-                        </div>
-                        <form id="form-<?= $cmd['id'] ?>" action="../component/edit.php" method="post" style="display: none;">
-                            <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
-                            <label>Comando: <input type="text" class="inputwelcome" name="comando" value="<?= htmlspecialchars($cmd['comando']) ?>"></label><br>
-                            <label>Descrição: <input type="text" class="inputwelcome" name="descricao" value="<?= htmlspecialchars($cmd['descricao']) ?>"></label><br>
-                            <label>Categoria: <input type="text" class="inputwelcome" name="categoria" value="<?= htmlspecialchars($cmd['categoria']) ?>"></label><br>
-                            <label>Exemplo: <input type="text" class="inputwelcome" name="exemplo" value="<?= htmlspecialchars($cmd['exemplo']) ?>"></label><br>
-                            <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
-                            <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-danger"><i class="fas fa-xmark"></i> Cancelar</button>
-                        </form>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Nenhum comando personalizado cadastrado.</p>
-            <?php endif; ?>
-            <?php if ($totalPaginas > 1): ?>
-                <div class="paginacao">
-                    <?php if ($pagina > 1): ?>
-                        <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
-                    <?php endif; ?>
-                    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
-                        <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php endfor; ?>
-                    <?php if ($pagina < $totalPaginas): ?>
-                        <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-        </div>
+        <div class="activity-list" id="listar-comandos-detalhes"></div>
     </div>
 </div>
 <script src="<?=$base_url?>public/assets/script/filtro.js"></script>
+<script src="<?=$base_url?>public/assets/script/lista_pagina.js"></script>
 <script>
     function mostrarFormulario(id){
         document.getElementById('exibicao-' + id).style.display = 'none';
@@ -154,5 +119,12 @@
     function cancelarFormulario(id){
         document.getElementById('form-' + id).style.display = 'none';
         document.getElementById('exibicao-' + id).style.display = 'block';
+    }
+    
+    function mostrarFormularioAdicionar(){
+        document.getElementById('formAdicionar').style.display = 'block';      
+    }
+    function cancelarFormularioAdicionar(){
+        document.getElementById('formAdicionar').style.display = 'none';
     }
 </script>

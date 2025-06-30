@@ -17,7 +17,7 @@
                             <option value="124">#boas-vindas</option>
                             <option value="125">#novatos</option>
                         </select>
-                        <button class="btn btn-salvar">Salvar configurações</button>
+                        <button class="btn btn-salvar"><i class="fas fa-floppy-disk"></i> Salvar configurações</button>
                     </div>
                 </div>
                 <h2>Mensagem Personalizada:</h2>
@@ -59,7 +59,7 @@
                                 <option value="@Membro" <?= ($cargo_auto ?? '') == '@Membro' ? 'selected' : '' ?>>@Membro</option>
                                 <option value="@VIP" <?= ($cargo_auto ?? '') == '@VIP' ? 'selected' : '' ?>>@VIP</option>
                             </select>
-                            <button type="submit" class="btn btn-salvar">Salvar Cargo</button>
+                            <button type="submit" class="btn btn-salvar"><i class="fas fa-floppy-disk"></i> Salvar Cargo</button>
                         </form>
                     </div>
                 </div>
