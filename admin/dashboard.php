@@ -17,11 +17,11 @@
     if($usuario_tipo === 'admin'){
         $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
 
-        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT IN ('slash', 'padrao', 'hybrid')");
     }else{
         $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = :usuario_id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
 
-        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id");
+        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id AND categoria NOT IN ('slash', 'padrao', 'hybrid')");
         $stmtTotal->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
     }
@@ -36,12 +36,24 @@
     $totalPaginas = ceil($total / $limite);
     $total_commands = $total;
     
+    // ================ TOTAL DE COMANDOS POR CATEGORIA ================
+    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'padrao'");
+    $stmtPadrao->execute();
+    $commands_padrao = $stmtPadrao->fetchColumn();
+
+    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'slash'");
+    $stmtSlash->execute();
+    $slash_commands_padrao = $stmtSlash->fetchColumn();
+
+    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'hybrid'");
+    $stmtHybrid->execute();
+    $hybrid_commands_padrao = $stmtHybrid->fetchColumn();
+
     // ================ PREFIXO_PERSONALIZADO ================
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
     $prefixo_atual = $stmt->fetchColumn();
 
     // ================ WELCOME ================
-
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);
     $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
@@ -53,62 +65,6 @@
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
 
-    /* require_once '../config/auth.php';
-    require_once '../config/conexao.php';
-
-    $conexao =(new Conexao())->conectar();
-
-    // ================ CONTEUDO (COMANDOS) ================
-    $limite = 3;
-    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $pagina = $pagina < 1 ? 1 : $pagina;
-    $offset = ($pagina - 1) * $limite;
-
-    $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
-    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->execute();
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
-    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-    $totalPaginas = ceil($total / $limite);
-    $total_commands = $total;
-    
-    // ================ PREFIXO_PERSONALIZADO ================
-    $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");
-    $prefixo_atual = $stmt->fetchColumn();
-
-    // ================ CONTEUDOS GERAIS (COMANDOS E MENSAGEM DE BEM VINDO) ================
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_tipo = $_SESSION['usuario_tipo'];
-
-    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
-    $stmt->bindParam(':id', $usuario_id);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if($usuario_tipo === 'admin'){
-        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
-    }else{
-        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario_id]);
-    }
-    $conteudos = $stmt->fetchAll();
-
-    $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
-    $stmtWelcome->execute([$usuario_id]);
-    $welcome = $stmtWelcome->fetch(PDO::FETCH_ASSOC);
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cargo_auto'])){
-        $_SESSION['cargo_auto'] = $_POST['cargo_auto'];
-    }
-    $mensagemOriginal = $welcome['mensagem'] ?? '';
-    $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
-    $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal); */
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

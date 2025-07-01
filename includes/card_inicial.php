@@ -30,7 +30,7 @@
                 <div class="activity-item">
                     <div class="activity-content">
                         <?php if ($total_commands > 0): ?>
-                            <p><strong>Comandos Personalizados:</strong> <span id="total-commands"><?= $total_commands ?></span></p>
+                            <p><strong>Comandos Personalizados:</strong> <span><?= $total_commands ?></span></p>
                         <?php else: ?>
                             <p>Nenhum comando cadastrado.</p>
                         <?php endif; ?>
@@ -38,17 +38,20 @@
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <p><strong>Comandos Padrão:</strong> <span id="total-commands">8</span></p>
+                        <!-- 8 -->
+                        <p><strong>Comandos Padrão:</strong> <span><?= $commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <p><strong>Slash Comando Padrão:</strong> <span id="total-commands">4</span></p>
+                        <!-- 4 -->
+                        <p><strong>Slash Comando Padrão:</strong> <span><?= $slash_commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <p><strong>Hybrid Comando Padrão:</strong> <span id="total-commands">1</span></p>
+                        <!-- 1 -->
+                        <p><strong>Hybrid Comando Padrão:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
                     </div>
                 </div>
             </div>

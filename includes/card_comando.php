@@ -22,15 +22,6 @@
                         </form>
                         <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>   
                         <div id="lista-comandos"></div>
-                        <!-- <?php if ($conteudos): ?>
-                            <?php foreach ($conteudos as $cmd): ?>
-                                <p><strong>Comando:</strong> <span id="total-commands"><?= htmlspecialchars($cmd['comando']) ?></span></p>
-                                <?php endforeach; ?>
-                                    <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover"><i class="fa-solid fa-plus"></i> Novo Comando</button>
-                        <?php else: ?>
-                            <p>Crie um comando personalizado Aqui.</p>
-                            <button onclick="window.location.href='../create.php'" type="button" class="btn btnhover"><i class="fa-solid fa-plus"></i> Novo Comando</button>
-                        <?php endif; ?> -->
                     </div>
                 </div>
             </div>

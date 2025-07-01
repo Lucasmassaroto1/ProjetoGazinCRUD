@@ -16,10 +16,23 @@
     $stmt->execute();
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT IN ('slash', 'padrao', 'hybrid')");
     $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
     $totalPaginas = ceil($total / $limite);
     $total_commands = $total;
+
+    // ================ TOTAL DE COMANDOS POR CATEGORIA ================
+    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'padrao'");
+    $stmtPadrao->execute();
+    $commands_padrao = $stmtPadrao->fetchColumn();
+
+    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'slash'");
+    $stmtSlash->execute();
+    $slash_commands_padrao = $stmtSlash->fetchColumn();
+
+    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'hybrid'");
+    $stmtHybrid->execute();
+    $hybrid_commands_padrao = $stmtHybrid->fetchColumn();
 
     // ================ PREFIXO_PERSONALIZADO ================
     $stmt = $conexao->query("SELECT prefixo_customizado FROM prefixos ORDER BY id DESC LIMIT 1");

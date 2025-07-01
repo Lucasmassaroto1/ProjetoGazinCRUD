@@ -34,8 +34,7 @@
     $stmtTotal->execute();
     $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
     $totalPaginas = ceil($total / $limite);
-    $total_commands = $total;
-
+    $total_commands = $total;  
     // ================ HTML ================
     ob_start();
     if(empty($dados)){
