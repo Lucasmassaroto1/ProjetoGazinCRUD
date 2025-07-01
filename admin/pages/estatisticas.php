@@ -7,10 +7,45 @@
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 
-    // ================ CONTEUDO (COMANDOS) ================
-    $stmt = $conexao->query("SELECT * FROM conteudo ORDER BY data_criacao DESC");
+    // ================ PAGINAÇÃO ================
+    $limite = 3;
+
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $pagina = $pagina < 1 ? 1 : $pagina;
+
+    $offset = ($pagina - 1) * $limite;
+
+    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC LIMIT ? OFFSET ?");
+
+    $stmtmusic->bindValue(1, $usuario_id, PDO::PARAM_INT);
+    $stmtmusic->bindValue(2, $limite, PDO::PARAM_INT);
+    $stmtmusic->bindValue(3, $offset, PDO::PARAM_INT);
+    $stmtmusic->execute();
+    $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM musica WHERE usuario_id = ?");
+    $stmtTotal->execute([$usuario_id]);
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+
+    $totalPaginas = ceil($total / $limite);
+
+    // ================ COMANDOS ================
+    if($usuario_tipo === 'admin'){
+        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor  conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC");
+        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
+    }else{
+        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = :usuario_id ORDER BY c.data_criacao DESC");
+        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id");
+        $stmtTotal->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
+    }
+
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $total_commands = count($dados);
+
+    $stmtTotal->execute();
+    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
+    $total_commands = $total;
+
 
     // ================ PREFIXO_PERSONALIZADO ================
     $usuario_id = $_SESSION['usuario_id'];
@@ -44,28 +79,6 @@
     $mensagemOriginal = $welcome['mensagem'] ?? '';
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
-
-    $limite = 3;
-
-    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $pagina = $pagina < 1 ? 1 : $pagina;
-
-    $offset = ($pagina - 1) * $limite;
-
-    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC LIMIT ? OFFSET ?");
-
-    $stmtmusic->bindValue(1, $usuario_id, PDO::PARAM_INT);
-    $stmtmusic->bindValue(2, $limite, PDO::PARAM_INT);
-    $stmtmusic->bindValue(3, $offset, PDO::PARAM_INT);
-    $stmtmusic->execute();
-    $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM musica WHERE usuario_id = ?");
-    $stmtTotal->execute([$usuario_id]);
-    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-
-    $totalPaginas = ceil($total / $limite);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
