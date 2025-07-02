@@ -112,15 +112,20 @@
         <h2> Detalhes Comandos Personalizados</h2>
     </div>
     <div class="card-body">
+        <?php 
+            require_once '../config/conexao.php';
+            $conexao = (new Conexao())->conectar();
+            $stmtCategorias = $conexao->query("SELECT DISTINCT categoria FROM conteudo ORDER BY categoria ASC");
+            $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+        ?>
         <div class="filter-container" style="margin-bottom: 1rem;">
             <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
             <select id="filtro-categoria" onchange="filtrarPorCategoria()">
                 <option value="">Todos</option>
-                <?php 
-                    // Gera as categorias únicas
-                    $categoriasUnicas = array_unique(array_column($dados, 'categoria'));
-                    foreach ($categoriasUnicas as $categoria):?>
-                        <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>"><?= htmlspecialchars($categoria) ?></option>
+                <?php foreach ($categoriasUnicas as $categoria): ?>
+                    <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>">
+                        <?= htmlspecialchars($categoria) ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
         </div>

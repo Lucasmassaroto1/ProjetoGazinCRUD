@@ -12,39 +12,6 @@
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // ================ PAGINAÇÃO ================
-    $limite = 3;
-    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $pagina = $pagina < 1 ? 1 : $pagina;
-    $offset = ($pagina - 1) * $limite;
-    
-    if($usuario_tipo === 'admin'){
-        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo");
-        $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-    }else{
-        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = ?");
-        $stmtTotal->execute([$usuario_id]);
-        $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-    }
-
-    $totalPaginas = ceil($total / $limite);
-    $total_commands = $total;
-
-    if($usuario_tipo === 'admin'){
-        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
-        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-    }else{
-        $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = :usuario_id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
-        $stmt->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
-        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-    }
-    
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     // ================ PREFIXO_PERSONALIZADO ================
     $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
@@ -54,17 +21,6 @@
     // ================ CONTEUDO CONTINUAÇÃO (COMANDOS 2) ================
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
-
-    if($usuario_tipo === 'admin'){
-        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
-    }else{
-        $sql = "SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = ? ORDER BY c.data_criacao DESC";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario_id]);
-    }
-    $conteudos = $stmt->fetchAll();
 
     // ================ MENSAGEM DE BEM VINDO ================
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");

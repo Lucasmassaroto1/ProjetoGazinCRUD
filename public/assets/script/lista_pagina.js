@@ -16,9 +16,20 @@ if(pathnamePagina.includes('/public/')){ // INDEX
     LISTAR_COMANDOS_ARQUIVO = ['listar_comandos_usuario.php'];
 }
 
-function carregarPagina(pagina = 1){
+let categoriaAtual = '';
+
+function carregarPagina(pagina = 1, categoria = null){
+    if(categoria !== null){
+        categoriaAtual = categoria;
+    }
+
     LISTAR_COMANDOS_ARQUIVO.forEach(arquivo =>{
-        fetch(BASEPAGINA_URL + 'component/' + arquivo + '?pagina=' + pagina)
+        let url = BASEPAGINA_URL + 'component/' + arquivo + '?pagina=' + pagina;
+        if(categoriaAtual !== ''){
+            url += '&categoria=' + encodeURIComponent(categoriaAtual);
+        }
+
+        fetch(url)
             .then(response => response.text())
             .then(html =>{
                 if(arquivo === 'listar_comandos_detalhes.php'){
@@ -32,8 +43,11 @@ function carregarPagina(pagina = 1){
             });
     });
 }
+function filtrarPorCategoria(){
+    const categoriaSelecionada = document.getElementById('filtro-categoria').value;
+    carregarPagina(1, categoriaSelecionada); // reinicia para página 1
+}
 
-// Carrega a primeira página ao abrir
 document.addEventListener('DOMContentLoaded', function (){
     carregarPagina();
 });
