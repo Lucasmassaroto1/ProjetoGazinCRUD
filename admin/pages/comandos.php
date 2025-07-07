@@ -18,10 +18,6 @@
     $stmt->execute([$usuario_id]);
     $prefixo_atual = $stmt->fetchColumn();
 
-    // ================ CONTEUDO CONTINUAÇÃO (COMANDOS 2) ================
-    $usuario_id = $_SESSION['usuario_id'];
-    $usuario_tipo = $_SESSION['usuario_tipo'];
-
     // ================ MENSAGEM DE BEM VINDO ================
     $stmtWelcome = $conexao->prepare("SELECT * FROM welcome WHERE usuario_id = ? ORDER BY id DESC LIMIT 1");
     $stmtWelcome->execute([$usuario_id]);

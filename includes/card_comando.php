@@ -88,18 +88,32 @@
         <?php 
             require_once '../../config/conexao.php';
             $conexao = (new Conexao())->conectar();
+            $usuario_id = $_SESSION['usuario_id'];
+            $usuario_tipo = $_SESSION['usuario_tipo'];
 
-            $stmtCategorias = $conexao->query("SELECT DISTINCT categoria FROM conteudo ORDER BY categoria ASC");
-            $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+            if($usuario_tipo === 'admin'){
+                $stmtCategorias = $conexao->query("SELECT DISTINCT TRIM(SUBSTRING_INDEX(categoria, '-',-1)) AS sufixo FROM conteudo ORDER BY sufixo ASC");
+            }else{
+                $stmtCategorias = $conexao->prepare("SELECT DISTINCT TRIM(SUBSTRING_INDEX(categoria, '-',-1)) AS sufixo FROM conteudo WHERE criado_por = :usuario_id ORDER BY sufixo ASC");
+                $stmtCategorias->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
+                $stmtCategorias->execute();
+            }
+            // $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+
+            $categoriasRaw = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+            $categoriasMap = [];
+            foreach ($categoriasRaw as $cat) {
+                $normalizado = strtolower(trim($cat));
+                $categoriasMap[$normalizado] = $cat; // preserva a versão original para exibir
+            }
+            $categoriasUnicas = array_values($categoriasMap);
         ?>
         <div class="filter-container" style="margin-bottom: 1rem;">
             <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
             <select id="filtro-categoria" onchange="filtrarPorCategoria()">
                 <option value="">Todos</option>
-                <?php foreach ($categoriasUnicas as $categoria): ?>
-                    <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>">
-                        <?= htmlspecialchars($categoria) ?>
-                    </option>
+                <?php foreach ($categoriasUnicas as $sufixo): ?>
+                    <option value="<?= strtolower(trim($sufixo)) ?>"><?= htmlspecialchars(trim($sufixo)) ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

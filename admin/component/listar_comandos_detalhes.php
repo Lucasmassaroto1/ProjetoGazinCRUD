@@ -25,9 +25,13 @@
         $params[':usuario_id'] = $usuario_id;
     }
     if(!empty($categoriaFiltro)){
-        $condicoes[] = "LOWER(REPLACE(c.categoria, ' ', '')) = :categoria";
+        $condicoes[] = "LOWER(TRIM(SUBSTRING_INDEX(c.categoria, '-', -1))) = :categoria";
         $params[':categoria'] = strtolower($categoriaFiltro);
     }
+    /* if(!empty($categoriaFiltro)){
+        $condicoes[] = "LOWER(REPLACE(c.categoria, ' ', '')) = :categoria";
+        $params[':categoria'] = strtolower($categoriaFiltro);
+    } */
     if(!empty($condicoes)){
         $queryBase .= " WHERE " . implode(" AND ", $condicoes);
     }
@@ -64,12 +68,16 @@
         echo "<p style='color: yellow;'>Nenhum comando encontrado.</p>";
     }
     foreach ($dados as $cmd): ?>
-        <div class="activity-item" data-categoria="<?= strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) ?>">
+        <?php
+            $partes = explode('-', $cmd['categoria'], 2);
+            $sufixoData = isset($partes[1]) ? strtolower(trim($partes[1])) : strtolower(trim($cmd['categoria']));
+        ?>
+        <div class="activity-item" data-categoria="<?= $sufixoData ?>">
             <div class="activity-content">
                 <div id="exibicao-<?= $cmd['id'] ?>">
                     <p><strong>Comando:</strong> <span><?= htmlspecialchars($cmd['comando']) ?></span></p>
                     <p><strong>Descrição:</strong> <span><?= nl2br(htmlspecialchars($cmd['descricao'])) ?></span></p>
-                    <p><strong>Categoria:</strong> <span><?= htmlspecialchars($cmd['categoria']) ?></span></p>
+                    <p><strong>Categoria:</strong> <span><?= htmlspecialchars($sufixoData) ?></span></p>
                     <p><strong>Exemplo:</strong> <span><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                     <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
                     <p class="atalho">

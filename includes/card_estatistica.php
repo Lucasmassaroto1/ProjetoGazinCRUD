@@ -52,13 +52,13 @@
                 <div class="activity-item">
                     <div class="activity-content">
                         <!-- 4 -->
-                        <p><strong>Slash Comando Padrão:</strong> <span><?= $slash_commands_padrao?></span></p>
+                        <p><strong>Slash Commands:</strong> <span><?= $slash_commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
                         <!-- 1 -->
-                        <p><strong>Hybrid Comando Padrão:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
+                        <p><strong>Hybrid Commands:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
                     </div>
                 </div>
             </div>

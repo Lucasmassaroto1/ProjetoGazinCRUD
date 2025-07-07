@@ -23,9 +23,13 @@
         $params[':usuario_id'] = $usuario_id;
     }
     if(!empty($categoriaFiltro)){
-        $condicoes[] = "LOWER(REPLACE(c.categoria, ' ', '')) = :categoria";
+        $condicoes[] = "LOWER(TRIM(SUBSTRING_INDEX(c.categoria, '-', -1))) = :categoria";
         $params[':categoria'] = strtolower($categoriaFiltro);
     }
+    /* if(!empty($categoriaFiltro)){
+        $condicoes[] = "LOWER(REPLACE(c.categoria, ' ', '')) = :categoria";
+        $params[':categoria'] = strtolower($categoriaFiltro);
+    } */
     if(!empty($condicoes)){
         $queryBase .= " WHERE " . implode(" AND ", $condicoes);
     }
@@ -58,7 +62,7 @@
 
     // ================= HTML =================
     ob_start();
-    if (empty($dados)) {
+    if(empty($dados)){
         echo "<p style='color: yellow;'>Nenhum comando encontrado.</p>";
     }
 

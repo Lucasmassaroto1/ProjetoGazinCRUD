@@ -45,13 +45,13 @@
                 <div class="activity-item">
                     <div class="activity-content">
                         <!-- 4 -->
-                        <p><strong>Slash Comando Padrão:</strong> <span><?= $slash_commands_padrao?></span></p>
+                        <p><strong>Slash Commands:</strong> <span><?= $slash_commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
                         <!-- 1 -->
-                        <p><strong>Hybrid Comando Padrão:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
+                        <p><strong>Hybrid Commands:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
                     </div>
                 </div>
             </div>
@@ -115,17 +115,31 @@
         <?php 
             require_once '../config/conexao.php';
             $conexao = (new Conexao())->conectar();
-            $stmtCategorias = $conexao->query("SELECT DISTINCT categoria FROM conteudo ORDER BY categoria ASC");
-            $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+            $stmtCategorias = $conexao->query("SELECT DISTINCT TRIM(SUBSTRING_INDEX(categoria, '-',-1)) AS sufixo FROM conteudo ORDER BY sufixo ASC");
+            
+            // $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+            $categoriasRaw = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
+            $categoriasMap = [];
+            foreach ($categoriasRaw as $cat) {
+                $normalizado = strtolower(trim($cat));
+                $categoriasMap[$normalizado] = $cat; // preserva a versão original para exibir
+            }
+            $categoriasUnicas = array_values($categoriasMap);
         ?>
         <div class="filter-container" style="margin-bottom: 1rem;">
             <label for="filtro-categoria"><strong>Filtrar por categoria:</strong></label>
             <select id="filtro-categoria" onchange="filtrarPorCategoria()">
                 <option value="">Todos</option>
-                <?php foreach ($categoriasUnicas as $categoria): ?>
-                    <option value="<?= strtolower(preg_replace('/\s+/', '', $categoria)) ?>">
-                        <?= htmlspecialchars($categoria) ?>
-                    </option>
+                <!-- <?php foreach ($categoriasUnicas as $categoria): ?>
+                    <?php
+                        $partes = explode('-', $categoria, 2);
+                        $prefixo = strtolower(trim($partes[0])); // usado no value
+                        $sufixo = isset($partes[1]) ? trim($partes[1]) : trim($categoria); // exibição
+                    ?>
+                    <option value="<?= strtolower($sufixo) ?>"><?= htmlspecialchars($sufixo) ?></option>
+                <?php endforeach; ?> -->
+                <?php foreach ($categoriasUnicas as $sufixo): ?>
+                    <option value="<?= strtolower(trim($sufixo)) ?>"><?= htmlspecialchars(trim($sufixo)) ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

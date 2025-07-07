@@ -16,21 +16,21 @@
     $stmt->execute();
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT IN ('slash', 'padrao', 'hybrid')");
+    $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT LIKE 'padrao%' AND categoria NOT LIKE 'slash%' AND categoria NOT LIKE 'hybrid%'");
     $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
     $totalPaginas = ceil($total / $limite);
     $total_commands = $total;
 
     // ================ TOTAL DE COMANDOS POR CATEGORIA ================
-    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'padrao'");
+    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'padrao%'");
     $stmtPadrao->execute();
     $commands_padrao = $stmtPadrao->fetchColumn();
 
-    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'slash'");
+    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'slash%'");
     $stmtSlash->execute();
     $slash_commands_padrao = $stmtSlash->fetchColumn();
 
-    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'hybrid'");
+    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'hybrid%'");
     $stmtHybrid->execute();
     $hybrid_commands_padrao = $stmtHybrid->fetchColumn();
 

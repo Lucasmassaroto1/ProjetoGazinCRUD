@@ -1,18 +1,3 @@
-/* function filtrarPorCategoria(){
-    const filtro = document.getElementById('filtro-categoria').value;
-
-    const container = document.getElementById('listar-comandos-detalhes');
-    const itens = container.querySelectorAll('.activity-item');
-
-    itens.forEach(item =>{
-        const categoria = item.getAttribute('data-categoria');
-        if(!filtro || categoria === filtro){
-            item.style.display = 'block';
-        }else{
-            item.style.display = 'none';
-        }
-    });
-} */
 function filtrarPorCategoria(){
     const filtro = document.getElementById('filtro-categoria').value;
     //Filtro com botões

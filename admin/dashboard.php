@@ -17,11 +17,11 @@
     if($usuario_tipo === 'admin'){
         $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
 
-        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT IN ('slash', 'padrao', 'hybrid')");
+        $stmtTotal = $conexao->query("SELECT COUNT(*) AS total FROM conteudo WHERE categoria NOT LIKE 'padrao%' AND categoria NOT LIKE 'slash%' AND categoria NOT LIKE 'hybrid%'");
     }else{
         $stmt = $conexao->prepare("SELECT c.*, u.usuario AS autor FROM conteudo c JOIN usuarios u ON c.criado_por = u.id WHERE c.criado_por = :usuario_id ORDER BY c.data_criacao DESC LIMIT :limite OFFSET :offset");
 
-        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id AND categoria NOT IN ('slash', 'padrao', 'hybrid')");
+        $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM conteudo WHERE criado_por = :usuario_id AND categoria NOT LIKE 'padrao%' AND categoria NOT LIKE 'slash%' AND categoria NOT LIKE 'hybrid%'");
         $stmtTotal->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
         $stmt->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
     }
@@ -37,15 +37,15 @@
     $total_commands = $total;
     
     // ================ TOTAL DE COMANDOS POR CATEGORIA ================
-    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'padrao'");
+    $stmtPadrao = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'padrao%'");
     $stmtPadrao->execute();
     $commands_padrao = $stmtPadrao->fetchColumn();
 
-    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'slash'");
+    $stmtSlash = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'slash%'");
     $stmtSlash->execute();
     $slash_commands_padrao = $stmtSlash->fetchColumn();
 
-    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria = 'hybrid'");
+    $stmtHybrid = $conexao->prepare("SELECT COUNT(*) FROM conteudo WHERE categoria LIKE 'hybrid%'");
     $stmtHybrid->execute();
     $hybrid_commands_padrao = $stmtHybrid->fetchColumn();
 
@@ -64,7 +64,6 @@
     $mensagemOriginal = $welcome['mensagem'] ?? '';
     $cargo_auto = $_SESSION['cargo_auto'] ?? '@Membro'; // padrão
     $mensagemComCargo = str_replace('{user.mention}', '<span class="cargo">' . htmlspecialchars($cargo_auto) . '</span>', $mensagemOriginal);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
