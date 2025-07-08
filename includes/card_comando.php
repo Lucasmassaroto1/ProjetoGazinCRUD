@@ -120,8 +120,9 @@
         <div class="activity-list" id="listar-comandos-detalhes"></div>
     </div>
 </div>
-<script src="<?=$base_url?>public/assets/script/filtro.js"></script>
-<script src="<?=$base_url?>public/assets/script/lista_pagina.js"></script>
+<script src="<?=$base_url?>public/assets/script/main.js"></script>
+<!-- <script src="<?=$base_url?>public/assets/script/filtro.js"></script>
+<script src="<?=$base_url?>public/assets/script/lista_pagina.js"></script> -->
 <script>
     function mostrarFormulario(id){
         document.getElementById('exibicao-' + id).style.display = 'none';
