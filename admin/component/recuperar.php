@@ -39,7 +39,7 @@
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'lucasmassaroto17@gmail.com';   // Seu e-mail
+                $mail->Username   = 'lucasmassaroto17@gmail.com';   // bytecode.massaroto@gmail.com
                 $mail->Password   = '';          // Senha de app do Gmail (https://myaccount.google.com/apppasswords?rapt=AEjHL4OA7WatJy9vrmx3aICkZJGSYbCK3UnPa6oCJI8Lm0jQNgRuK6Rqa59jO5cH9tbFPsKORrOerNwVSQV3QUFKHUAbG9shN1rIG_l7TdAf8AqIlU6R_pE)
                 $mail->SMTPSecure = 'tls';
                 $mail->Port       = 587;
@@ -53,7 +53,35 @@
                 // Conteúdo do e-mail
                 $mail->isHTML(true);
                 $mail->Subject = 'Recuperação de Senha - ByteCRUD';
-                $mail->Body    = "Olá {$user['usuario']}.<br><br> Recebemos uma solicitação para redefinir sua senha.<br><br> Clique no link abaixo para criar uma nova senha: <a href='$link'>$link</a><br><br> Se não foi você que solicitou, apenas ignore este e-mail.<br><br> Atenciosamente, <br> Equipe ByteCode.";
+                $mail->Body = "
+                <div style='font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; padding: 30px; border-radius: 8px; max-width: 600px; margin: auto; border: 1px solid #ddd;'>
+                    <h2 style='color: #4CAF50;'>Olá {$user['usuario']},</h2>
+
+                    <p style='font-size: 16px; line-height: 1.6;'>
+                        Recebemos uma solicitação para redefinir sua senha.
+                    </p>
+
+                    <p style='font-size: 16px; line-height: 1.6;'>
+                        Clique no botão abaixo para criar uma nova senha:
+                    </p>
+
+                    <p style='text-align: center; margin: 30px 0;'>
+                        <a href='$link' style='background-color: #4CAF50; color: white; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;'>
+                            Redefinir Senha
+                        </a>
+                    </p>
+
+                    <hr style='border: none; border-top: 1px solid #ddd; margin: 40px 0;'>
+
+                    <p style='font-size: 14px; color: #999;'>
+                        Se você não solicitou a alteração de senha, pode ignorar este e-mail.
+                    </p>
+
+                    <p style='font-size: 14px; color: #999;'>
+                        Atenciosamente,<br>
+                        <strong>Equipe ByteCode</strong>
+                    </p>
+                </div>";
 
                 $mail->send();
                 $mensagem = "<p style='color:green'>Um link de recuperação foi enviado para seu e-mail!</p>";

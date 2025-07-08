@@ -58,6 +58,9 @@
                     </div>
                     <div class="card-body">
                         <?= $mensagem ?? '' ?>
+                        <?php if(isset($user)): ?>
+                            <p style="font-weight:bold; font-size: 1.3rem;"><?= htmlspecialchars($user['usuario']) ?></p>
+                        <?php endif; ?>
                         <form method="post">
                             <input type="password" name="nova_senha" placeholder="Senha nova" required><br><br>
                             <input type="password" name="confirma_senha" placeholder="Confirmar senha" required><br><br>
