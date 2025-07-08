@@ -59,7 +59,6 @@
     $hybrid_commands_padrao = $stmtHybrid->fetchColumn();
 
     // ================ PREFIXO_PERSONALIZADO ================
-    $usuario_id = $_SESSION['usuario_id'];
     $stmt = $conexao->prepare("SELECT prefixo_customizado FROM prefixos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
     $prefixo_atual = $stmt->fetchColumn();
