@@ -148,7 +148,7 @@
         </div>
     </div>
 </div>
-<script src="<?=$base_url?>public/assets/script/main.js"></script>
+<script src="<?=$base_url?>public/assets/script/tempo.js"></script>
 <script>
     function mostrarFormularioAdicionar(){
         document.getElementById('formAdicionar').style.display = 'block';      
