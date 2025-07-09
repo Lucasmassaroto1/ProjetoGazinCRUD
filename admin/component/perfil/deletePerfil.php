@@ -1,6 +1,6 @@
 <?php 
-    require_once '../../config/auth.php';
-    require_once '../../config/conexao.php';
+    require_once '../../../config/auth.php';
+    require_once '../../../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
     $usuario_id = $_SESSION['usuario_id'];
@@ -20,7 +20,7 @@
         session_destroy();
 
         //Manda para login
-        header('Location: ../login.php');
+        header('Location: ../../login.php');
         exit;
     }catch(PDOException $e){
         echo 'Erro ao deletar conta'. $e->getMessage();

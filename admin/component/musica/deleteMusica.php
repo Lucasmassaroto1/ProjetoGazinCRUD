@@ -1,6 +1,6 @@
 <?php 
-    require_once '../../config/auth.php';
-    require_once '../../config/conexao.php';
+    require_once '../../../config/auth.php';
+    require_once '../../../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
 
@@ -16,6 +16,6 @@
             $stmt->execute([$id]);
         }
     }
-    header('Location: ../pages/estatisticas.php');
+    header('Location: ../../pages/estatisticas.php');
     exit;
 ?>

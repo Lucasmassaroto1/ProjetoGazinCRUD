@@ -100,7 +100,7 @@
     </div>
     <div class="card-body">
         <div class="activity-list">
-            <form id="formAdicionar" action="../component/adicionarfila.php" method="post" style="display: none;">
+            <form id="formAdicionar" action="../component/musica/adicionarFila.php" method="post" style="display: none;">
                 <input type="text" name="titulo" class="inputwelcome" placeholder="Título" required><br>
                 <input type="text" name="autor" class="inputwelcome" placeholder="Autor" required><br>
                 <button type="submit" class="btn btnhover">Adicionar</button>
@@ -117,7 +117,7 @@
                         <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
                         <p><strong>Status:</strong> <span id="commands-today"><?= htmlspecialchars($mus['nome_status']) ?></span></p>
                         <p class="atalho">
-                            <a href="../component/delete_musica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                            <a href="../component/musica/deleteMusica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
                         </p>
                     </div>
                 </div>

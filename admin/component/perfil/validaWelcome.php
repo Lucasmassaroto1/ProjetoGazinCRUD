@@ -1,6 +1,6 @@
 <?php
-require_once '../../config/auth.php';
-require_once '../../config/conexao.php';
+require_once '../../../config/auth.php';
+require_once '../../../config/conexao.php';
 
 $conexao = (new Conexao())->conectar();
 session_start();
@@ -35,7 +35,7 @@ try{
         $stmt->execute([$usuario_id, $titulo, $mensagem, $imagem, $footer]);
     }
 
-    header('Location: ../pages/comandos.php?mensagemEnviada=1');
+    header('Location: ../../pages/comandos.php?mensagemEnviada=1');
     exit;
 
 }catch(PDOException $e){

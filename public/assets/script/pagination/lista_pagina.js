@@ -1,19 +1,19 @@
 let BASEPAGINA_URL = './';
-let LISTAR_COMANDOS_ARQUIVO = ['listar_comandos_usuario.php']; // padrão (dashboard)
+let LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php']; // padrão (dashboard)
 
 const pathnamePagina = window.location.pathname;
 
 if(pathnamePagina.includes('/public/')){ // INDEX
     BASEPAGINA_URL = '../admin/';
-    LISTAR_COMANDOS_ARQUIVO = ['listar_comandos_publico.php'];
+    LISTAR_COMANDOS_ARQUIVO = ['listarPublico.php'];
 
 }else if(pathnamePagina.includes('/admin/pages/comandos.php')){ // COMANDOS
     BASEPAGINA_URL = '../';
-    LISTAR_COMANDOS_ARQUIVO = ['listar_comandos.php', 'listar_comandos_detalhes.php'];
+    LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
 
 }else if(pathnamePagina.includes('/admin/pages/')){ // DASHBOARD
     BASEPAGINA_URL = '../';
-    LISTAR_COMANDOS_ARQUIVO = ['listar_comandos_usuario.php'];
+    LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
 }
 
 let categoriaAtual = '';
@@ -24,7 +24,7 @@ function carregarPagina(pagina = 1, categoria = null){
     }
 
     LISTAR_COMANDOS_ARQUIVO.forEach(arquivo =>{
-        let url = BASEPAGINA_URL + 'component/' + arquivo + '?pagina=' + pagina;
+        let url = BASEPAGINA_URL + 'component/comandos/' + arquivo + '?pagina=' + pagina;
         if(categoriaAtual !== ''){
             url += '&categoria=' + encodeURIComponent(categoriaAtual);
         }
@@ -32,7 +32,7 @@ function carregarPagina(pagina = 1, categoria = null){
         fetch(url)
             .then(response => response.text())
             .then(html =>{
-                if(arquivo === 'listar_comandos_detalhes.php'){
+                if(arquivo === 'listarDetalhes.php'){
                     document.getElementById('listar-comandos-detalhes').innerHTML = html;
                 }else{
                     document.getElementById('lista-comandos').innerHTML = html;

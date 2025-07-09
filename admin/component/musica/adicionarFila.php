@@ -1,6 +1,6 @@
 <?php
-    require_once '../../config/auth.php';
-    require_once '../../config/conexao.php';
+    require_once '../../../config/auth.php';
+    require_once '../../../config/conexao.php';
 
     $conexao =(new Conexao())->conectar();
 
@@ -27,7 +27,7 @@
         $stmtInserir = $conexao->prepare($sqlInserir);
         $stmtInserir->execute([$titulo, $autor, $criado_por, $statusNovaMusica]);
 
-        header('Location: ../pages/estatisticas.php');
+        header('Location: ../../pages/estatisticas.php');
     exit;
 }
 ?>

@@ -1,6 +1,6 @@
 <?php 
-    require_once '../../config/conexao.php';
-    require_once '../../config/auth.php';
+    require_once '../../../config/conexao.php';
+    require_once '../../../config/auth.php';
 
     $conexao = (new Conexao())->conectar();
 
@@ -81,11 +81,11 @@
                     <p><strong>Exemplo:</strong> <span><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                     <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
                     <p class="atalho">
-                        <a href=".../component/edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                        <a href="../component/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                        <a href=".../component/usuario/edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
+                        <a href="../component/usuario/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
                     </p>
                 </div>
-                <form id="form-<?= $cmd['id'] ?>" action="../component/edit.php" method="post" style="display: none;">
+                <form id="form-<?= $cmd['id'] ?>" action="../component/usuario/edit.php" method="post" style="display: none;">
                     <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
                     <input type="text" name="comando" class="inputwelcome" placeholder="Comando" value="<?= htmlspecialchars($cmd['comando']) ?>"><br><br>
                     <input type="text" name="descricao" class="inputwelcome" placeholder="Descrição" value="<?= htmlspecialchars($cmd['descricao']) ?>"><br><br>

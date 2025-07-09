@@ -1,5 +1,5 @@
 <?php 
-    require_once '../../config/conexao.php';
+    require_once '../../../config/conexao.php';
     session_start();
 
     $usuario_id = $_SESSION['usuario_id'];
@@ -25,6 +25,6 @@
         $stmt->execute([$usuario_id, $prefixo]);
     }
 
-    header('Location: ../pages/comandos.php');
+    header('Location: ../../pages/comandos.php');
     exit;
 ?>

@@ -1,6 +1,6 @@
 let volumeAtual = 50;
 
-fetch('../component/get_volume.php')
+fetch('../component/musica/getVolume.php')
     .then(res => res.json())
     .then(data =>{
         if(typeof data.volume === 'number'){
@@ -58,7 +58,7 @@ function mostravolume(){
 // =========== AO CLICAR EM PLAY MUDA PARA PAUSE ===========
 
 function volta(){
-    fetch('../component/voltarmusica.php')
+    fetch('../component/musica/voltarMusica.php')
         .then(response => response.json())
         .then(data =>{
             if(data.success){
@@ -81,7 +81,7 @@ function tocar(){
 }
 
 function passa(){
-    fetch('../component/passamusica.php')
+    fetch('../component/musica/passarMusica.php')
     .then(response => response.json())
     .then(data =>{
         if(data.success){

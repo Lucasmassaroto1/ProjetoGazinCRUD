@@ -1,5 +1,5 @@
 <?php
-    require_once '../../config/conexao.php';
+    require_once '../../../config/conexao.php';
     session_start();
     $conexao = (new Conexao())->conectar();
 
@@ -25,7 +25,7 @@
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if(!empty($user['foto_perfil'])){
-            $caminho_foto = "../../public/uploads/".$user['foto_perfil'];
+            $caminho_foto = "../../../public/uploads/".$user['foto_perfil'];
 
             // Remove o arquivo do servidor
             if(file_exists($caminho_foto)){
@@ -37,7 +37,7 @@
             $stmt->bindParam(':id', $usuario_id);
             $stmt->execute();
         }
-        header('Location: ../pages/perfil.php');
+        header('Location: ../../pages/perfil.php');
         exit;
     }
     
@@ -52,7 +52,7 @@
 
         // Gera nome e salva imagem
         $nome_arquivo = uniqid() . '.png';
-        $caminho = "../../public/uploads/" . $nome_arquivo;
+        $caminho = "../../../public/uploads/" . $nome_arquivo;
         file_put_contents($caminho, $data);
 
         // Atualiza no banco
@@ -66,6 +66,6 @@
     $_SESSION['usuario_nome'] = $nome;
 
     // Redireciona
-    header("Location: ../pages/perfil.php");
+    header("Location: ../../pages/perfil.php");
     exit;
 ?>

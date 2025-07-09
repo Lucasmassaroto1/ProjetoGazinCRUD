@@ -12,7 +12,7 @@
                 <div class="activity-list" style="flex-direction: row;">
                     <div class="activity-item">
                         <div class="activity-content">
-                            <form method="post" enctype="multipart/form-data" action="../component/fotoperfil.php">
+                            <form method="post" enctype="multipart/form-data" action="../component/perfil/fotoPerfil.php">
                                 <label>Nome:</label>
                                 <input type="text" name="nome" class="inputwelcome" value="<?= htmlspecialchars($_SESSION['usuario_nome']) ?>"><br><br>
                                 <label>Email:</label>
@@ -41,11 +41,11 @@
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-content">
-                                        <form method="post" enctype="multipart/form-data" action="../component/fotoperfil.php">
+                                        <form method="post" enctype="multipart/form-data" action="../component/perfil/fotoPerfil.php">
                                             <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
                                             <button onclick="window.location.href='../trocasenha.php'" type="button" class="btn btnhover"><i class="fas fa-key"></i> Alterar Senha</button>
                                             <button type="submit" name="remover_foto" value="1" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remover Foto</button>
-                                            <button onclick="if(confirm('Tem certeza que deseja excluir seu perfil? Essa ação não pode ser desfeita.')){window.location.href='../component/delete_perfil.php';}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Deletar Usuário</button>
+                                            <button onclick="if(confirm('Tem certeza que deseja excluir seu perfil? Essa ação não pode ser desfeita.')){window.location.href='../component/perfil/deletePerfil.php';}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Deletar Usuário</button>
                                         </form>
                                     </div>
                                 </div>
