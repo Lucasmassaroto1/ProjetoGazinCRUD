@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/header.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/layout/header.css">
 <header class="welcome">
     <h1>Dashboard do ByteCode</h1>
     <p>Configure o ByteCode de forma simples e rápida.</p>

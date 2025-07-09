@@ -5,8 +5,10 @@
     --background-color: #000000;
     --text-color: #ffffff;
     --card-background: #3d3d3d;
-    --color-scrollbar: rgba(161, 161, 161, 0.3);
     --color-painel: #1a1a1a;
+    --marcador-color: #838383;
+    --success-color: #00ff88;
+    --danger-color: #ff5555;
 }
 
 /* ========== RESET & BASE ========== */

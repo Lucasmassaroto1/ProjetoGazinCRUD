@@ -1,7 +1,4 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/filtro.css">
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/cards.css">
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/embed.css">
-
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -117,7 +114,6 @@
             $conexao = (new Conexao())->conectar();
             $usuario_id = $_SESSION['usuario_id'];
             $usuario_tipo = $_SESSION['usuario_tipo'];
-
             if($usuario_tipo === 'admin'){
                 $stmtCategorias = $conexao->query("SELECT DISTINCT TRIM(SUBSTRING_INDEX(categoria, '-',-1)) AS sufixo FROM conteudo ORDER BY sufixo ASC");
             }else{
@@ -125,13 +121,11 @@
                 $stmtCategorias->bindValue(':usuario_id', $usuario_id, PDO::PARAM_INT);
                 $stmtCategorias->execute();
             }
-            // $categoriasUnicas = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
-
             $categoriasRaw = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);
             $categoriasMap = [];
-            foreach ($categoriasRaw as $cat) {
+            foreach ($categoriasRaw as $cat){
                 $normalizado = strtolower(trim($cat));
-                $categoriasMap[$normalizado] = $cat; // preserva a versão original para exibir
+                $categoriasMap[$normalizado] = $cat;
             }
             $categoriasUnicas = array_values($categoriasMap);
         ?>
@@ -147,6 +141,6 @@
         <div class="activity-list" id="lista-comandos"></div>
     </div>
 </div>
-<script src="<?=$base_url?>public/assets/script/filtro.js"></script>
-<script src="<?=$base_url?>public/assets/script/tempo.js"></script>
-<script src="<?=$base_url?>public/assets/script/lista_pagina.js"></script>
+<script src="<?=$base_url?>public/assets/script/features/filtro.js"></script>
+<script src="<?=$base_url?>public/assets/script/features/tempo.js"></script>
+<script src="<?=$base_url?>public/assets/script/pagination/lista_pagina.js"></script>

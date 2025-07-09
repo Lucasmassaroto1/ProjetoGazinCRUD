@@ -7,6 +7,11 @@
     $usuario_id = $_SESSION['usuario_id'];
     $usuario_tipo = $_SESSION['usuario_tipo'];
 
+    $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     // ================ PAGINAÇÃO ================
     $limite = 3;
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -77,15 +82,15 @@
     <!-- ======== ESTILO, FONT && ICONS ======== -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/assets/style/dash.css">
+    <link rel="stylesheet" href="../public/assets/style/main.css">
     <title>ByteCode DashBoard</title>
 </head>
 <body>
-    <?php $base_url = '../'; $paginaAtual = 'dashboard'; include '../includes/menu.php'?>
+    <?php $base_url = '../'; $paginaAtual = 'dashboard'; include '../includes/layout/menu.php'?>
     <main class="conteudo">
-        <?php include '../includes/header.php';?>
-        <?php include '../includes/card_dashboard.php'?>
+        <?php include '../includes/layout/header.php';?>
+        <?php include '../includes/cards/dashboard.php'?>
     </main>
-    <?php include '../includes/footer.php'?>
+    <?php include '../includes/layout/footer.php'?>
 </body>
 </html>

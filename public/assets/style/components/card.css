@@ -1,0 +1,418 @@
+/* ========== CARD DE GERAL ========== */
+.container-card{
+    display: block;
+    padding: 3rem;
+}
+.grid-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.card-status{
+    background: var(--color-painel);
+    border-left: 5px solid var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 0.625rem;
+}
+.card-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+.card-header i{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+.card-header h2{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+.card-body p{
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+.status, .status-prefix, .cargo{
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+.status.online, .cargo{
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--success-color);
+}
+.status.offline{
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+.activity-log{
+    margin-top: 2rem;
+}
+.activity-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.activity-item{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+}
+.activity-item i{
+    font-size: 1.25rem;
+}
+.activity-content p{
+    margin: 0;
+    color: var(--text-color);
+}
+.atalho a, button{
+    background: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 8px;
+}
+.atalho a i{
+    color: var(--background-color);
+    font-size: 1.2rem;
+}
+.atalho a:hover{
+    color: var(--background-color);
+    background: var(--secondary-color);
+}
+
+/* ========== CARD DE CONFIGURAÇÕES ========== */
+.form-select{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+.btn-salvar{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-salvar:hover{
+    background-color: var(--secondary-color);
+}
+.btnhover:hover{
+    background: var(--secondary-color);
+}
+.paginacao{
+    text-align: center;
+    margin-top: 20px;
+}
+.paginacao a{
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.paginacao a:hover{
+    border-bottom: 4px solid var(--secondary-color);
+}
+.paginacao a.ativo{
+    border-bottom: 4px solid var(--secondary-color);
+    font-weight: bold;
+}
+.music-painel i{
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+/* ========== CARD DE PERFIL ========== */
+.alinhacard{
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+.upload-area{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+.custom-upload-btn{
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+}
+.custom-upload-btn:hover{
+    background-color: var(--secondary-color);
+}
+#modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+#cropper-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 1000;
+    max-width: 90%;
+    width: 405px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+#cropper-content{
+    position: relative;
+    text-align: center;
+}
+#close-modal{
+    position: absolute;
+    top: -30px;
+    right: -14px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.resultado-perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.resultado-image{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+.resultado-letra{
+    width: 70px;
+    height: 70px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.resultado-nome{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* ========== CARD EMBED ========== */
+.discord-embed{
+    background-color: var(--color-painel);
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    color: var(--text-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 180px;
+}
+.embed-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.embed-header i{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+.embed-header h2{
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--secondary-color);
+}
+.embed-body{
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    white-space: pre-line;
+    height: 70px;
+}
+.embed-footer{
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+.volume-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.volume-card .activity-content{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+.volume-card p i{
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 5px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+.volume-card p i:hover{
+    color: var(--secondary-color);
+}
+.discord-embed-music{
+    background-color: var(--color-painel);
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    color: var(--text-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    /* height: 190px; altura do card */
+}
+.embed-header-music{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.embed-header-music i{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+.embed-header-music h2{
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--secondary-color);
+}
+.embed-body-music{
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    height: 90px; /* distancia o footer */
+}
+.embed-body-music img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.embed-footer-music{
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+.volume-controls{
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.volume-controls.show{
+    display: flex;
+    opacity: 1;
+    transform: translateX(-1);
+    pointer-events: auto;
+}
+#volume-valor{
+    font-weight: bold;
+    display: inline-block;
+}
+.volume-icon{
+    transform: translateX(-7px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.volume-icon.active{
+    transform: translateX(-8px);
+}
+.music-painel{
+    gap: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.music-painel i:hover{
+    color: var(--secondary-color);
+}
+.fade-in{
+    animation: slideIn 0.3s ease-in forwards;
+}
+.fade-out{
+    animation: slideOut 0.3s ease-out forwards;
+}
+@keyframes slideIn{
+    from{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideOut{
+    from{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* ========== SELECT CARD ========== */
+select{
+    background: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 8px;
+    outline: none;
+}

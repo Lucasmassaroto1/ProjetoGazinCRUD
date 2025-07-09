@@ -63,7 +63,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/assets/style/login.css">
+    <link rel="stylesheet" href="../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../public/assets/style/input.css">
     <title>Bytecrud - Login</title>
 </head>
 <body>
@@ -80,9 +81,9 @@
                         <p style="color:red"><?= $erro ?></p>
                         <?php endif; ?>
                         <form method="post">
-                            <input type="text" name="usuario" placeholder="Usuário ou E-mail" required><br><br>
-                            <input type="password" name="senha" placeholder="Senha" required><br><br>
-                            <button type="submit" class="btn">Entrar</button><br>
+                            <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário ou E-mail" required><br><br>
+                            <input type="password" name="senha" class="inputwelcome" placeholder="Senha" required><br><br>
+                            <button type="submit" class="btn btnhover">Entrar</button><br>
                             <a href="component/recuperar.php" class="btn btn-link">Esqueci a senha</a>
                             <a href="cadastro.php" class="btn btn-link">Criar nova conta</a>
                         </form>

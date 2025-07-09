@@ -2,9 +2,9 @@
 :root{
     --primary-color: #00CA76;
     --secondary-color: #01916D;
+    --text-color: #ffffff;
     --background-color: #000000;
     --color-painel: #1a1a1a;
-    --text-color: #ffffff;
 }
 /* ========== RESET & BASE ========== */
 *{
@@ -28,27 +28,6 @@ body{
     margin: 0 auto;
     text-align: center;
     color: var(--primary-color);
-}
-input{
-    background: transparent;
-    outline: none;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    border-bottom: 4px solid var(--secondary-color);
-    color: var(--primary-color);
-}
-input:focus{
-    background: transparent;
-}
-input:-webkit-autofill{
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: var(--primary-color) !important;
-    transition: background-color 5000s ease-in-out 0s !important;
-}
-::placeholder{
-    color: var(--secondary-color);
 }
 .card-header,.card-body{
     background: var(--color-painel);

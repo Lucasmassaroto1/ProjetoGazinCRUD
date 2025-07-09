@@ -1,11 +1,14 @@
 /* ========== CORES DO SITE ========== */
 :root{
-    --color-primary: #00CA76;
-    --color-secondary: #01916D;
-    --color-txt: #FFFFFF;
-    --color-bg: #000000;
-    --color-card-bg: #2c2c2c;
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --card-background: #3d3d3d;
     --color-scrollbar: rgba(161, 161, 161, 0.3);
+    --color-painel: #1a1a1a;
+    --success-color: #00ff88;
+    --danger-color: #ff5555;
 }
 
 /* ========== RESET & BASE ========== */
@@ -17,8 +20,8 @@
     user-select: none;
 }
 body{
-    background: var(--color-bg);
-    color: var(--color-txt);
+    background: var(--background-color);
+    color: var(--text-color);
 }
 body::-webkit-scrollbar{
     width: 8px;
@@ -28,7 +31,7 @@ body::-webkit-scrollbar-track{
     border-radius: 10px;
 }
 body::-webkit-scrollbar-thumb{
-    background: var(--color-secondary);
+    background: var(--secondary-color);
     border-radius: 10px;
 }
 
@@ -41,7 +44,7 @@ h2.titulo{
     margin-bottom: 1.25rem;
 }
 h2.titulo span{
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 .flex{
     display: flex;
@@ -68,7 +71,7 @@ section{
     justify-content: center;
 }
 .btn-global button{
-    color: var(--color-primary);
+    color: var(--primary-color);
     padding: 0.8rem 1.7rem;
     background-color: transparent;
     border-radius: .3em;
@@ -90,7 +93,7 @@ section{
     position: absolute;
     border-radius: 50%;
     z-index: -1;
-    background: var(--color-primary);
+    background: var(--primary-color);
     transition: 1s ease;
 }
 .btn-global button::before{
@@ -106,7 +109,7 @@ section{
     height: 25.625rem;
 }
 .btn-global button:hover{
-    color: var(--color-bg);
+    color: var(--background-color);
     animation: pulse 0.6s infinite;
 }
 .btn-global button:active{
@@ -122,7 +125,7 @@ section{
     margin-top: 0.625rem;
 }
 .individual button{
-    color: var(--color-primary);
+    color: var(--primary-color);
     padding: 0.8rem 1.7rem;
     background-color: transparent;
     border-radius: .3em;
@@ -144,7 +147,7 @@ section{
     position: absolute;
     border-radius: 50%;
     z-index: -1;
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     transition: 1s ease;
 }
 .individual button::before{
@@ -160,7 +163,7 @@ section{
     height: 25.625rem;
 }
 .individual button:hover{
-    color: var(--color-bg);
+    color: var(--background-color);
     animation: pulse 0.6s infinite;
 }
 .individual button:active{
@@ -179,7 +182,7 @@ section.inicio{
 .inicio .txt-inicio h1 span{
     display: block;
     font-size: 1.75rem;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-txt), var(--color-primary));
+    background: linear-gradient(90deg, var(--primary-color), var(--text-color), var(--primary-color));
     background-size: 200% auto;
     color: transparent;
     background-clip: text;
@@ -210,10 +213,10 @@ section.sobre{
 }
 .sobre .txt-sobre h2 span{
     display: block;
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 .sobre .txt-sobre p a{
-    color: var(--color-primary);
+    color: var(--primary-color);
     font-weight: bold;
     text-decoration: none;
 }
@@ -223,7 +226,7 @@ section.sobre{
 
 /* ========== CRIADOR ========== */
 #criador{
-    background: var(--color-card-bg);
+    background: var(--card-background);
     padding: 3.75rem 1.25rem;
     margin-top: 3rem;
 }
@@ -235,7 +238,7 @@ section.sobre{
     font-size: 2rem;
     margin-bottom: 1.875rem;
     text-align: center;
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 .perfil{
     display: flex;
@@ -247,7 +250,7 @@ section.sobre{
     width: 7.5rem;
     height: 7.5rem;
     border-radius: 50%;
-    border: 3px solid var(--color-primary);
+    border: 3px solid var(--primary-color);
 }
 .texto{
     max-width: 37.5rem;
@@ -255,7 +258,7 @@ section.sobre{
 }
 .texto h3{
     font-size: 1.5rem;
-    color: var(--color-primary);
+    color: var(--primary-color);
     margin-bottom: 0.625rem;
 }
 .texto p{

@@ -1,21 +1,14 @@
 <?php
 $itens_menu = [];
-
 if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/pages/comandos.php', 'icon' => 'fas fa-terminal', 'label' => 'Comandos', 'active' => ($paginaAtual == 'comandos')];
-}
-if(in_array($paginaAtual, ['comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/pages/estatisticas.php', 'icon' => 'fas fa-chart-bar', 'label' => 'Estatísticas', 'active' => ($paginaAtual == 'estatistica')];
     $itens_menu[] = ['href' => $base_url . 'admin/pages/configuracoes.php', 'icon' => 'fas fa-cog', 'label' => 'Configurações', 'active' => ($paginaAtual == 'configuracoes')];
-}
-if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/pages/perfil.php', 'icon' => 'fas fa-user', 'label' => 'Perfil', 'active' => ($paginaAtual == 'perfil')];
-}
-if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoes', 'perfil'])){
     $itens_menu[] = ['href' => $base_url . 'admin/component/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
 }
 ?>
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/menu.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/menu.css">
 <div class="menu">
     <button class="toggle">
         <i class="fa-solid fa-bars"></i>
@@ -36,4 +29,4 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
         </nav>
     <div class="background"></div>
 </div>
-<script src="<?=$base_url?>public/assets/script/menu.js" defer></script>
+<script src="<?=$base_url?>public/assets/script/components/menu.js" defer></script>

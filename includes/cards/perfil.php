@@ -1,7 +1,5 @@
-<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/inputperfil.css">
-<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/cards.css">
-<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/embed.css">
-
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/components/card.css">
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/input.css">
 <div class="alinhacard">
     <div class="grid-cards">
         <div class="card-status">

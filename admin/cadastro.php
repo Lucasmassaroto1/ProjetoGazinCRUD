@@ -84,7 +84,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/assets/style/login.css">
+    <link rel="stylesheet" href="../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../public/assets/style/input.css">
     <title>Bytecrud - Novo usuario</title>
 </head>
 <body>
@@ -100,10 +101,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <p style="color: red;"><?= $erro ?></p>
                         <?php endif; ?>
                         <form method="post">
-                            <input type="text" name="usuario" placeholder="Usuário" required>
-                            <input type="email" name="email" placeholder="E-mail" required>
-                            <input type="password" name="senha" placeholder="Senha" required>
-                            <button type="submit" class="btn ">Cadastrar</button>
+                            <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário" required>
+                            <input type="email" name="email" class="inputwelcome" placeholder="E-mail" required>
+                            <input type="password" name="senha" class="inputwelcome" placeholder="Senha" required>
+                            <button type="submit" class="btn btnhover">Cadastrar</button>
                             <a href="login.php" class="btn">Já tem conta? Fazer login</a>
                         </form>
                     </div>

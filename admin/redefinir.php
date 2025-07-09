@@ -44,7 +44,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/assets/style/login.css">
+    <link rel="stylesheet" href="../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../public/assets/style/input.css">
     <title>Bytecrud - Redefinir Senha</title>
 </head>
 <body>
@@ -62,9 +63,9 @@
                             <p style="font-weight:bold; font-size: 1.3rem;"><?= htmlspecialchars($user['usuario']) ?></p>
                         <?php endif; ?>
                         <form method="post">
-                            <input type="password" name="nova_senha" placeholder="Senha nova" required><br><br>
-                            <input type="password" name="confirma_senha" placeholder="Confirmar senha" required><br><br>
-                            <button type="submit" class="btn">Redefinir Senha</button>
+                            <input type="password" name="nova_senha" class="inputwelcome" placeholder="Senha nova" required><br><br>
+                            <input type="password" name="confirma_senha" class="inputwelcome" placeholder="Confirmar senha" required><br><br>
+                            <button type="submit" class="btn btnhover">Redefinir Senha</button>
                         </form>
                     </div>
                 </div>

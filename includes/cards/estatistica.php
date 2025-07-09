@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/cards.css">
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/embed.css">
-
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/input.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -148,7 +147,7 @@
         </div>
     </div>
 </div>
-<script src="<?=$base_url?>public/assets/script/tempo.js"></script>
+<script src="<?=$base_url?>public/assets/script/features/tempo.js"></script>
 <script>
     function mostrarFormularioAdicionar(){
         document.getElementById('formAdicionar').style.display = 'block';      

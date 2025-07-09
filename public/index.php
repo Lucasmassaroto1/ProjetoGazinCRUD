@@ -95,13 +95,13 @@
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style/style.css">
-    <link rel="stylesheet" href="assets/style/footer.css">
+    <link rel="stylesheet" href="assets/style/pages/principal.css">
+    <link rel="stylesheet" href="assets/style/layout/footer.css">
 
     <title>ByteCode CRUD</title>
 </head>
 <body>
-    <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/menu.php'?>
+    <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/layout/menu.php'?>
     <main class="conteudo">
         <section class="inicio" id="inicio">
             <div class="flex">
@@ -134,7 +134,7 @@
         </section>
 
         <section class="container-card">
-            <?php include '../includes/card_inicial.php'?>
+            <?php include '../includes/cards/inicial.php'?>
         </section>
 
         <section id="criador">

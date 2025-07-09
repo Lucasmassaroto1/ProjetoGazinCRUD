@@ -1,11 +1,3 @@
-/* ========== CORES DO SITE ========== */
-:root{
-    --primary-color: #00CA76;
-    --secondary-color: #01916D;
-    --text-color: #ffffff;
-    --color-painel: #1a1a1a;
-}
-
 /* ========== HEADER ========== */
 .welcome{
     margin-bottom: 2rem;

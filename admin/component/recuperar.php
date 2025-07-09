@@ -100,7 +100,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../public/assets/style/login.css">
+    <link rel="stylesheet" href="../../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../../public/assets/style/input.css">
     <title>Bytecrud - Recuperar Senha</title>
 </head>
 <body>
@@ -115,8 +116,8 @@
                     <div class="card-body">
                         <?= $mensagem ?? '' ?>
                         <form method="post">
-                            <input type="text" name="usuario" placeholder="Usuário ou E-mail" required><br><br>
-                            <button type="submit" class="btn">Enviar Link</button>
+                            <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário ou E-mail" required><br><br>
+                            <button type="submit" class="btn btnhover">Enviar Link</button>
                             <a href="../login.php">Voltar login</a>
                         </form>
                     </div>
