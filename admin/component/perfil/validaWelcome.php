@@ -35,7 +35,7 @@ try{
         $stmt->execute([$usuario_id, $titulo, $mensagem, $imagem, $footer]);
     }
 
-    header('Location: ../../pages/comandos.php?mensagemEnviada=1');
+    header('Location: ../../pages/painel/comandos.php?mensagemEnviada=1');
     exit;
 
 }catch(PDOException $e){

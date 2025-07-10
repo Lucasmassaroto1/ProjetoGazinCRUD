@@ -110,7 +110,7 @@
     </div>
     <div class="card-body">
         <?php 
-            require_once '../config/conexao.php';
+            require_once '../../../config/conexao.php';
             $conexao = (new Conexao())->conectar();
             $usuario_id = $_SESSION['usuario_id'];
             $usuario_tipo = $_SESSION['usuario_tipo'];

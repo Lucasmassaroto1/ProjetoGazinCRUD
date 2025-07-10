@@ -1,9 +1,9 @@
 <?php 
-    require_once '../../config/conexao.php';
+    require_once '../../../config/conexao.php';
 
-    require 'bibliotecas/PHPMailer/Exception.php';
-    require 'bibliotecas/PHPMailer/PHPMailer.php';
-    require 'bibliotecas/PHPMailer/SMTP.php';
+    require '../bibliotecas/PHPMailer/Exception.php';
+    require '../bibliotecas/PHPMailer/PHPMailer.php';
+    require '../bibliotecas/PHPMailer/SMTP.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
@@ -29,7 +29,7 @@
             $stmt = $conexao->prepare($sql);
             $stmt->execute([$token, $expira, $user['id']]);
 
-            $link = "http://localhost/ProjetoGazinCRUD/admin/redefinir.php?token=$token";
+            $link = "http://localhost/ProjetoGazinCRUD/admin/pages/auth/redefinir.php?token=$token";
 
             // Envia e-mail
             $mail = new PHPMailer(true);
@@ -98,14 +98,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../public/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../public/assets/style/pages/login.css">
-    <link rel="stylesheet" href="../../public/assets/style/input.css">
+    <link rel="stylesheet" href="../../../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../../../public/assets/style/input.css">
     <title>Bytecrud - Recuperar Senha</title>
 </head>
 <body>
-    <?php $base_url = '../../';?>
+    <?php $base_url = '../../../';?>
     <div class="container">
         <div class="row">
             <div class="card-login">
@@ -118,7 +118,7 @@
                         <form method="post">
                             <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário ou E-mail" required><br><br>
                             <button type="submit" class="btn btnhover">Enviar Link</button>
-                            <a href="../login.php">Voltar login</a>
+                            <a href="../../pages/auth/login.php">Voltar login</a>
                         </form>
                     </div>
                 </div>

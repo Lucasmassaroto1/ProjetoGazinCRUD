@@ -1,6 +1,6 @@
 <?php 
-    require_once '../config/auth.php';
-    require_once '../config/conexao.php';
+    require_once '../../../config/auth.php';
+    require_once '../../../config/conexao.php';
     $conexao = (new Conexao())->conectar();
 
     $mensagem = '';
@@ -12,10 +12,6 @@
         $confirma_senha = $_POST['confirma_senha'] ?? '';
         
         $usuario_id = $_SESSION['usuario_id'];
-        /* $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario]);
-        $user = $stmt->fetch(); */
 
         $sql = "SELECT senha FROM usuarios WHERE id = ?";
         $stmt = $conexao->prepare($sql);
@@ -48,13 +44,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../public/img/Favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../../../public/assets/style/pages/login.css">
+    <link rel="stylesheet" href="../../../public/assets/style/input.css">
     <title>Bytecrud - Trocar Senha</title>
 </head>
 <body>
-    <?php $base_url = '../../';?>
+    <?php $base_url = '../../../';?>
     <div class="container">
         <div class="row">
             <div class="card-login">
@@ -65,11 +62,11 @@
                     <div class="card-body">
                         <?= $mensagem ?? '' ?>
                         <form method="post">
-                            <input type="password" name="senha_atual" placeholder="Senha atual" required><br><br>
-                            <input type="password" name="nova_senha" placeholder="Senha nova" required><br><br>
-                            <input type="password" name="confirma_senha" placeholder="Confirmar senha" required><br><br>
+                            <input type="password" name="senha_atual" class="inputwelcome" placeholder="Senha atual" required><br><br>
+                            <input type="password" name="nova_senha" class="inputwelcome" placeholder="Senha nova" required><br><br>
+                            <input type="password" name="confirma_senha" class="inputwelcome" placeholder="Confirmar senha" required><br><br>
                             <button type="submit" class="btn btnhover">Salvar Senha</button>
-                            <a href="pages/perfil.php" class="btn btn-link">Voltar para Perfil</a>
+                            <a href="../painel/perfil.php" class="btn btn-link">Voltar para Perfil</a>
                         </form>
                     </div>
                 </div>

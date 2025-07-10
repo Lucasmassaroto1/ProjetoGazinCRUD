@@ -26,10 +26,6 @@
         $condicoes[] = "LOWER(TRIM(SUBSTRING_INDEX(c.categoria, '-', -1))) = :categoria";
         $params[':categoria'] = strtolower($categoriaFiltro);
     }
-    /* if(!empty($categoriaFiltro)){
-        $condicoes[] = "LOWER(REPLACE(c.categoria, ' ', '')) = :categoria";
-        $params[':categoria'] = strtolower($categoriaFiltro);
-    } */
     if(!empty($condicoes)){
         $queryBase .= " WHERE " . implode(" AND ", $condicoes);
     }
@@ -67,7 +63,7 @@
             $partes = explode('-', $cmd['categoria'], 2);
             $sufixoData = isset($partes[1]) ? strtolower(trim($partes[1])) : strtolower(trim($cmd['categoria']));
         ?>
-        <div class="activity-item" data-categoria="<?= $sufixoData /* strtolower(preg_replace('/\s+/', '', $cmd['categoria'])) */ ?>">
+        <div class="activity-item" data-categoria="<?= $sufixoData ?>">
             <div class="activity-content">
                 <div id="exibicao-<?= $cmd['id'] ?>">
                     <p><strong>Comando:</strong> <?= htmlspecialchars($cmd['comando']) ?></p>

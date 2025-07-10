@@ -3,19 +3,35 @@ let LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php']; // padrão (dashboard)
 
 const pathnamePagina = window.location.pathname;
 
-if(pathnamePagina.includes('/public/')){ // INDEX
+if(pathnamePagina.includes('/public/')){ // PRINCIPAL
     BASEPAGINA_URL = '../admin/';
     LISTAR_COMANDOS_ARQUIVO = ['listarPublico.php'];
 
-}else if(pathnamePagina.includes('/admin/pages/comandos.php')){ // COMANDOS
-    BASEPAGINA_URL = '../';
+}else if(pathnamePagina.includes('admin/pages/painel/comandos.php')){ // COMANDOS
+    BASEPAGINA_URL = '../../';
     LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
 
-}else if(pathnamePagina.includes('/admin/pages/')){ // DASHBOARD
-    BASEPAGINA_URL = '../';
+}else if(pathnamePagina.includes('admin/pages/painel/')){ // DASHBOARD
+    BASEPAGINA_URL = '../../';
     LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
 }
 
+/* if(pathnamePagina.includes('admin/pages/painel/dashboard.php')) {
+    BASEPAGINA_URL = '../../';
+    LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
+
+} else if(pathnamePagina.includes('admin/pages/painel/comandos.php')) {
+    BASEPAGINA_URL = '../../../';
+    LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
+
+} else if(pathnamePagina.includes('/public/')) {
+    BASEPAGINA_URL = '../admin/';
+    LISTAR_COMANDOS_ARQUIVO = ['listarPublico.php'];
+
+} else if(pathnamePagina.includes('/admin/')) {
+    BASEPAGINA_URL = '../';
+    LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
+} */
 let categoriaAtual = '';
 
 function carregarPagina(pagina = 1, categoria = null){

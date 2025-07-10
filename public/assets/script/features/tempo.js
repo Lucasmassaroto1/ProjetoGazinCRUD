@@ -4,15 +4,12 @@ const pathname = window.location.pathname;
 
 if(pathname.includes('/public/')){ // INDEX
     BASE_URL = '../admin/';
+}else if(pathname.includes('/pages/painel')){ // TODAS PÁGINAS
+    BASE_URL = '../../../admin';
 }
-
-if(pathname.includes('/admin/') && !pathname.includes('/admin/pages/')){ // DASHBOARD
-    BASE_URL = './';
-}
-
-if (pathname.includes('/admin/pages/')){ // OUTRAS PÁGINAS
-    BASE_URL = '../';
-}
+/* else if(pathname.includes('/admin/pages/painel/estatisticas.php')){ // DASHBOARD
+    BASE_URL = '../../';
+} */
 
 let statusBot = "online";
 let intervaloRelogio;
@@ -30,20 +27,10 @@ function atualizaRelogio(){
     const horaFormatada = `${horas.toString().padStart(2, '0')}h ${minutos.toString().padStart(2, '0')}m ${segundos.toString().padStart(2, '0')}s`;
 
     document.getElementById('uptime').textContent = horaFormatada;
-    
-    /* var agora = new Date(); 
-    var hora = agora.getHours();
-    var minutos = agora.getMinutes();
-    var segundos = agora.getSeconds();
-    hora = hora < 10 ? '0' + hora : hora;
-    minutos = minutos < 10 ? '0' + minutos : minutos;
-    segundos = segundos < 10 ? '0' + segundos : segundos;
-    var horaAtual = `${hora}h ${minutos}m ${segundos}s`;
-    document.getElementById('uptime').textContent = `${horaAtual}`; */
 }
 
 function buscarStatus(){
-    fetch(BASE_URL + 'component/getStatus.php')
+    fetch(BASE_URL + '/component/sistema/getStatus.php')
     .then(res => res.json())
     .then(data =>{
         statusBot = data.status;
@@ -71,7 +58,7 @@ function buscarStatus(){
 function ligdes(){
     const acao = statusBot === "online" ? "desligar" : "ligar";
 
-    fetch(BASE_URL + 'component/statusBot.php',{
+    fetch(BASE_URL + '/component/sistema/statusBot.php',{
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'status=' + acao

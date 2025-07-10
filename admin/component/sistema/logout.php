@@ -1,7 +1,7 @@
 <?php 
     session_start();
     session_destroy();
-    header('Location: ../../login.php');
+    header('Location: ../../pages/auth/login.php');
     exit;
 ?>
 <?php $base_url = '../../../';?>

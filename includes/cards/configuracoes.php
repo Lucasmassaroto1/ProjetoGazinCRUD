@@ -82,7 +82,7 @@
                                     <h2>Informações Dj ByteCode</h2>
                                 </div>
                                 <div class="embed-body-music">
-                                    <img src="../../public/img/ByteCodeMusic.svg" alt="">
+                                    <img src="../../../public/img/ByteCodeMusic.svg" alt="">
                                     <p><strong>Música:</strong> <?= htmlspecialchars($mus['titulo']) ?></p>
                                     <p><strong>Artista:</strong> <?= htmlspecialchars($mus['autor']) ?></p>
                                     <p><strong>Status:</strong> <?= htmlspecialchars($mus['nome_status']) ?></p>
