@@ -2,7 +2,7 @@
     require_once '../config/conexao.php';
     $conexao = (new Conexao())->conectar();
 
-    $usuario = 'admin';
+    $usuario = 'bytecode';
     $senha = 'admin123';
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
     $tipo = 'admin';

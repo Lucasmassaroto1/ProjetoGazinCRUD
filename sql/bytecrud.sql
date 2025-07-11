@@ -19,7 +19,7 @@ CREATE TABLE usuarios(
     email VARCHAR(255) NOT NULL,
     foto_perfil VARCHAR(255) NULL
 );
-INSERT INTO usuarios (id, usuario, senha, tipo) VALUES (1, 'admin', '$2y$10$rs4VAaJXTfJKSJm8Xrrb..2uiUqMLabo.g9o2V0FMyiy.WbTvo2na', 'admin');
+INSERT INTO usuarios (id, usuario, senha, tipo) VALUES (1, 'bytecode', '$2y$10$rs4VAaJXTfJKSJm8Xrrb..2uiUqMLabo.g9o2V0FMyiy.WbTvo2na', 'admin');
 
 ----------------------------------------------------------------------------
 ------------------------------ CRIA CONTEUDO -------------------------------
@@ -89,7 +89,7 @@ CREATE TABLE welcome(
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
-ALTER TABLE welcome ADD COLUMN footer TEXT;
+--ALTER TABLE welcome ADD COLUMN footer TEXT;
 
 ----------------------------------------------------------------------------
 ------------------------------ CRIA MUSICA ---------------------------------
@@ -103,7 +103,7 @@ CREATE TABLE musica(
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 ALTER TABLE musica ADD COLUMN id_status INT;
-ALTER TABLE musica ADD CONSTRAINT fk_status FOREIGN KEY (id_status) REFERENCES status(id);
+--ALTER TABLE musica ADD CONSTRAINT fk_status FOREIGN KEY (id_status) REFERENCES status(id);
 
 CREATE TABLE status(
     id INT AUTO_INCREMENT PRIMARY KEY,
