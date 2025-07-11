@@ -1,5 +1,5 @@
 <?php 
-    require_once '../../../config/conexao.php';
+    require_once '../../../includes/config/conexao.php';
 
     require '../bibliotecas/PHPMailer/Exception.php';
     require '../bibliotecas/PHPMailer/PHPMailer.php';

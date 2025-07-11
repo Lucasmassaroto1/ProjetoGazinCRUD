@@ -1,6 +1,6 @@
 <?php 
-    require_once '../../../config/auth.php';
-    require_once '../../../config/conexao.php';
+    require_once '../../../includes/config/auth.php';
+    require_once '../../../includes/config/conexao.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'] ?? null;

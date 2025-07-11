@@ -1,5 +1,5 @@
 <?php
-    require_once '../../../config/conexao.php';
+    require_once '../../../includes/config/conexao.php';
     $conexao = (new Conexao())->conectar();
 
     $mensagem = '';

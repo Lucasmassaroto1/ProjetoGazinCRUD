@@ -110,7 +110,7 @@
     </div>
     <div class="card-body">
         <?php 
-            require_once '../config/conexao.php';
+            require_once '../includes/config/conexao.php';
             $conexao = (new Conexao())->conectar();
             $stmtCategorias = $conexao->query("SELECT DISTINCT TRIM(SUBSTRING_INDEX(categoria, '-',-1)) AS sufixo FROM conteudo ORDER BY sufixo ASC");
             $categoriasRaw = $stmtCategorias->fetchAll(PDO::FETCH_COLUMN);

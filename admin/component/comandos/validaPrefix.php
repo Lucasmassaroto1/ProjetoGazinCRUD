@@ -1,5 +1,5 @@
 <?php 
-    require_once '../../../config/conexao.php';
+    require_once '../../../includes/config/conexao.php';
     session_start();
 
     $usuario_id = $_SESSION['usuario_id'];
