@@ -44,19 +44,16 @@
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <!-- 8 -->
                         <p><strong>Comandos Padrão:</strong> <span><?= $commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <!-- 4 -->
                         <p><strong>Slash Commands:</strong> <span><?= $slash_commands_padrao?></span></p>
                     </div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-content">
-                        <!-- 1 -->
                         <p><strong>Hybrid Commands:</strong> <span><?= $hybrid_commands_padrao?></span></p> 
                     </div>
                 </div>

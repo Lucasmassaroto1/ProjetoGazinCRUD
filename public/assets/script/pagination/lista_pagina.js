@@ -7,31 +7,15 @@ if(pathnamePagina.includes('/public/')){ // PRINCIPAL
     BASEPAGINA_URL = '../admin/';
     LISTAR_COMANDOS_ARQUIVO = ['listarPublico.php'];
 
-}else if(pathnamePagina.includes('admin/pages/painel/comandos.php')){ // COMANDOS
+}else if(pathnamePagina.includes('admin/views/painel/comandos.php')){ // COMANDOS
     BASEPAGINA_URL = '../../';
     LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
 
-}else if(pathnamePagina.includes('admin/pages/painel/')){ // DASHBOARD
+}else if(pathnamePagina.includes('admin/views/painel/')){ // DASHBOARD
     BASEPAGINA_URL = '../../';
     LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
 }
 
-/* if(pathnamePagina.includes('admin/pages/painel/dashboard.php')) {
-    BASEPAGINA_URL = '../../';
-    LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
-
-} else if(pathnamePagina.includes('admin/pages/painel/comandos.php')) {
-    BASEPAGINA_URL = '../../../';
-    LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
-
-} else if(pathnamePagina.includes('/public/')) {
-    BASEPAGINA_URL = '../admin/';
-    LISTAR_COMANDOS_ARQUIVO = ['listarPublico.php'];
-
-} else if(pathnamePagina.includes('/admin/')) {
-    BASEPAGINA_URL = '../';
-    LISTAR_COMANDOS_ARQUIVO = ['listarUsuario.php'];
-} */
 let categoriaAtual = '';
 
 function carregarPagina(pagina = 1, categoria = null){
@@ -40,7 +24,7 @@ function carregarPagina(pagina = 1, categoria = null){
     }
 
     LISTAR_COMANDOS_ARQUIVO.forEach(arquivo =>{
-        let url = BASEPAGINA_URL + 'component/comandos/' + arquivo + '?pagina=' + pagina;
+        let url = BASEPAGINA_URL + 'components/comandos/' + arquivo + '?pagina=' + pagina;
         if(categoriaAtual !== ''){
             url += '&categoria=' + encodeURIComponent(categoriaAtual);
         }

@@ -98,14 +98,11 @@ function loadPreview(input){
             const image = document.getElementById('cropper-image');
             image.src = e.target.result;
 
-            // Mostra o modal
             document.getElementById('modal-overlay').style.display = 'block';
             document.getElementById('cropper-modal').style.display = 'block';
 
-            // Destroi o anterior se existir
             if(cropper) cropper.destroy();
 
-            // Cria o novo cropper
             cropper = new Cropper(image,{
                 aspectRatio: 1,
                 viewMode: 1,
@@ -136,6 +133,5 @@ function fecharModal(){
     if (cropper) cropper.destroy();
 }
 
-// Botão de fechar
 document.getElementById('close-modal').addEventListener('click', fecharModal);
 </script>
