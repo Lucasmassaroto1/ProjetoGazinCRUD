@@ -29,7 +29,7 @@
             $stmt = $conexao->prepare($sql);
             $stmt->execute([$token, $expira, $user['id']]);
 
-            $link = "http://localhost/ProjetoGazinCRUD/admin/pages/auth/redefinir.php?token=$token";
+            $link = "http://localhost/ProjetoGazinCRUD/admin/views/auth/redefinir.php?token=$token";
 
             // Envia e-mail
             $mail = new PHPMailer(true);
@@ -118,7 +118,7 @@
                         <form method="post">
                             <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário ou E-mail" required><br><br>
                             <button type="submit" class="btn btnhover">Enviar Link</button>
-                            <a href="../../pages/auth/login.php">Voltar login</a>
+                            <a href="../../views/auth/login.php">Voltar login</a>
                         </form>
                     </div>
                 </div>

@@ -25,6 +25,6 @@
         $stmt->execute([$usuario_id, $prefixo]);
     }
 
-    header('Location: ../../pages/painel/comandos.php');
+    header('Location: ../../views/painel/comandos.php');
     exit;
 ?>

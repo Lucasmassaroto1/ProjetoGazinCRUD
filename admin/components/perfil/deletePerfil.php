@@ -20,7 +20,7 @@
         session_destroy();
 
         //Manda para login
-        header('Location: ../../../../pages/auth/login.php');
+        header('Location: ../../../../views/auth/login.php');
         exit;
     }catch(PDOException $e){
         echo 'Erro ao deletar conta'. $e->getMessage();

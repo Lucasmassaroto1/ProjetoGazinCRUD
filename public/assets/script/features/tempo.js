@@ -7,9 +7,6 @@ if(pathname.includes('/public/')){ // INDEX
 }else if(pathname.includes('/views/painel')){ // TODAS PÁGINAS
     BASE_URL = '../../../admin/';
 }
-/* else if(pathname.includes('/admin/pages/painel/estatisticas.php')){ // DASHBOARD
-    BASE_URL = '../../';
-} */
 
 let statusBot = "online";
 let intervaloRelogio;

@@ -5,7 +5,7 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
     $itens_menu[] = ['href' => $base_url . 'admin/views/painel/estatisticas.php', 'icon' => 'fas fa-chart-bar', 'label' => 'Estatísticas', 'active' => ($paginaAtual == 'estatistica')];
     $itens_menu[] = ['href' => $base_url . 'admin/views/painel/configuracoes.php', 'icon' => 'fas fa-cog', 'label' => 'Configurações', 'active' => ($paginaAtual == 'configuracoes')];
     $itens_menu[] = ['href' => $base_url . 'admin/views/painel/perfil.php', 'icon' => 'fas fa-user', 'label' => 'Perfil', 'active' => ($paginaAtual == 'perfil')];
-    $itens_menu[] = ['href' => $base_url . 'admin/component/sistema/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
+    $itens_menu[] = ['href' => $base_url . 'admin/components/sistema/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
 }
 ?>
 <link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/menu.css">

@@ -10,7 +10,7 @@
             <div class="activity-list">
                 <div class="activity-item">
                     <div class="activity-content">
-                        <form id="formAdicionar" action="../../component/usuario/create.php" method="post" style="display: none;">
+                        <form id="formAdicionar" action="../../components/usuario/create.php" method="post" style="display: none;">
                             <input type="text" name="comando" class="inputwelcome" placeholder="Comando" required><br><br>
                             <input type="text" name="descricao" class="inputwelcome" placeholder="Descrição" required><br><br>
                             <input type="text" name="categoria" class="inputwelcome" placeholder="Categoria" required><br><br>
@@ -36,7 +36,7 @@
                 <div class="activity-list">
                     <div class="activity-item">
                         <div class="activity-content">
-                            <form action="../../component/comandos/validaPrefix.php" method="post">
+                            <form action="../../components/comandos/validaPrefix.php" method="post">
                                 <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                                 <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                 <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
@@ -60,7 +60,7 @@
                 <div class="activity-list">
                     <div class="activity-item">
                         <div class="activity-content">
-                            <form action="../../component/perfil/validaWelcome.php" method="post">
+                            <form action="../../components/perfil/validaWelcome.php" method="post">
                                 <input type="text" name="titulo" class="inputwelcome" placeholder="Titulo" value="<?= $welcomeInputs['titulo'] ?? ''?>" required><br>
                                 <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                 <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>

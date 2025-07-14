@@ -24,7 +24,7 @@
 
             if ($stmt->execute()) {
                 // Atualizado com sucesso, redirecionar para a página de comandos
-                header('Location: ../../pages/painel/comandos.php');
+                header('Location: ../../views/painel/comandos.php');
                 exit;
             } else {
                 echo "Erro ao atualizar o comando.";

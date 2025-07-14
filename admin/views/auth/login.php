@@ -19,7 +19,7 @@
             $_SESSION['usuario_nome'] = $user['usuario'];
             $_SESSION['usuario_tipo'] = $user['tipo'];
 
-            header('Location: ../../pages/painel/dashboard.php');
+            header('Location: ../../views/painel/dashboard.php');
             exit;
         }else{
             $erro = "Usuário ou senha inválidos!";
@@ -54,7 +54,7 @@
                             <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário ou E-mail" required><br><br>
                             <input type="password" name="senha" class="inputwelcome" placeholder="Senha" required><br><br>
                             <button type="submit" class="btn btnhover">Entrar</button><br>
-                            <a href="../../component/sistema/recuperar.php" class="btn btn-link">Esqueci a senha</a>
+                            <a href="../../components/sistema/recuperar.php" class="btn btn-link">Esqueci a senha</a>
                             <a href="cadastro.php" class="btn btn-link">Criar nova conta</a>
                         </form>
                     </div>

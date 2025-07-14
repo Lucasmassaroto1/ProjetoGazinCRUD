@@ -37,7 +37,7 @@
             $stmt->bindParam(':id', $usuario_id);
             $stmt->execute();
         }
-        header('Location: ../../pages/painel/perfil.php');
+        header('Location: ../../views/painel/perfil.php');
         exit;
     }
     
@@ -65,7 +65,6 @@
     // Atualiza a sessão
     $_SESSION['usuario_nome'] = $nome;
 
-    // Redireciona
-    header("Location: ../../pages/painel/perfil.php");
+    header("Location: ../../views/painel/perfil.php");
     exit;
 ?>

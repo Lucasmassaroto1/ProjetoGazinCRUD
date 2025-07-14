@@ -1,6 +1,6 @@
 let volumeAtual = 50;
 
-fetch('../../component/musica/getVolume.php')
+fetch('../../components/musica/getVolume.php')
     .then(res => res.json())
     .then(data =>{
         if(typeof data.volume === 'number'){
@@ -15,7 +15,7 @@ function alterarVolume(value){
     document.getElementById('volume-valor').textContent = volumeAtual + '%';
 
     // Manda para o php
-    fetch('../../component/sistema/validaVolume.php',{
+    fetch('../../components/sistema/validaVolume.php',{
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: 'volume=' + encodeURIComponent(volumeAtual)
@@ -58,7 +58,7 @@ function mostravolume(){
 // =========== AO CLICAR EM PLAY MUDA PARA PAUSE ===========
 
 function volta(){
-    fetch('../../component/musica/voltarMusica.php')
+    fetch('../../components/musica/voltarMusica.php')
         .then(response => response.json())
         .then(data =>{
             if(data.success){
@@ -81,7 +81,7 @@ function tocar(){
 }
 
 function passa(){
-    fetch('../../component/musica/passarMusica.php')
+    fetch('../../components/musica/passarMusica.php')
     .then(response => response.json())
     .then(data =>{
         if(data.success){

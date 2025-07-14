@@ -10,8 +10,8 @@
         $criado_por = $_SESSION['usuario_id'];
 
         //IDs DOS STATUS
-        $statusAndamento = 1; // "Andamento"
-        $statusEmEspera = 2; // "Em espera"
+        $statusAndamento = 1;
+        $statusEmEspera = 2;
         
         // Verifica se já existe uma música em andamento para o usuário
         $sqlVerifica = "SELECT COUNT(*) FROM musica WHERE usuario_id = ? AND id_status = ?";
@@ -27,7 +27,7 @@
         $stmtInserir = $conexao->prepare($sqlInserir);
         $stmtInserir->execute([$titulo, $autor, $criado_por, $statusNovaMusica]);
 
-        header('Location: ../../pages/estatisticas.php');
+        header('Location: ../../views/painel/estatisticas.php');
     exit;
 }
 ?>

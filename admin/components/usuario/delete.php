@@ -10,6 +10,6 @@
         $stmt = $conexao->prepare("DELETE FROM conteudo WHERE id = ?");
         $stmt->execute([$id]);
     }
-    header('Location: ../../pages/painel/comandos.php');
+    header('Location: ../../views/painel/comandos.php');
     exit;
 ?>

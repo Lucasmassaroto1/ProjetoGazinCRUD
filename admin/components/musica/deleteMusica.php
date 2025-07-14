@@ -7,7 +7,7 @@
     $id = $_GET['id'] ?? null;
 
     if($id){
-        // Verifica se tem algum regostro
+        // Verifica se tem algum registro
         $check = $conexao->prepare("SELECT * FROM musica WHERE id = ?");
         $check->execute([$id]);
         
@@ -16,6 +16,6 @@
             $stmt->execute([$id]);
         }
     }
-    header('Location: ../../pages/estatisticas.php');
+    header('Location: ../../views/painel/estatisticas.php');
     exit;
 ?>

@@ -15,14 +15,14 @@
 
         $categoria_prefixo = strtolower(trim(explode('-', $categoria)[0]));
         if(in_array($categoria_prefixo, $categorias_restritas) && $usuario_tipo !== 'admin'){
-            header('Location: ../pages/comandos.php?erro=nao_autorizado');
+            header('Location: ../views/painel/comandos.php?erro=nao_autorizado');
             exit;
         }
         $sql = "INSERT INTO conteudo (comando, descricao, categoria, exemplo, criado_por) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conexao->prepare($sql);
         $stmt->execute([$comando, $descricao, $categoria, $exemplo, $criado_por]);
 
-        header('location: ../../pages/painel/comandos.php');
+        header('location: ../../views/painel/comandos.php');
         exit;
     }
 ?>
