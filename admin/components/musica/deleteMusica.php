@@ -16,6 +16,6 @@
             $stmt->execute([$id]);
         }
     }
-    header('Location: ../../views/painel/estatisticas.php');
+    header('Location: ../../views/painel/comandos.php');
     exit;
 ?>

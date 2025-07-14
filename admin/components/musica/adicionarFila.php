@@ -27,7 +27,7 @@
         $stmtInserir = $conexao->prepare($sqlInserir);
         $stmtInserir->execute([$titulo, $autor, $criado_por, $statusNovaMusica]);
 
-        header('Location: ../../views/painel/estatisticas.php');
+        header('Location: ../../views/painel/comandos.php');
     exit;
 }
 ?>

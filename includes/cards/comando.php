@@ -76,6 +76,59 @@
     <?php endif; ?>
 
 </div>
+<div class="grid-cards">
+    <div class="card-status">
+        <div class="card-header">
+        <i class="fas fa-list"></i>
+        <h2> Fila de Músicas</h2>
+    </div>
+    <div class="card-body">
+        <div class="activity-list">
+            <form id="formAdicionarFila" action="../../components/musica/adicionarFila.php" method="post" style="display: none;">
+                <input type="text" name="titulo" class="inputwelcome" placeholder="Título" required><br>
+                <input type="text" name="autor" class="inputwelcome" placeholder="Autor" required><br>
+                <button type="submit" class="btn btnhover">Adicionar</button>
+                <button type="button" onclick="cancelarFormularioAdicionarFila()" class="btn btnhover">Cancelar</button>
+            </form>
+            <p class="atalho" id='atalho'>
+                <button onclick="mostrarFormularioAdicionarFila()" class="btn btnhover"><i class="fas fa-plus"></i>Adicionar fila</button>
+            </p>
+            <?php if ($musica): ?>
+                <?php foreach ($musica as $mus): ?>
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($mus['titulo']) ?></span></p>
+                        <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
+                        <p><strong>Status:</strong> <span id="commands-today"><?= htmlspecialchars($mus['nome_status']) ?></span></p>
+                        <p class="atalho">
+                            <a href="../../components/musica/deleteMusica.php?id=<?= $mus['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash"></i></a>
+                        </p>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhuma música adicionada na fila.</p>
+            <?php endif; ?>
+            <?php if ($totalPaginas > 1): ?>
+                <div class="paginacao">
+                    <?php if ($pagina > 1): ?>
+                        <a class="btn" href="?pagina=<?= $pagina - 1 ?>">&laquo; Anterior</a>
+                    <?php endif; ?>
+                    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                        <a class="btn <?= ($i == $pagina) ? 'ativo' : '' ?>" href="?pagina=<?= $i ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php endfor; ?>
+                    <?php if ($pagina < $totalPaginas): ?>
+                        <a class="btn" href="?pagina=<?= $pagina + 1 ?>">Próximo &raquo;</a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    </div>
+
+</div>
 
 <div class="card-status activity-log">
     <div class="card-header">
@@ -117,6 +170,7 @@
 </div>
 <script src="<?=$base_url?>public/assets/script/features/filtro.js"></script>
 <script src="<?=$base_url?>public/assets/script/pagination/lista_pagina.js"></script>
+<script src="<?=$base_url?>public/assets/script/components/musica.js"></script>
 <script>
     function mostrarFormulario(id){
         document.getElementById('exibicao-' + id).style.display = 'none';
@@ -132,5 +186,11 @@
     }
     function cancelarFormularioAdicionar(){
         document.getElementById('formAdicionar').style.display = 'none';
+    }
+    function mostrarFormularioAdicionarFila(){
+        document.getElementById('formAdicionarFila').style.display = 'block';      
+    }
+    function cancelarFormularioAdicionarFila(){
+        document.getElementById('formAdicionarFila').style.display = 'none';
     }
 </script>
