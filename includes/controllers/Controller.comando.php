@@ -33,27 +33,4 @@
     }else{
         $welcomeInputs = $welcome ?: ['titulo' => '', 'mensagem' => '', 'footer' => ''];
     }
-    
-    // ================ MUSICA ================
-
-    $limite = 3;
-
-    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $pagina = $pagina < 1 ? 1 : $pagina;
-
-    $offset = ($pagina - 1) * $limite;
-
-    $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? ORDER BY m.id ASC, m.id_status ASC LIMIT ? OFFSET ?");
-
-    $stmtmusic->bindValue(1, $usuario_id, PDO::PARAM_INT);
-    $stmtmusic->bindValue(2, $limite, PDO::PARAM_INT);
-    $stmtmusic->bindValue(3, $offset, PDO::PARAM_INT);
-    $stmtmusic->execute();
-    $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmtTotal = $conexao->prepare("SELECT COUNT(*) AS total FROM musica WHERE usuario_id = ?");
-    $stmtTotal->execute([$usuario_id]);
-    $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'];
-
-    $totalPaginas = ceil($total / $limite);
 ?>

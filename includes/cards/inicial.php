@@ -9,8 +9,14 @@
             <div class="activity-list">
                 <div class="activity-item">
                     <div class="activity-content">
-                        <p><strong>Status:</strong> <span class="status online">Online</span></p>
+                        <p><strong>Status:</strong> <span class="status online"></span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-content">
+                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
+                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                     </div>
                 </div>
             </div>
@@ -52,18 +58,35 @@
         </div>
     </div>
             
-    <div class="card-status">
-        <div class="card-header">
-            <i class="fas fa-robot"></i>
-            <h2>Prefixo Personalizado</h2>
-        </div>
-        <div class="card-body">
-            <div class="activity-list">
-                <div class="activity-item">
-                    <div class="activity-content">
-                        <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
-                        <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
-                    </div>
+    <div class="grid-cards">
+        <div class="card-status">
+            <div class="card-header">
+                <i class="fas fa-music"></i>
+                <h2>Informações Dj ByteCode</h2>
+            </div>
+            <div class="card-body">
+                <div class="activity-list">
+                    <?php foreach (array_slice($musica, 0, 1) as $mus): ?>
+                        <div class="activity-content">
+                            <div class="grid-cards">
+                                <div class="discord-embed-music">
+                                    <div class="embed-header-music">
+                                        <i class="fas fa-music"></i>
+                                        <h2>Informações Dj ByteCode</h2>
+                                    </div>
+                                    <div class="embed-body-music">
+                                        <img src="img/ByteCodeMusic.svg" alt="">
+                                        <p><strong>Música:</strong> <?= htmlspecialchars($mus['titulo']) ?></p>
+                                        <p><strong>Artista:</strong> <?= htmlspecialchars($mus['autor']) ?></p>
+                                        <p><strong>Status:</strong> <?= htmlspecialchars($mus['nome_status']) ?></p>
+                                    </div>
+                                    <div class="embed-footer-music">
+                                        <span>Dj ByteCode</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

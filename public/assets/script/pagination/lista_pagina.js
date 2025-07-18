@@ -9,7 +9,7 @@ if(pathnamePagina.includes('/public/')){ // PRINCIPAL
 
 }else if(pathnamePagina.includes('admin/views/painel/comandos.php')){ // COMANDOS
     BASEPAGINA_URL = '../../';
-    LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php'];
+    LISTAR_COMANDOS_ARQUIVO = ['listarTodos.php', 'listarDetalhes.php', 'listarMusicas.php'];
 
 }else if(pathnamePagina.includes('admin/views/painel/')){ // DASHBOARD
     BASEPAGINA_URL = '../../';
@@ -22,8 +22,9 @@ function carregarPagina(pagina = 1, categoria = null){
     if(categoria !== null){
         categoriaAtual = categoria;
     }
-
+    
     LISTAR_COMANDOS_ARQUIVO.forEach(arquivo =>{
+        if(arquivo === 'listarMusicas.php') return;
         let url = BASEPAGINA_URL + 'components/comandos/' + arquivo + '?pagina=' + pagina;
         if(categoriaAtual !== ''){
             url += '&categoria=' + encodeURIComponent(categoriaAtual);
@@ -43,6 +44,20 @@ function carregarPagina(pagina = 1, categoria = null){
             });
     });
 }
+
+function carregarMusicasPagina(pagina = 1) {
+    let url = BASEPAGINA_URL + 'components/comandos/listarMusicas.php?pagina=' + pagina;
+
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('listar-musica').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Erro ao carregar músicas', error);
+        });
+}
+
 function filtrarPorCategoria(){
     const categoriaSelecionada = document.getElementById('filtro-categoria').value;
     carregarPagina(1, categoriaSelecionada); // reinicia para página 1
@@ -50,4 +65,5 @@ function filtrarPorCategoria(){
 
 document.addEventListener('DOMContentLoaded', function (){
     carregarPagina();
+    carregarMusicasPagina();
 });
