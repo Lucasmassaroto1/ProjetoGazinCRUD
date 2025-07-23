@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/input.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/button.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/input.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -17,8 +18,8 @@
                             <input type="text" name="exemplo" class="inputwelcome" placeholder="Exemplo de uso"><br><br>
                             <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
                             <button type="button" onclick="cancelarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-xmark"></i> Cancelar</button>
-                        </form>
-                        <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>   
+                        </form> 
+                        <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>
                         <div id="lista-comandos"></div>
                     </div>
                 </div>

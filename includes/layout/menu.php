@@ -8,7 +8,7 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
     $itens_menu[] = ['href' => $base_url . 'admin/components/sistema/logout.php', 'icon' => 'fas fa-sign-out-alt', 'label' => 'Sair', 'active' => false];
 }
 ?>
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/menu.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/layout/menu.css">
 <div class="menu">
     <button class="toggle">
         <i class="fa-solid fa-bars"></i>

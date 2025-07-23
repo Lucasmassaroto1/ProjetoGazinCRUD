@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <link rel="shortcut icon" href="../../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../public/assets/style/views/login.css">
-    <link rel="stylesheet" href="../../../public/assets/style/input.css">
+    <link rel="stylesheet" href="../../../public/assets/style/components/input.css">
     <title>Bytecrud - Novo usuario</title>
 </head>
 <body>

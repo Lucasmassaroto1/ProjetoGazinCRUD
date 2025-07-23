@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?= $base_url ?>public/assets/style/components/card.css">
-<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/input.css">
+<link rel="stylesheet" href="<?= $base_url ?>public/assets/style/components/input.css">
 <div class="alinhacard">
     <div class="grid-cards">
         <div class="card-status">
