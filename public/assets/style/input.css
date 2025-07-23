@@ -8,7 +8,7 @@
     border-bottom: 4px solid var(--secondary-color);
     color: var(--primary-color);
 }
-.inputwelcome :focus{
+.inputwelcome:focus{
     background: transparent;
 }
 .inputwelcome input:-webkit-autofill{
