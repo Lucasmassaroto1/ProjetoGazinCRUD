@@ -15,6 +15,8 @@
     <link rel="shortcut icon" href="img/Favicon/favicon.ico" type="image/x-icon">
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style/base/base.css">
+    <link rel="stylesheet" href="assets/style/base/temas.css">
     <link rel="stylesheet" href="assets/style/views/principal.css">
     <link rel="stylesheet" href="assets/style/layout/footer.css">
 

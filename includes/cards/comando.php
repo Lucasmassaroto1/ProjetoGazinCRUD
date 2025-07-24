@@ -18,7 +18,7 @@
                             <input type="text" name="exemplo" class="inputwelcome" placeholder="Exemplo de uso"><br><br>
                             <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
                             <button type="button" onclick="cancelarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-xmark"></i> Cancelar</button>
-                        </form> 
+                        </form>
                         <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>
                         <div id="lista-comandos"></div>
                     </div>

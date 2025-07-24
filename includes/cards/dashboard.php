@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/base/temas.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">

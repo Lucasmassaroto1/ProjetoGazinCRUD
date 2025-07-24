@@ -1,6 +1,6 @@
 /* ========== CORES DO SITE ========== */
-:root{
-    /* --primary-color: #00CA76;
+/* :root{
+    --primary-color: #00CA76;
     --secondary-color: #01916D;
     --background-color: #000000;
     --text-color: #ffffff;
@@ -8,7 +8,7 @@
     --color-painel: #1a1a1a;
     --marcador-color: #838383;
     --success-color: #00ff88;
-    --danger-color: #ff5555; */
+    --danger-color: #ff5555;
 
     --primary-color: #00AEEF;
     --secondary-color: #007ACC;
@@ -20,7 +20,7 @@
     --success-color: #00ffaa;
     --danger-color: #ff4c4c;
 
-    /* --primary-color: #9147ff;
+    --primary-color: #9147ff;
     --secondary-color: #c74bcb;
     --background-color: #0f0e17;
     --text-color: #ffffff;
@@ -28,7 +28,7 @@
     --color-painel: #262336;
     --marcador-color: #aaaaaa;
     --success-color: #b4f8c8;
-    --danger-color: #ff6b6b; */
+    --danger-color: #ff6b6b;
 }
 :root.roxo{
     --primary-color: #9147ff;
@@ -40,10 +40,9 @@
     --marcador-color: #aaaaaa;
     --success-color: #b4f8c8;
     --danger-color: #ff6b6b;
-}
-
+} */
 /* ========== RESET & BASE ========== */
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -65,7 +64,7 @@ body::-webkit-scrollbar-track{
 body::-webkit-scrollbar-thumb{
     background: var(--secondary-color);
     border-radius: 10px;
-}
+} */
 .conteudo{
     padding: 1rem;
     padding-left: 6rem;

@@ -1,20 +1,13 @@
 /* ========== CORES DO SITE ========== */
-:root{
+/* :root{
     --primary-color: #00CA76;
     --secondary-color: #01916D;
     --text-color: #ffffff;
     --background-color: #000000;
     --color-painel: #1a1a1a;
-}
+} */
 /* ========== RESET & BASE ========== */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 body{
-    background: var(--background-color);
-    font-family: "Exo 2", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

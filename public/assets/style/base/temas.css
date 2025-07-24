@@ -1,0 +1,39 @@
+/* ========== CORES DO SITE ========== */
+/* ========== VERDE ========== */
+:root{
+    --primary-color: #00CA76;
+    --secondary-color: #01916D;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --card-background: #3d3d3d;
+    --color-painel: #1a1a1a;
+    --marcador-color: #838383;
+    --success-color: #00ff88;
+    --danger-color: #ff5555;
+}
+
+/* ========== AZUL ========== */
+:root{
+    --primary-color: #00AEEF;
+    --secondary-color: #007ACC;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-background: #1e1e1e;
+    --color-painel: #2c2c2c;
+    --marcador-color: #b0b0b0;
+    --success-color: #00ffaa;
+    --danger-color: #ff4c4c;
+}
+
+/* ========== ROXO========== */
+:root{
+    --primary-color: #9147ff;
+    --secondary-color: #c74bcb;
+    --background-color: #0f0e17;
+    --text-color: #ffffff;
+    --card-background: #1c1b29;
+    --color-painel: #262336;
+    --marcador-color: #aaaaaa;
+    --success-color: #b4f8c8;
+    --danger-color: #ff6b6b;
+}

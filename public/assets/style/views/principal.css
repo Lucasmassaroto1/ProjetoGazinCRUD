@@ -1,5 +1,5 @@
 /* ========== CORES DO SITE ========== */
-:root{
+/* :root{
     --primary-color: #00CA76;
     --secondary-color: #01916D;
     --text-color: #ffffff;
@@ -9,10 +9,10 @@
     --color-painel: #1a1a1a;
     --success-color: #00ff88;
     --danger-color: #ff5555;
-}
+} */
 
 /* ========== RESET & BASE ========== */
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb{
     background: var(--secondary-color);
     border-radius: 10px;
 }
-
+ */
 h1, h2{
     font-weight: 700;
 }

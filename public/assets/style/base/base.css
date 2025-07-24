@@ -1,0 +1,24 @@
+/* ========== RESET & BASE ========== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+}
+body{
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: "Exo 2", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 8px;
+}
+body::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
