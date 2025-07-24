@@ -9,6 +9,7 @@ if(in_array($paginaAtual, ['dashboard', 'comandos', 'estatistica', 'configuracoe
 }
 ?>
 <link rel="stylesheet" href="<?=$base_url?>public/assets/style/layout/menu.css">
+<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/button.css">
 <div class="menu">
     <button class="toggle">
         <i class="fa-solid fa-bars"></i>

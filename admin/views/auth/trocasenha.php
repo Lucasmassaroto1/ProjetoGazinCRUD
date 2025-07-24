@@ -47,9 +47,10 @@
     <link rel="shortcut icon" href="../../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../public/assets/style/base/base.css">
-    <link rel="stylesheet" href="../../../public/assets/style/base/temas.css">
+    <link rel="stylesheet" href="../../../public/assets/style/themes/temas.css">
     <link rel="stylesheet" href="../../../public/assets/style/views/login.css">
     <link rel="stylesheet" href="../../../public/assets/style/components/input.css">
+    <link rel="stylesheet" href="../../../public/assets/style/components/button.css">
     <title>Bytecrud - Trocar Senha</title>
 </head>
 <body>
@@ -67,7 +68,7 @@
                             <input type="password" name="senha_atual" class="inputwelcome" placeholder="Senha atual" required><br><br>
                             <input type="password" name="nova_senha" class="inputwelcome" placeholder="Senha nova" required><br><br>
                             <input type="password" name="confirma_senha" class="inputwelcome" placeholder="Confirmar senha" required><br><br>
-                            <button type="submit" class="btn btnhover">Salvar Senha</button>
+                            <button type="submit" class="btn-global">Salvar Senha</button>
                             <a href="../painel/perfil.php" class="btn btn-link">Voltar para Perfil</a>
                         </form>
                     </div>

@@ -16,7 +16,8 @@
     <!-- ========== ESTILO ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style/base/base.css">
-    <link rel="stylesheet" href="assets/style/base/temas.css">
+    <link rel="stylesheet" href="assets/style/themes/temas.css">
+    <link rel="stylesheet" href="assets/style/views/main.css">
     <link rel="stylesheet" href="assets/style/views/principal.css">
     <link rel="stylesheet" href="assets/style/layout/footer.css">
 
@@ -32,13 +33,12 @@
                 </div>
                 <div class="txt-inicio">
                     <h1>ByteCode, <span>um simples bot CLT.</span></h1>
-                    <div class="btn-global">
-                        <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535', '_blank')" type="button"><i class="fa-solid fa-robot"></i> Me adicione</button>
-                        <button onclick="window.open('https://discord.gg/Bs9pMBnDX3', '_blank')" type="button"><i class="fa-brands fa-discord"></i> Comunidade</button>
+                    <div class="btn-global-style">
+                        <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535', '_blank')" type="button" class="btn btn-global"><i class="fa-solid fa-robot"></i> Me adicione</button>
+                        <button onclick="window.open('https://discord.gg/Bs9pMBnDX3', '_blank')" type="button" class="btn btn-global"><i class="fa-brands fa-discord"></i> Comunidade</button>
                     </div>
                     <div class="individual">
-                        <button onclick="window.location.href='../admin/dashboard.php'" type="button"><i class="fa-solid fa-terminal"></i> Personalizar</button>
-                        <!-- <button onclick="window.open('https://github.com/Lucasmassaroto1/botdiscord', '_blank')" type="button"><i class="fa-solid fa-code"></i> Meu Código</button> -->
+                        <button onclick="window.location.href='../admin/dashboard.php'" type="button" class="btn-global"><i class="fa-solid fa-terminal"></i> Personalizar</button>
                     </div>
                 </div>
             </div>
@@ -67,10 +67,10 @@
                     <div class="texto">
                         <h3>Lucas Massaroto</h3>
                         <p>Desenvolvedor FullStack e criador do ByteCode, apaixonado por tecnologia, programação e automação. Buscando sempre evoluir e trazer ideias úteis para a comunidade!</p>
-                        <div class="btn-global redes">
-                            <button onclick="window.open('https://www.tiktok.com/@lucasmassaroto1', '_blank')" type="button"><i class="fa-brands fa-tiktok"></i></button>
-                            <button onclick="window.open('https://www.instagram.com/lucasmassaroto17', '_blank')" type="button"><i class="fa-brands fa-instagram"></i></button>
-                            <button onclick="window.open('mailto:lucasmassaroto17@gmail.com')" type="button"><i class="fa-solid fa-envelope"></i></button>
+                        <div class="btn-global-style redes">
+                            <button onclick="window.open('https://www.tiktok.com/@lucasmassaroto1', '_blank')" type="button" class="btn-global"><i class="fa-brands fa-tiktok"></i></button>
+                            <button onclick="window.open('https://www.instagram.com/lucasmassaroto17', '_blank')" type="button" class="btn-global"><i class="fa-brands fa-instagram"></i></button>
+                            <button onclick="window.open('mailto:lucasmassaroto17@gmail.com')" type="button" class="btn-global"><i class="fa-solid fa-envelope"></i></button>
                         </div>
                     </div>
                 </div>
@@ -79,10 +79,10 @@
     </main>
     <footer>
         <div class="line-footer">
-            <div class="btn-global">
-                <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535', '_blank')" type="button"><i class="fa-solid fa-robot"></i></button>
-                <button onclick="window.open('https://discord.gg/Bs9pMBnDX3', '_blank')" type="button"><i class="fa-brands fa-discord"></i></button>
-                <button onclick="window.open('https://github.com/Lucasmassaroto1/botdiscord', '_blank')" type="button"><i class="fa-solid fa-code"></i></button>
+            <div class="btn-global-style">
+                <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=1309200248987586560&scope=bot&permissions=1759218604441591&intents=65535', '_blank')" type="button" class="btn-global"><i class="fa-solid fa-robot"></i></button>
+                <button onclick="window.open('https://discord.gg/Bs9pMBnDX3', '_blank')" type="button" class="btn-global"><i class="fa-brands fa-discord"></i></button>
+                <button onclick="window.open('https://github.com/Lucasmassaroto1/botdiscord', '_blank')" type="button" class="btn-global"><i class="fa-solid fa-code"></i></button>
             </div>
         </div>
         <div class="line-footer borda">

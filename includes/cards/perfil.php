@@ -28,7 +28,7 @@
                                     <div id="cropper-content">
                                         <span id="close-modal">&times;</span>
                                         <img id="cropper-image" style="max-width: 100%; max-height: 400px;">
-                                        <button type="button" class="btn btnhover" onclick="recortarImagem()">
+                                        <button type="button" class="btn-global" onclick="recortarImagem()">
                                             <i class="fas fa-scissors"></i> Recortar
                                         </button>
                                     </div>
@@ -40,10 +40,10 @@
                                 <div class="activity-item">
                                     <div class="activity-content">
                                         <form method="post" enctype="multipart/form-data" action="../../components/perfil/fotoPerfil.php">
-                                            <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
-                                            <button onclick="window.location.href='../../views/auth/trocasenha.php'" type="button" class="btn btnhover"><i class="fas fa-key"></i> Alterar Senha</button>
-                                            <button type="submit" name="remover_foto" value="1" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remover Foto</button>
-                                            <button onclick="if(confirm('Tem certeza que deseja excluir seu perfil? Essa ação não pode ser desfeita.')){window.location.href='../../components/perfil/deletePerfil.php';}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Deletar Usuário</button>
+                                            <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar</button>
+                                            <button onclick="window.location.href='../../views/auth/trocasenha.php'" type="button" class="btn-global"><i class="fas fa-key"></i> Alterar Senha</button>
+                                            <button type="submit" name="remover_foto" value="1" class="btn-global"><i class="fas fa-trash-alt"></i> Remover Foto</button>
+                                            <button onclick="if(confirm('Tem certeza que deseja excluir seu perfil? Essa ação não pode ser desfeita.')){window.location.href='../../components/perfil/deletePerfil.php';}" type="button" class="btn-global"><i class="fas fa-trash-alt"></i> Deletar Usuário</button>
                                         </form>
                                     </div>
                                 </div>

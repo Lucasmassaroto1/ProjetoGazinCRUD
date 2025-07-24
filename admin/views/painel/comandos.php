@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../public/assets/style/base/base.css">
     <link rel="stylesheet" href="../../../public/assets/style/views/main.css">
-    <link rel="stylesheet" href="../../../public/assets/style/base/temas.css">
+    <link rel="stylesheet" href="../../../public/assets/style/themes/temas.css">
     <title>ByteCode Comandos</title>
 </head>
 <body>

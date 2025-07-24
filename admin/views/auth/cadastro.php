@@ -47,9 +47,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <link rel="shortcut icon" href="../../../public/img/Favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../public/assets/style/base/base.css">
-    <link rel="stylesheet" href="../../../public/assets/style/base/temas.css">
+    <link rel="stylesheet" href="../../../public/assets/style/themes/temas.css">
     <link rel="stylesheet" href="../../../public/assets/style/views/login.css">
     <link rel="stylesheet" href="../../../public/assets/style/components/input.css">
+    <link rel="stylesheet" href="../../../public/assets/style/components/button.css">
     <title>Bytecrud - Novo usuario</title>
 </head>
 <body>
@@ -68,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="text" name="usuario" class="inputwelcome" placeholder="Usuário" required>
                             <input type="email" name="email" class="inputwelcome" placeholder="E-mail" required>
                             <input type="password" name="senha" class="inputwelcome" placeholder="Senha" required>
-                            <button type="submit" class="btn btnhover">Cadastrar</button>
+                            <button type="submit" class="btn-global">Cadastrar</button>
                             <a href="login.php" class="btn">Já tem conta? Fazer login</a>
                         </form>
                     </div>

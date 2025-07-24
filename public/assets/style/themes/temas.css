@@ -1,6 +1,5 @@
-/* ========== CORES DO SITE ========== */
 /* ========== VERDE ========== */
-:root{
+.tema-verde{
     --primary-color: #00CA76;
     --secondary-color: #01916D;
     --background-color: #000000;
@@ -26,7 +25,7 @@
 }
 
 /* ========== ROXO========== */
-:root{
+.tema-roxo{
     --primary-color: #9147ff;
     --secondary-color: #c74bcb;
     --background-color: #0f0e17;

@@ -75,10 +75,9 @@
                     <p><strong>Categoria:</strong> <span><?= htmlspecialchars($sufixoData) ?></span></p>
                     <p><strong>Exemplo:</strong> <span><?= htmlspecialchars($cmd['exemplo']) ?></span></p>
                     <p><strong>Criado por:</strong> <span><?= htmlspecialchars($cmd['autor']) ?></span></p>
-                    <p class="atalho">
-                        <a href="../usuario/edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>
-                        <a href="../../components/usuario/delete.php?id=<?= $cmd['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')"><i class="fas fa-trash-alt"></i></a>
-                    </p>
+                    <button onclick="mostrarFormulario(<?= $cmd['id'] ?>);" type="button" class="btn-global"><i class="fas fa-pen"></i></button>
+                    <button onclick="if(confirm('Tem certeza que deseja excluir?')){window.location.href='../../components/usuario/delete.php?id=<?= $cmd['id'] ?>';}" type="button" class="btn-global"><i class="fas fa-trash-alt"></i></button>
+                    <!-- <a href="../usuario/edit.php?id=<?= $cmd['id'] ?>" onclick="mostrarFormulario(<?= $cmd['id'] ?>); return false;"><i class="fas fa-pen"></i></a>-->
                 </div>
                 <form id="form-<?= $cmd['id'] ?>" action="../../components/usuario/edit.php" method="post" style="display: none;">
                     <input type="hidden" name="id" value="<?= $cmd['id'] ?>">
@@ -86,8 +85,8 @@
                     <input type="text" name="descricao" class="inputwelcome" placeholder="Descrição" value="<?= htmlspecialchars($cmd['descricao']) ?>"><br><br>
                     <input type="text" name="categoria" class="inputwelcome" placeholder="Categoria" value="<?= htmlspecialchars($cmd['categoria']) ?>"><br><br>
                     <input type="text" name="exemplo" class="inputwelcome" placeholder="Exemplo de uso" value="<?= htmlspecialchars($cmd['exemplo']) ?>"><br><br>
-                    <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
-                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn btn-danger"><i class="fas fa-xmark"></i> Cancelar</button>
+                    <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar</button>
+                    <button type="button" onclick="cancelarFormulario(<?= $cmd['id'] ?>)" class="btn-global"><i class="fas fa-xmark"></i> Cancelar</button>
                 </form>
             </div>
         </div>

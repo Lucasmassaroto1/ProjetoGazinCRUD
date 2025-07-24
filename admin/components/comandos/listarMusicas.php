@@ -45,7 +45,7 @@
             <div class="activity-content">
                 <p><strong>Titulo:</strong> <span id="total-commands"><?= htmlspecialchars($mus['titulo']) ?></span></p>
                 <p><strong>Autor:</strong> <span id="commands-today"><?= htmlspecialchars($mus['autor']) ?></span></p>
-                <button onclick="if(confirm('Tem certeza que deseja excluir?')){window.location.href='../../components/musica/deleteMusica.php?id=<?= $mus['id'] ?>';}" type="button" class="btn btnhover"><i class="fas fa-trash-alt"></i></button>
+                <button onclick="if(confirm('Tem certeza que deseja excluir?')){window.location.href='../../components/musica/deleteMusica.php?id=<?= $mus['id'] ?>';}" type="button" class="btn-global"><i class="fas fa-trash-alt"></i></button>
             </div>
         </div>
     <?php endforeach;

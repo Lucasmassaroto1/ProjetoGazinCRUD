@@ -1,40 +1,3 @@
-/* ========== CORES DO SITE ========== */
-/* :root{
-    --primary-color: #00CA76;
-    --secondary-color: #01916D;
-    --text-color: #ffffff;
-    --background-color: #000000;
-    --card-background: #3d3d3d;
-    --color-scrollbar: rgba(161, 161, 161, 0.3);
-    --color-painel: #1a1a1a;
-    --success-color: #00ff88;
-    --danger-color: #ff5555;
-} */
-
-/* ========== RESET & BASE ========== */
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Exo 2", sans-serif;
-    user-select: none;
-}
-body{
-    background: var(--background-color);
-    color: var(--text-color);
-}
-body::-webkit-scrollbar{
-    width: 8px;
-}
-body::-webkit-scrollbar-track{
-    background: var(--color-scrollbar);
-    border-radius: 10px;
-}
-body::-webkit-scrollbar-thumb{
-    background: var(--secondary-color);
-    border-radius: 10px;
-}
- */
 h1, h2{
     font-weight: 700;
 }
@@ -58,116 +21,6 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.conteudo{
-    padding: 2rem;
-    padding-left: 3rem;
-}
-.btn-global{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.625rem;
-    margin-top: 1.25rem;
-    justify-content: center;
-}
-.btn-global button{
-    color: var(--primary-color);
-    padding: 0.8rem 1.7rem;
-    background-color: transparent;
-    border-radius: .3em;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .5s;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    border: 1px solid;
-    z-index: 1;
-}
-.btn-global button::before, .btn-global button::after{
-    content: '';
-    display: block;
-    width: 3.125rem;
-    height: 3.125rem;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-    background: var(--primary-color);
-    transition: 1s ease;
-}
-.btn-global button::before{
-    top: -1rem;
-    left: -1rem;
-}
-.btn-global button::after{
-    left: calc(100% + 1rem);
-    top: calc(100% + 1rem);
-}
-.btn-global button:hover::before, .btn-global button:hover::after{
-    width: 25.625rem;
-    height: 25.625rem;
-}
-.btn-global button:hover{
-    color: var(--background-color);
-    animation: pulse 0.6s infinite;
-}
-.btn-global button:active{
-    filter: brightness(.8);
-}
-.btn-global, .individual{
-    justify-content: center;
-}
-.individual{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.625rem;
-    margin-top: 0.625rem;
-}
-.individual button{
-    color: var(--primary-color);
-    padding: 0.8rem 1.7rem;
-    background-color: transparent;
-    border-radius: .3em;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .5s;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    border: 1px solid;
-    z-index: 1;
-}
-.individual button::before, .individual button::after{
-    content: '';
-    display: block;
-    width: 3.125rem;
-    height: 3.125rem;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-    background-color: var(--primary-color);
-    transition: 1s ease;
-}
-.individual button::before{
-    top: -1rem;
-    left: -1rem;
-}
-.individual button::after{
-    left: calc(100% + 1rem);
-    top: calc(100% + 1rem);
-}
-.individual button:hover::before, .individual button:hover::after{
-    width: 25.625rem;
-    height: 25.625rem;
-}
-.individual button:hover{
-    color: var(--background-color);
-    animation: pulse 0.6s infinite;
-}
-.individual button:active{
-    filter: brightness(.8);
 }
 
 /* ========== INÍCIO ========== */
@@ -266,7 +119,7 @@ section.sobre{
     line-height: 1.6;
 }
 
-/* ========== KEYFRAMES ========== */
+/* ========== KEYFRAMES PRINCIPAL ========== */
 @keyframes flutuar{
     0%{
         top: 0;

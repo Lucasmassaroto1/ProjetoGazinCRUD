@@ -1,12 +1,12 @@
 /* ========== BTN GLOBAL ========== */
-.btn-global{
+.btn-global-style, .individual{
     display: flex;
     flex-wrap: wrap;
     gap: 0.625rem;
-    margin-top: 1.25rem;
     justify-content: center;
 }
-.btn-global button{
+.btn-global, .custom-upload-btn{
+    margin-top: 0.4rem;
     color: var(--primary-color);
     padding: 0.8rem 1.7rem;
     background-color: transparent;
@@ -20,7 +20,7 @@
     border: 1px solid;
     z-index: 1;
 }
-.btn-global button::before, .btn-global button::after{
+.btn-global::before, .btn-global::after, .custom-upload-btn::before, .custom-upload-btn::after{
     content: '';
     display: block;
     width: 3.125rem;
@@ -32,25 +32,62 @@
     background: var(--primary-color);
     transition: 1s ease;
 }
-.btn-global button::before{
+.btn-global::before, .custom-upload-btn::before{
     top: -1rem;
     left: -1rem;
 }
-.btn-global button::after{
+.btn-global::after, .custom-upload-btn::after{
     left: calc(100% + 1rem);
     top: calc(100% + 1rem);
 }
-.btn-global button:hover::before, .btn-global button:hover::after{
+.btn-global:hover::before, .btn-global:hover::after, .custom-upload-btn:hover::before, .custom-upload-btn:hover::after{
     width: 25.625rem;
     height: 25.625rem;
 }
-.btn-global button:hover{
+.btn-global:hover, .custom-upload-btn:hover{
     color: var(--background-color);
     animation: pulse 0.6s infinite;
 }
-.btn-global button:active{
+.btn-global:active, .custom-upload-btn:active{
     filter: brightness(.8);
 }
 .btn-global, .individual{
     justify-content: center;
+}
+.btn-global:focus{
+    outline: none;
+}
+
+/* ========== BTN MENU ========== */
+.toggle{
+    background-color:var(--primary-color);
+    color:var(--text-color);
+    position: fixed;
+    left: 1.25rem;
+    top: 1.25rem;
+    z-index: 3;
+    border-radius: 0.3125rem;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0.625rem 0.9375rem;
+    cursor: pointer;
+    transition: left 0.5s ease;
+}
+#toggleTheme{
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0.625rem; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+#toggleTheme:hover{
+    transform: translateX(5px) rotate(5deg);
+}
+.toggle:hover{
+    background-color: var(--secondary-color);
+}
+.toggle:focus{
+    outline: none;
 }

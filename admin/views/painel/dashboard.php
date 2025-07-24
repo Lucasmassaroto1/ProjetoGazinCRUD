@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../public/assets/style/base/base.css">
+    <link rel="stylesheet" href="../../../public/assets/style/themes/temas.css">
     <link rel="stylesheet" href="../../../public/assets/style/views/main.css">
     <title>ByteCode DashBoard</title>
 </head>

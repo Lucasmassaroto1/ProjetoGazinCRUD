@@ -16,10 +16,10 @@
                             <input type="text" name="descricao" class="inputwelcome" placeholder="Descrição" required><br><br>
                             <input type="text" name="categoria" class="inputwelcome" placeholder="Categoria" required><br><br>
                             <input type="text" name="exemplo" class="inputwelcome" placeholder="Exemplo de uso"><br><br>
-                            <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar</button>
-                            <button type="button" onclick="cancelarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-xmark"></i> Cancelar</button>
+                            <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar</button>
+                            <button type="button" onclick="cancelarFormularioAdicionar()" class="btn-global"><i class="fas fa-xmark"></i> Cancelar</button>
                         </form>
-                        <button onclick="mostrarFormularioAdicionar()" class="btn btnhover"><i class="fas fa-plus"></i> Novo Comando</button>
+                        <button onclick="mostrarFormularioAdicionar()" class="btn-global"><i class="fas fa-plus"></i> Novo Comando</button>
                         <div id="lista-comandos"></div>
                     </div>
                 </div>
@@ -39,10 +39,10 @@
                         <form id="formAdicionarFila" action="../../components/musica/adicionarFila.php" method="post" style="display: none;">
                             <input type="text" name="titulo" class="inputwelcome" placeholder="Título" required><br>
                             <input type="text" name="autor" class="inputwelcome" placeholder="Autor" required><br>
-                            <button type="submit" class="btn btnhover">Adicionar</button>
-                            <button type="button" onclick="cancelarFormularioAdicionarFila()" class="btn btnhover">Cancelar</button>
+                            <button type="submit" class="btn-global">Adicionar</button>
+                            <button type="button" onclick="cancelarFormularioAdicionarFila()" class="btn-global">Cancelar</button>
                         </form>
-                        <button onclick="mostrarFormularioAdicionarFila()" class="btn btnhover"><i class="fas fa-plus"></i> Adicionar fila</button>   
+                        <button onclick="mostrarFormularioAdicionarFila()" class="btn-global"><i class="fas fa-plus"></i> Adicionar fila</button>   
                         <div id="listar-musica"></div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                 <p><strong>Prefixo Original:</strong> <span id="original-prefix" class="status-prefix">!</span></p>
                                 <p><strong>Prefixo Personalizado:</strong> <span id="custom-prefix" class="status-prefix"><?= htmlspecialchars($prefixo_atual ?? '-') ?></span></p>
                                 <p><input type="text" name="prefixo" id="input-prefix" class="inputwelcome" placeholder="Digite o prefixo" maxlength="1"></p>
-                                <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar Prefixo</button>
+                                <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar Prefixo</button>
                             </form>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                 <input type="text" name="mensagem" class="inputwelcome"  placeholder="Mensagem" value="<?= $welcomeInputs['mensagem'] ?? ''?>" required>
                                 <label style="color: var(--marcador-color);">Use: {user.mention} para marcar pelo cargo</label>
                                 <input type="text" name="footer" class="inputwelcome"  placeholder="footer" value="<?= $welcomeInputs['footer'] ?? ''?>" required><br>
-                                <button type="submit" class="btn btnhover"><i class="fas fa-floppy-disk"></i> Salvar Mensagem</button>
+                                <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar Mensagem</button>
                             </form>
                         </div>
                     </div>
