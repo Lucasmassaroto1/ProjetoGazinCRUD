@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -72,7 +71,7 @@
                                 <div class="discord-embed-music">
                                     <div class="embed-header-music">
                                         <i class="fas fa-music"></i>
-                                        <h2>Informações Dj ByteCode</h2>
+                                        <h2>Dj ByteCode</h2>
                                     </div>
                                     <div class="embed-body-music">
                                         <img src="../../../public/img/ByteCodeMusic.svg" alt="">

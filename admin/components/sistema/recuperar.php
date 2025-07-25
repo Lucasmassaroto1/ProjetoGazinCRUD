@@ -98,7 +98,7 @@
         $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
         $stmt->execute([$_SESSION['usuario_id']]);
         $res = $stmt->fetch();
-        if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
+        if($res && in_array($res['tema'], ['azul', 'roxo'])){
             $tema = $res['tema'];
         }
     }

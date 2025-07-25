@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/buttons.css">
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -17,7 +15,7 @@
                             <option value="124">#boas-vindas</option>
                             <option value="125">#novatos</option>
                         </select>
-                        <button class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar configurações</button>
+                        <button class="btn-global tema-verde"><i class="fas fa-floppy-disk"></i> Salvar configurações</button>
                     </div>
                 </div>
                 <h2>Mensagem Personalizada:</h2>
@@ -59,7 +57,7 @@
                                 <option value="@Membro" <?= ($cargo_auto ?? '') == '@Membro' ? 'selected' : '' ?>>@Membro</option>
                                 <option value="@VIP" <?= ($cargo_auto ?? '') == '@VIP' ? 'selected' : '' ?>>@VIP</option>
                             </select>
-                            <button type="submit" class="btn-global"><i class="fas fa-floppy-disk"></i> Salvar Cargo</button>
+                            <button type="submit" class="btn-global tema-verde"><i class="fas fa-floppy-disk"></i> Salvar Cargo</button>
                         </form>
                     </div>
                 </div>

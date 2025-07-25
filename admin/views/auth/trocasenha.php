@@ -5,6 +5,17 @@
 
     $mensagem = '';
 
+    // ================ TEMA DO SITE ================
+    $tema = 'azul';
+    if(isset($_SESSION['usuario_id'])){
+        $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
+        $stmt->execute([$_SESSION['usuario_id']]);
+        $res = $stmt->fetch();
+        if($res && in_array($res['tema'], ['azul', 'roxo'])){
+            $tema = $res['tema'];
+        }
+    }
+
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $usuario = $_POST['usuario'] ?? '';
         $senha_atual = $_POST['senha_atual'] ?? '';
@@ -37,17 +48,6 @@
         }else{
             $mensagem = "<p style='color:red'>Usuário não encontrado.</p>";
         }
-
-        // ================ TEMA DO SITE ================
-        $tema = 'azul';
-        if(isset($_SESSION['usuario_id'])){
-            $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
-            $stmt->execute([$_SESSION['usuario_id']]);
-            $res = $stmt->fetch();
-            if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
-                $tema = $res['tema'];
-            }
-        }
     }
 ?>
 <!DOCTYPE html>
@@ -79,7 +79,7 @@
                             <input type="password" name="senha_atual" class="inputwelcome" placeholder="Senha atual" required><br><br>
                             <input type="password" name="nova_senha" class="inputwelcome" placeholder="Senha nova" required><br><br>
                             <input type="password" name="confirma_senha" class="inputwelcome" placeholder="Confirmar senha" required><br><br>
-                            <button type="submit" class="btn-global">Salvar Senha</button>
+                            <button type="submit" class="btn-global tema-verde">Salvar Senha</button>
                             <a href="../painel/perfil.php" class="btn btn-link">Voltar para Perfil</a>
                         </form>
                     </div>

@@ -6,24 +6,26 @@
     $erro = '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $usuario = $_POST['usuario'] ?? '';
+        $usuarioInput = trim($_POST['usuario'] ?? '');
         $senha = $_POST['senha'] ?? '';
 
         $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario, $usuario]);
-        $user = $stmt->fetch();
+        $stmt->execute([$usuarioInput, $usuarioInput]);
+        $usuarios = $stmt->fetchAll();
 
-        if($user && password_verify($senha, $user['senha'])){
-            $_SESSION['usuario_id'] = $user['id'];
-            $_SESSION['usuario_nome'] = $user['usuario'];
-            $_SESSION['usuario_tipo'] = $user['tipo'];
+        $logado = false;
+        foreach($usuarios as $user){
+            if(password_verify($senha, $user['senha'])){
+                $_SESSION['usuario_id'] = $user['id'];
+                $_SESSION['usuario_nome'] = $user['usuario'];
+                $_SESSION['usuario_tipo'] = $user['tipo'];
 
-            header('Location: ../../views/painel/dashboard.php');
-            exit;
-        }else{
-            $erro = "Usuário ou senha inválidos!";
+                header('Location: ../../views/painel/dashboard.php');
+                exit;
+            }
         }
+        $erro = "Usuário ou senha inválidos!";
     }
 
     // ================ TEMA DO SITE ================

@@ -1,0 +1,7 @@
+@import url('base/base.css');
+@import url('themes/temas.css');
+@import url('views/main.css');
+
+@import url('components/card.css');
+@import url('components/input.css');
+@import url('components/button.css')

@@ -8,13 +8,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $senha = $_POST['senha'] ?? '';
 
     if(!empty($usuario) && !empty($email) && !empty($senha)){
-        // Verificar se usuário ou email já existem
-        $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
+        // Verificar se email já existem
+        $sql = "SELECT * FROM usuarios WHERE email = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$usuario, $email]);
+        $stmt->execute([$email]);
 
         if($stmt->fetch()){
-            $erro = "Usuário ou e-mail já cadastrados!";
+            $erro = "e-mail já cadastrados!";
         }else{
             // Criptografar senha
             $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);

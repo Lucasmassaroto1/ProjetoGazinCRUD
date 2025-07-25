@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css">
+<!-- <link rel="stylesheet" href="<?=$base_url?>public/assets/style/components/card.css"> -->
 <div class="grid-cards">
     <div class="card-status">
         <div class="card-header">
@@ -12,7 +12,7 @@
                         <p><strong>Status:</strong> <span class="status online">Online</span></p>
                         <p><strong>Tempo Online:</strong> <span id="uptime"> </span></p>
                         <?php if($usuario_tipo === 'admin'):?>
-                            <button class="btn-global" id="lig-des" onclick="ligdes()">Ligado</button>
+                            <button class="btn-global " id="lig-des" onclick="ligdes()">Ligado</button>
                         <?php endif;?>
                     </div>
                 </div>

@@ -43,11 +43,16 @@ function buscarStatus(){
             atualizaRelogio();
             intervaloRelogio = setInterval(atualizaRelogio, 1000);
             botaoligdes.textContent = "Desligar";
+
+            botaoligdes.classList.remove("tema-verde");
+            botaoligdes.classList.add("btn-danger");
         }else{
             clearInterval(intervaloRelogio);
             segundosUptime = 0;
             document.getElementById('uptime').textContent = '00h 00m 00s';
             botaoligdes.textContent = "Ligar";
+            botaoligdes.classList.remove("btn-danger");
+            botaoligdes.classList.add("tema-verde");
         }
     });
 }

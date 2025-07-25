@@ -57,6 +57,16 @@
 .btn-global:focus{
     outline: none;
 }
+.btn-global.btn-danger{
+    color: var(--danger-color);
+}
+.btn-global.btn-danger::before,
+.btn-global.btn-danger::after{
+    background: var(--danger-color);
+}
+.btn-global.btn-danger:hover{
+    color: var(--background-color);
+}
 
 /* ========== BTN MENU ========== */
 .toggle{

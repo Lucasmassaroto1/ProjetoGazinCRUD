@@ -23,11 +23,11 @@
 }
 .card-header i{
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 .card-header h2{
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin: 0;
 }
 .card-body p{
@@ -99,6 +99,7 @@
 }
 .paginacao a:hover{
     border-bottom: 4px solid var(--secondary-color);
+    scale: 1.2;
 }
 .paginacao a.ativo{
     border-bottom: 4px solid var(--secondary-color);
