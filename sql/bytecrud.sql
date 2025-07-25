@@ -17,8 +17,10 @@ CREATE TABLE usuarios(
     token_recuperacao VARCHAR(255) NULL,
     token_expiracao DATETIME NULL,
     email VARCHAR(255) NOT NULL,
-    foto_perfil VARCHAR(255) NULL
+    foto_perfil VARCHAR(255) NULL,
+    tema VARCHAR(10) DEFAULT 'azul';
 );
+-- ALTER TABLE usuarios ADD COLUMN tema VARCHAR(10) DEFAULT 'azul';
 INSERT INTO usuarios (id, usuario, senha, tipo) VALUES (1, 'bytecode', '$2y$10$rs4VAaJXTfJKSJm8Xrrb..2uiUqMLabo.g9o2V0FMyiy.WbTvo2na', 'admin');
 
 ----------------------------------------------------------------------------

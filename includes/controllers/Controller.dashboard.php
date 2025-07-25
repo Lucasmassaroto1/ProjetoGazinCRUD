@@ -74,21 +74,32 @@
     $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = ? AND m.id_status IN (1, 2) ORDER BY m.id_status ASC, m.id ASC");
     $stmtmusic->execute([$usuario_id]);
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
-
-
+    
+    
     $usuario_id = $_SESSION['usuario_id'];
-
+    
     $stmtVolume = $conexao->prepare("SELECT volume FROM configuracoes WHERE usuario_id = :usuario_id");
     $stmtVolume->execute([':usuario_id' => $usuario_id]);
-
+    
     $volume = $stmtVolume->fetchColumn();
     if($volume === false){
         $volume = 50;
-
+        
         $stmtInserir = $conexao->prepare("INSERT INTO configuracoes (usuario_id, volume) VALUES (:usuario_id, :volume)");
         $stmtInserir->execute([
             ':usuario_id' => $usuario_id,
             ':volume' => $volume
         ]);
     }
+    
+    // ================ TEMA DO SITE ================
+    $tema = 'azul';
+    if(isset($_SESSION['usuario_id'])){
+    $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
+    $stmt->execute([$_SESSION['usuario_id']]);
+    $res = $stmt->fetch();
+    if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
+        $tema = $res['tema'];
+    }
+}
 ?>

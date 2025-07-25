@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../../public/assets/style/themes/temas.css">
     <title>ByteCode Comandos</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../../../'; $paginaAtual = 'comandos'; include '../../../includes/layout/menu.php'?>
     <main class="conteudo">
         <?php include '../../../includes/layout/header.php';?>

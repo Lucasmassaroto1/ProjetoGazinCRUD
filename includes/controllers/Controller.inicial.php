@@ -85,4 +85,15 @@
     $stmtmusic = $conexao->prepare("SELECT m.*, s.nome AS nome_status FROM musica m JOIN status s ON m.id_status = s.id WHERE usuario_id = 1 AND m.id_status IN (1, 2) ORDER BY m.id_status ASC, m.id ASC");
     $stmtmusic->execute();
     $musica = $stmtmusic->fetchAll(PDO::FETCH_ASSOC);
+
+    // ================ TEMA DO SITE ================
+    $tema = 'azul';
+    if(isset($_SESSION['usuario_id'])){
+        $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
+        $stmt->execute([$_SESSION['usuario_id']]);
+        $res = $stmt->fetch();
+        if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
+            $tema = $res['tema'];
+        }
+    }
 ?>

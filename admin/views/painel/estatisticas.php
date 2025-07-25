@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../../public/assets/style/views/main.css">
     <title>ByteCode Estatisticas</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../../../'; $paginaAtual = 'estatistica'; include '../../../includes/layout/menu.php'?>
     <main class="conteudo">
         <?php include '../../../includes/layout/header.php';?>

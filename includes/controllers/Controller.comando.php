@@ -33,4 +33,15 @@
     }else{
         $welcomeInputs = $welcome ?: ['titulo' => '', 'mensagem' => '', 'footer' => ''];
     }
+
+    // ================ TEMA DO SITE ================
+    $tema = 'azul';
+    if(isset($_SESSION['usuario_id'])){
+        $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
+        $stmt->execute([$_SESSION['usuario_id']]);
+        $res = $stmt->fetch();
+        if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
+            $tema = $res['tema'];
+        }
+    }
 ?>

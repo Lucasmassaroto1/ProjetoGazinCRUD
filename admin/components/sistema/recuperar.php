@@ -92,6 +92,16 @@
             $mensagem = "<p style='color:red'>Usuário ou e-mail não encontrado.</p>";
         }
     }
+    // ================ TEMA DO SITE ================
+    $tema = 'azul';
+    if(isset($_SESSION['usuario_id'])){
+        $stmt = $conexao->prepare("SELECT tema FROM usuarios WHERE id = ?");
+        $stmt->execute([$_SESSION['usuario_id']]);
+        $res = $stmt->fetch();
+        if($res && in_array($res['tema'], ['azul', 'roxo', 'verde'])){
+            $tema = $res['tema'];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -107,7 +117,7 @@
     <link rel="stylesheet" href="../../../public/assets/style/components/button.css">
     <title>Bytecrud - Recuperar Senha</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../../../';?>
     <div class="container">
         <div class="row">

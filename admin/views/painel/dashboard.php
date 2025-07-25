@@ -1,5 +1,7 @@
 <?php 
     require_once '../../../includes/controllers/Controller.dashboard.php';
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="../../../public/assets/style/views/main.css">
     <title>ByteCode DashBoard</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../../../'; $paginaAtual = 'dashboard'; include '../../../includes/layout/menu.php'; ?>
     <main class="conteudo">
         <?php include '../../../includes/layout/header.php'; ?>

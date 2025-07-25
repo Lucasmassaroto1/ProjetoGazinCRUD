@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <title>ByteCode - Perfil</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../../../'; $paginaAtual = 'perfil'; include '../../../includes/layout/menu.php'; ?>
     <main class="conteudo">
         <?php include '../../../includes/layout/header.php'; ?>

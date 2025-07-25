@@ -23,7 +23,7 @@
 
     <title>ByteCode CRUD</title>
 </head>
-<body>
+<body class="tema-<?= $tema ?>">
     <?php $base_url = '../'; $paginaAtual = 'inicio'; include '../includes/layout/menu.php'?>
     <main class="conteudo">
         <section class="inicio" id="inicio">
