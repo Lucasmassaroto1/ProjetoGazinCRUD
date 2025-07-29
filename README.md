@@ -27,6 +27,49 @@ Dashboard desenvolvido para o bot <strong>ByteCode</strong> no Discord. Através
 
 </div>
 
+## 🖥️ Executando Localmente
+
+Para executar localmente este projeto na sua máquina, siga os passos abaixo utilizando o XAMPP:
+
+### 📌 Pré-requisitos
+
+- Ter o **[XAMPP](https://www.apachefriends.org/index.html)** instalado
+- Clonar ou baixar este repositório
+
+### 🧩 Passos
+
+1. Abra o painel do **XAMPP** e **inicie** os serviços `Apache` e `MySQL`.
+
+2. Copie ou mova a pasta do projeto para dentro da pasta `htdocs`.  
+   Exemplo no Windows:
+
+   ```
+   C:\xampp\htdocs\ProjetoGazinCRUD
+    ```
+
+3. Importe o banco de dados:
+
+- Acesse o [phpMyAdmin](http://localhost/phpmyadmin)
+- Crie um banco de dados com o nome desejado (ex: `bytecrud`)
+- Vá na aba **Importar** e selecione o arquivo:
+  ```
+  sql/bytecrud.sql
+  ```
+
+4. Edite o arquivo de configuração com os dados do seu banco:
+    ```
+    includes/config/config.php
+    ```
+
+5. No navegador, acesse:
+
+    ```
+    http://localhost/ProjetoGazinCRUD/public/
+    ```
+6. ✅ Pronto! A dashboard estará carregando com os dados do projeto.
+
+> ⚠️ Certifique-se de que o banco de dados MySQL está configurado corretamente, conforme o arquivo `config.php` no diretório `includes/config`.
+
 ## 📫 Contato
 <div align="center">
 
